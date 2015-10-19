@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script src="js/util/backToKillApp.js"></script> 
+	<script src="js/lib/angular/angular.min.js"></script>    
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+    
+    
+	angular.module('ap',[])
+	
+	.controller('ctl', function($scope){
+		$scope.orderCount=4;
+		
+		function selfAdd() {
+			$scope.orderCount = $scope.orderCount + 1;
+			$scope.$apply();
+		}
+		
+		setInterval(selfAdd, 4000);
+		
+	});
+
+    
+    
+    var homeUrl = "pages/home.html";
+    var accountUrl= "pages/account.html";
+    var cartUrl = "pages/cart.html";
+    
+    var contentView;
+    
+    
+    
+    var contentStyles = {top: '9%', bottom: '10%'};
+    
+    mui.init();
+    
+    document.addEventListener('plusready',plusReady,false);
+    
+    
+    function plusReady () {
+    	contentView = plus.webview.create(homeUrl,'contentView',contentStyles);
+    	contentView.addEventListener('close', closeApp);
+    	contentView.show();
+    }
+    </script>
+</head>
+<body ng-app="ap" ng-controller="ctl">
+	
+	
+	<header class="mui-bar mui-bar-nav">
+		<h1 class="mui-title">H5App</h1>
+	</header>
+	
+	<nav class="mui-bar mui-bar-tab">
+		<a class="mui-tab-item mui-active" id="home"> 
+			<span class="mui-icon mui-icon-home"></span>
+			<span class="mui-tab-label">首页</span>
+		</a>
+		<a class="mui-tab-item" id="account">
+			<span class="mui-icon mui-icon-person"></span>
+			<span class="mui-tab-label">账户</span>
+		</a>
+		<a class="mui-tab-item" id="cart">
+			<span class="mui-icon mui-icon-more"></span>
+			<span class="mui-badge mui-badge-red">{{orderCount}}</span>
+			<span class="mui-tab-label">购物车</span>
+		</a>
+	</nav>
+	
+</body>
+
+<script type="text/javascript" charset="utf-8">
+
+document.getElementById('home').addEventListener('tap',function(){
+	contentView.loadURL(homeUrl);
+});
+
+document.getElementById('cart').addEventListener('tap',function(){
+	contentView.loadURL(cartUrl);
+});
+
+document.getElementById('account').addEventListener('tap',function(){
+	contentView.loadURL(accountUrl);
+});
+
+</script>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    
+    <script src="../js/common.js"></script>
+    <script src="../js/mui.min.js"></script>
+    <script src="../js/util/dialogUtil.js"></script>
+    <script src="../js/util/storageUtil.js"></script>
+    <script src="../js/util/backToKillApp.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+    	document.addEventListener('plusready',plusReady,false);
+	  	function plusReady(){
+			
+//			// Android处理返回键
+//			plus.key.addEventListener('backbutton',function(){
+//				if(confirm('确认退出？')){
+//					plus.runtime.quit();
+//				}
+//			},false);
+		}
+	  	
+	  	var tempView;
+	  	
+	  	function rawLoadPage(){
+	  		var nwaiting = plus.nativeUI.showWaiting();//显示原生等待框
+    		webviewShow = plus.webview.create("account.html");//后台创建webview并打开show.html
+    		webviewShow.addEventListener("loaded", function() { //注册新webview的载入完成事件
+	        	nwaiting.close(); //新webview的载入完毕后关闭等待框
+	        	webviewShow.show("slide-in-right",500); //把新webview窗体显示出来，显示动画效果为速度150毫秒的右侧移入动画
+    		}, false);
+	  	}
+	  	
+//	  	mui.init();
+    </script>
+</head>
+<body>
+
+	<h3>CART</h3>
+	
+	<h3>Dialogs</h3>
+	<button class="mui-btn" onclick="showAlert('message','title',function(){console.log('callback')});">alert</button>
+	<button class="mui-btn" onclick="showLoading('loading...')">loading</button>
+	<button class="mui-btn" onclick="toast('message')">toast</button>
+	<button class="mui-btn" onclick="showConfirm('message','title',function(){console.log('confirm')}, function(){console.log('cancel')})">confirm</button>
+	<button class="mui-btn" onclick="showPrompt('message','title','placeholder', function(e){console.log(e)})">prompt</button>
+	
+	<h3>Storage</h3>
+	<p>key, value</p>
+	<button class="mui-btn" onclick="muiSet('key','value')">set</button>
+	<button class="mui-btn" onclick="muiRemove('key')">remove</button>
+	<button class="mui-btn" onclick="console.log(muiGetLength())">getLength</button>
+	
+	<button class="mui-btn" onclick="showPrompt('输入查询key','Storage验证','key',function(e){
+		console.log(muiGet(e))
+		})">select</button>
+		
+	<h3>Device</h3>
+	<button class="mui-btn" onclick="plus.device.beep(3)">声音</button>
+	<button class="mui-btn" onclick="plus.device.vibrate(500)">震动</button>
+	<button class="mui-btn" onclick="plus.device.setVolume(0.3)">volumeMax</button>
+	<button class="mui-btn" onclick="plus.device.setVolume(0)">mute</button>
+	
+	<h3>FullScreen</h3>
+	<button class="mui-btn" onclick="plus.navigator.setFullscreen(true)">FullScreen</button>
+	<button class="mui-btn" onclick="plus.navigator.setFullscreen(false)">window</button>
+	
+	<h3>PageLoading</h3>
+	<button class="mui-btn" onclick="tempView = plus.webview.create('account.html')">createView</button>
+	<button class="mui-btn" onclick="tempView.show('slide-in-right',500)">showView</button>
+	<button class="mui-btn" onclick="rawLoadPage()">现载页面</button>
+</body>
+</html>
