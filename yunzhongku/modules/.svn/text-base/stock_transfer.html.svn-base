@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>调拨历史</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+			span.mui-icon {
+				font-size: 14px;
+				color: #007aff;
+				padding-right: 10px;
+			}
+			header#stock_transfer_header {
+				background-color: #1F97F6;
+			}
+			.mui-icon.span-font {
+				font-size: 250%;
+				line-height: 0.65;
+				color: #F0AD4E;
+			}
+			.mui-input-row label {
+				/*float: left;*/
+				
+				width: 10%;
+				padding: 0px;
+				font-family: "Helvetica Neue", Helvetica, sans-serif;
+				line-height: 1.1;
+			}
+			.mui-input-row label~input {
+				float: left;
+				width: 70%;
+				padding-left: 0;
+				margin-bottom: 0;
+				border: 0;
+			}
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0px;
+			}
+			#barcodeBtn {
+				width: 20%;
+				line-height: 0.9;
+			}
+			li.mui-table-view-cell a.mui-navigate-right p {
+				color: #000000;
+			}
+			li.mui-table-view-cell a.mui-navigate-right p img {
+				vertical-align: middle;
+			}
+			.barcodeBtn:hover{
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" id="stock_transfer_header">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+				<span class="mui-icon mui-icon-left-nav" style="color: #FFFFFF;"><span style="font-size: 17px;">调拨历史</span></span>
+			</button>
+			<span id="offCanvasBtn" class="mui-icon mui-pull-right" style="color: #FFFFFF;">
+				<img id="u91_img" class="img " src="../images/stock_history_u30.png" tabindex="0">
+			</span>
+			<span id="addTransferBtn" class="mui-icon mui-icon-plusempty mui-pull-right span-font"></span>
+		</header>
+		<div class="mui-bar mui-bar-header-secondary">
+			<div class="mui-input-row">
+				<label><span class="mui-icon mui-icon-search mui-pull-left"></span></label>
+				<input type="text" placeholder="单据编号、商品名称">
+				<img id="barcodeBtn" src="../images/main_u61.png" class="barcode-btn mui-pull-right" />
+			</div>
+		</div>
+		<!--<div class="mui-content" id = "divlist">
+			<ul id = "dataList" class="mui-table-view">
+				<li class="mui-table-view-divider">2015-01-01</li>
+				<li class="mui-table-view-cell">
+					<a href="stock_transfer_detail.html" class="mui-navigate-right">
+						<p>DB201506020001</p>
+						<p><img src="../images/transfer_in_icon.png" style="margin-left: 15px;" />默认仓库</p>
+						<p><img src="../images/transfer_out_icon.png" style="margin-left: 15px;" />河西仓</p>
+						<p>阀门TX,方管</p>
+					</a>
+				</li>
+			</ul>
+		</div>-->
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/common.js"></script>
+	<script src="../js/offCanvas.js"></script>
+	<script type="text/javascript">
+		var data = [{
+			"warehouseOut": "默认仓库", //出库仓库
+			"warehouseIn": "默认仓库", //入库仓库
+			"operatorId": "1", //经手人ID
+			"date": "2015-01-01", //业务日期
+			"remark": "250.00", //备注   
+			"Rows": [{
+					"id": "1", //商品Id
+					"num": "2", //数量
+					"unitId": "个", //单位ID
+					"remark": "0" //备注
+				}, {
+					"id": "2", //商品Id
+					"num": "2", //数量
+					"unitId": "个", //单位ID
+					"remark": "0" //备注
+				}] //商品列表
+		}, {
+			"warehouseOut": "默认仓库2", //出库仓库
+			"warehouseIn": "默认仓库2", //入库仓库
+			"operatorId": "2", //经手人ID
+			"date": "2015-01-02", //业务日期
+			"remark": "250.00", //备注   
+			"Rows": [{
+					"id": "1", //商品Id
+					"num": "2", //数量
+					"unitId": "个", //单位ID
+					"remark": "0" //备注
+				}, {
+					"id": "2", //商品Id
+					"num": "2", //数量
+					"unitId": "个", //单位ID
+					"remark": "0" //备注
+				}] //商品列表
+		}];
+		mui.init({
+			subpages:[{
+  			url: 'stock_transfer_history.html',
+  			id: 'stock_transfer_history.html',//内容页面标志
+  			styles:{
+    			top: '89px'
+		      	}
+		    }]
+		});
+		/**
+		 * 侧滑插件
+		 */
+		offcanvas.init({
+			menuUrl: 'stock_transfer_offcanvas_right_menu.html', // 菜单页面
+			tapId: '#offCanvasBtn', // 触发侧滑事的元素id
+			mode: 'main-move', // 滑动方式
+			direction: 'right', // 滑动方向
+			offset: '30%',
+			menuStyles: { 
+				left: "30%",
+				width: '70%',
+				zindex: 9997
+			}
+		});
+		window.addEventListener('fliter', function(event){
+			console.log(JSON.stringify(event.detail));
+			offcanvas.closeMenu();
+		});
+		// 添加调拨单位回调方法
+		window.addEventListener('insertTransferOrder', function(event){
+			var data = event.detail;
+			mui.fire();
+		});
+		/**
+		 * 添加新调拨单事件，打开新建画面 
+		 */
+		document.getElementById('addTransferBtn').addEventListener('tap', function(){
+			clicked('stock_transfer_new.html', false, false, '');
+		},false);
+		/**
+		 * 打开条码扫描页面事件；
+		 */
+		document.getElementById('barcodeBtn').addEventListener('tap', function(){
+			clicked('barcode_scan.html', true, false, '');
+		}, false);
+		/**
+		 * 解析json数据，并显示； 
+		 * @param {Object} data
+		 */
+		function showData(data) {
+			var list = data.Rows;
+			for (var i = 0; i < data.length; i++) {
+				var li1 = document.createElement("li");
+				var li2 = document.createElement("li");
+				/*for(){
+					
+				}*/
+			}
+		}
+	</script>
+
+</html>

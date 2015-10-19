@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+		<script src="js/mui.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/mui.view.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+	<style>
+		.title {
+			margin: 20px 15px 10px;
+			color: #eef2f3;
+			font-size: 15px;
+			text-align: center;
+		}
+		html,
+		body {
+			background-color: #efeff4;
+		}
+		header.mui-bar {
+			display: none;
+		}
+		.mui-bar-nav~.mui-content {
+			padding: 0;
+		}
+	</style>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">行业</h1>
+		</header>
+		<div class="mui-content">
+		<form id="list" class="mui-input-group">
+			<div class="mui-input-row ">
+				<label>工程机械</label>
+			</div>
+			<div class="mui-input-row ">
+				<label>食品</label>
+			</div>
+			<div class="mui-input-row ">
+				<label>服装</label>
+			</div>
+			<div class="mui-input-row ">
+				<label>其他</label>
+			</div>
+		</form>
+		</div>
+		
+	</body>
+
+</html>

@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/style.css" rel="stylesheet" />
+
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			.mui-views,
+			.mui-view,
+			.mui-pages,
+			.mui-page,
+			.mui-page-content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #efeff4;
+			}
+			.mui-pages {
+				top: 46px;
+				height: auto;
+			}
+			.mui-scroll-wrapper {
+				top: 45px;
+				height: 100%;
+			}
+			.mui-scroll-wrapper,
+			.mui-scroll {
+				background-color: #efeff4;
+			}
+			.mui-page.mui-transitioning {
+				-webkit-transition: -webkit-transform 300ms ease;
+				transition: transform 300ms ease;
+			}
+			.mui-page-left {
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+			.mui-ios .mui-page-left {
+				-webkit-transform: translate3d(-20%, 0, 0);
+				transform: translate3d(-20%, 0, 0);
+			}
+			.mui-navbar {
+				position: fixed;
+				right: 0;
+				left: 0;
+				z-index: 10;
+				height: 44px;
+				background-color: #f7f7f8;
+			}
+			.mui-navbar .mui-bar {
+				position: absolute;
+				background: transparent;
+				text-align: center;
+			}
+			.mui-android .mui-navbar-inner.mui-navbar-left {
+				opacity: 0;
+			}
+			.mui-ios .mui-navbar-left .mui-left,
+			.mui-ios .mui-navbar-left .mui-center,
+			.mui-ios .mui-navbar-left .mui-right {
+				opacity: 0;
+			}
+			.mui-navbar .mui-btn-nav {
+				-webkit-transition: none;
+				transition: none;
+				-webkit-transition-duration: .0s;
+				transition-duration: .0s;
+			}
+			.mui-navbar .mui-bar .mui-title {
+				display: inline-block;
+				position: static;
+				width: auto;
+			}
+			.mui-page-shadow {
+				position: absolute;
+				right: 100%;
+				top: 0;
+				width: 16px;
+				height: 100%;
+				z-index: -1;
+				content: '';
+			}
+			.mui-page-shadow {
+				background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+				background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+			}
+			.mui-navbar-inner.mui-transitioning,
+			.mui-navbar-inner .mui-transitioning {
+				-webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
+				transition: opacity 300ms ease, transform 300ms ease;
+			}
+			.mui-page {
+				display: none;
+			}
+			.mui-pages .mui-page {
+				display: block;
+			}
+			.mui-page .mui-table-view:first-child {
+				margin-top: 15px;
+			}
+			.mui-page .mui-table-view:last-child {
+				margin-bottom: 30px;
+			}
+			.mui-table-view {
+				margin-top: 20px;
+			}
+			.mui-table-view:after {
+				height: 0;
+			}
+			.mui-table-view span.mui-pull-right {
+				color: #999;
+			}
+			.mui-table-view-divider {
+				background-color: #efeff4;
+				font-size: 14px;
+			}
+			.mui-table-view-divider:before,
+			.mui-table-view-divider:after {
+				height: 0;
+			}
+			.head {
+				height: 40px;
+			}
+			#head {
+				line-height: 40px;
+			}
+			.head-img {
+				width: 40px;
+				height: 40px;
+			}
+			#head-img1 {
+				position: absolute;
+				bottom: 10px;
+				right: 40px;
+				width: 40px;
+				height: 40px;
+			}
+			.update {
+				font-style: normal;
+				color: #999999;
+				margin-right: -25px;
+				font-size: 15px
+			}
+			.mui-fullscreen {
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+		</style>
+		<style>
+			h1 {
+				right: initial !important;
+			}
+			.mui-switch {
+				border-radius: 5px;
+			}
+			.choose_order_txt {
+				font-family: '微软雅黑 Regular', '微软雅黑';
+				font-weight: 400;
+				font-style: normal;
+				font-size: 14px;
+				color: #1F97F6;
+				text-align: left;
+			}
+			.barcode {
+				background-image: url(../images/stock_history_u6.png);
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				position: absolute;
+			}
+			.text_left {
+				float: left;
+				width: 40%;
+				text-align: left;
+				color: rgb(153, 153, 153);
+			}
+			.text_right {
+				float: right;
+				width: 40%;
+				text-align: right;
+			}
+			.list_title {
+				position: relative;
+				top: 11px;
+				width: 100%;
+				word-wrap: break-word;
+				font-family: '微软雅黑 Regular', '微软雅黑';
+				font-weight: 400;
+				font-style: normal;
+				font-size: 16px;
+				text-align: left;
+			}
+			.right_pluse {
+				float: right;
+				top: 0px;
+				right: 0px;
+				width: 20%;
+				height: 64px;
+				border-left: 1px solid rgb(207, 207, 207);
+				border-bottom: 1px solid rgb(207, 207, 207);
+				line-height: 45px;
+				text-align: center;
+			}
+			.list_left {
+				float: left;
+				width: 80%;
+				height: 100%;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<!--页面主结构开始-->
+		<div id="app" class="mui-views">
+			<div class="mui-view">
+				<div class="mui-navbar">
+				</div>
+				<div class="mui-pages">
+				</div>
+			</div>
+		</div>
+		<div id="main" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-center mui-title" style="position: absolute;">新建进货单</h1>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper" style="top: 0px;">
+					<div class="mui-scroll">
+
+						<div class="mui-content">
+							<ul class="mui-table-view mui-table-view-chevron linkOrderSwitch">
+								<li class="mui-table-view-cell">
+									<span>关联进货订单</span>
+									<div class="mui-switch mui-switch-blue mui-active">
+										<div class="mui-switch-handle"></div>
+									</div>
+								</li>
+							</ul>
+							<div id="chooseOrder">
+								<ul class="mui-table-view mui-table-view-chevron" style="margin-top: 20px;">
+									<li class="mui-table-view-cell" id="choose_order">
+										<a id="orderList" href="javascript:clicked('stock-order-list.html',true,true,{callback:'true'})">
+											<span class="choose_order_txt">选择进货订单</span>
+											<div class="barcode" style="width: 30px;height: 20px;top: 25%;right: 15px;">
+												<div>
+										</a>
+									</li>
+								</ul>
+								</div>
+								<div id="linkOrder" style="display: none;">
+									<ul class="mui-table-view mui-table-view-chevron" style="margin-top: 20px;">
+										<li class="mui-table-view-cell text_bg" style="padding-right: 40px;">
+											<a class="" style="margin-right: -49px;">
+												<div class="mui-media-body text" style="overflow: visible;">
+													<div class="text_left">关联进货单号</div>
+													<div class="text_right" id="">
+														RK2015063001
+													</div>
+												</div>
+											</a>
+										</li>
+										<li class="mui-table-view-cell text_bg" style="padding-right: 40px;">
+											<a class="" style="margin-right: -49px;">
+												<div class="mui-media-body text" style="overflow: visible;">
+													<div class="text_left">进货仓库</div>
+													<div class="text_right" id="">
+														河西仓
+													</div>
+												</div>
+											</a>
+										</li>
+										<li class="mui-table-view-cell text_bg" style="padding-right: 40px;">
+											<a class="" style="margin-right: -49px;">
+												<div class="mui-media-body text" style="overflow: visible;">
+													<div class="text_left">供应商</div>
+													<div class="text_right" id="">
+														中联重科
+													</div>
+												</div>
+											</a>
+										</li>
+									</ul>
+									<ul class="mui-table-view mui-table-view-chevron" style="margin-top: 20px;">
+										<li class="mui-table-view-cell" id="choose_order">
+											<a id="orderList" href="javascript:clicked('stock-order-list.html',true,true,{callback:'true'})">
+												<span class="choose_order_txt">重新选择进货订单</span>
+												<div class="barcode" style="width: 30px;height: 20px;top: 25%;right: 15px;">
+													<div>
+											</a>
+										</li>
+									</ul>
+									<ul class="mui-table-view mui-table-view-chevron" style="margin-top: 20px;">
+										<li class="mui-table-view-cell text_bg" style="padding-right: 40px;">
+											<a class="" style="margin-right: -49px;">
+												<div class="mui-media-body text" style="overflow: visible;">
+													<div class="text_left">业务日期</div>
+													<div class="text_right" id="">
+														中联重科
+													</div>
+												</div>
+											</a>
+										</li>
+										<li class="mui-table-view-cell text_bg" style="padding-right: 40px;">
+											<a class="" style="margin-right: -49px;">
+												<div class="mui-media-body text" style="overflow: visible;">
+													<div class="text_left">经手人</div>
+													<div class="text_right" id="">
+														中联重科
+													</div>
+												</div>
+											</a>
+										</li>
+									</ul>
+									<div class="mui-input-row" style="margin: 10px 5px;">
+										<textarea rows="5" placeholder="备注信息"></textarea>
+									</div>
+									</div>
+									<div id="noLinkOrder" style="display: none;">
+										<ul class="mui-table-view mui-table-view-chevron" style="margin-top: 20px;">
+											<li class="mui-table-view-cell text_bg" style="padding-right: 40px;">
+												<a href="#selectWharehouse" class="mui-navigate-right" style="margin-right: -49px;">
+													<div class="mui-media-body text" style="overflow: visible;">
+														<div class="text_left">进货仓库</div>
+														<div class="text_right" id="wharehouse">
+															河西仓
+														</div>
+													</div>
+												</a>
+											</li>
+											<li class="mui-table-view-cell text_bg" style="padding-right: 40px;">
+												<a href="#selectSupplier" class="mui-navigate-right" style="margin-right: -49px;">
+													<div class="mui-media-body text" style="overflow: visible;">
+														<div class="text_left">供应商</div>
+														<div class="text_right" id="supplier">
+															中联重科
+														</div>
+													</div>
+												</a>
+											</li>
+										</ul>
+										<div class="title">
+											入库商品
+										</div>
+										<ul class="mui-table-view">
+											<li class=" mui-media">
+												<div class="list_left mui-table-view-cell">
+													<a id="selectItems" class="mui-navigate-right" href="javascript:clicked('stock-chose-items.html',true,true,{callback:'true'})">
+														<img class="mui-media-object mui-pull-left" src="../images/stock_input_new_u109.png">
+														<div class="mui-media-body" style="overflow: visible;">
+															<div class="list_title">
+																<span>选择商品</span>
+																<span style="float:right;margin-right:20px">请选择商品</span>
+															</div>
+														</div>
+													</a>
+												</div>
+												<div class="right_pluse mui-table-view-cell">
+													<span class="barcode" style="width: 38px;height: 25px;top: 20px;right: 10px;">
+							</span>
+												</div>
+												<div class="clear"></div>
+											</li>
+										</ul>
+										<div>
+											<ul id="selectedItemsList" class="mui-table-view mui-table-view-chevron" style="margin-top: 0px;">
+												<li id="item_i0" class="mui-table-view-cell text_bg" style="padding-right: 40px;">
+													<a href="javascript:clicked('stock-in-item-edit.html',true,true,{itemId:'i0'})" id="itemUpdate" itemId='i0' class="mui-navigate-right" style="margin-right: -49px;">
+														<div class="mui-media-body text" style="overflow: visible;">
+															<div>阀门</div>
+															<div>
+																*3根
+															</div>
+														</div>
+													</a>
+												</li>
+												<ul>
+										</div>
+
+										<ul class="mui-table-view mui-table-view-chevron" style="margin-top: 20px;">
+											<li class="mui-table-view-cell text_bg" style="padding-right: 40px;">
+												<a id="selectBusinessDate" class="" style="margin-right: -49px;">
+													<div class="mui-media-body text" style="overflow: visible;">
+														<div class="text_left">业务日期</div>
+														<div class="text_right" id="businessDate">
+															中联重科
+														</div>
+													</div>
+												</a>
+											</li>
+											<li class="mui-table-view-cell text_bg" style="padding-right: 40px;">
+												<a href="javascript:clicked('stock-handled-list.html',true,true,{elementId:'handledName'});" class="" style="margin-right: -49px;">
+													<div class="mui-media-body text" style="overflow: visible;">
+														<div class="text_left">经手人</div>
+														<div class="text_right" id="handledName" data-value=''>
+															中联重科
+														</div>
+													</div>
+												</a>
+											</li>
+										</ul>
+										<div class="mui-input-row" style="margin: 10px 5px;">
+											<textarea rows="5" placeholder="备注信息"></textarea>
+										</div>
+									</div>
+								</div>
+							
+					</div>
+				</div>
+			</div>
+		</div>
+						<!--
+        	作者：yangtt@jinxi-soft.com.cn
+        	时间：2015-07-14
+        	描述：选择仓库
+        -->
+	<div id="selectWharehouse" class="mui-page cat-page">
+		<div class="mui-navbar-inner mui-bar mui-bar-nav">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+				<span class="mui-icon mui-icon-left-nav"></span>选择仓库
+			</button>
+		</div>
+		<div class="mui-page-content">
+			<div class="mui-scroll-wrapper" style="top: 30px;">
+				<ul class="mui-table-view" style="margin-top: 0px;">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row mui-radio mui-left">
+							<label>仓库1</label>
+							<input name="wharehouse" type="radio" data-text='仓库1' value="1" style="left: 0px;">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row mui-radio mui-left">
+							<label>仓库2</label>
+							<input name="wharehouse" type="radio" data-text='仓库2' value="2" style="left: 0px;">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row mui-radio mui-left">
+							<label>仓库3</label>
+							<input name="wharehouse" type="radio" data-text='仓库3' value="3" style="left: 0px;">
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+						<!--
+        	作者：yangtt@jinxi-soft.com.cn
+        	时间：2015-07-14
+        	描述：选择供应商
+        -->
+	<div id="selectSupplier" class="mui-page cat-page">
+		<div class="mui-navbar-inner mui-bar mui-bar-nav">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+				<span class="mui-icon mui-icon-left-nav"></span>选择供应商
+			</button>
+		</div>
+		<div class="mui-page-content">
+			<div class="mui-scroll-wrapper" style="top: 30px;">
+				<ul class="mui-table-view" style="margin-top: 0px;">
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row mui-radio mui-left">
+							<label>供应商1</label>
+							<input name="supplier" data-text='供应商1' value='1' type="radio" style="left: 0px;">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row mui-radio mui-left">
+							<label>供应商2</label>
+							<input name="supplier" data-text='供应商2' value='2' type="radio" style="left: 0px;">
+						</div>
+					</li>
+					<li class="mui-table-view-cell">
+						<div class="mui-input-row mui-radio mui-left">
+							<label>供应商3</label>
+							<input name="supplier" data-text='供应商3' value='3' type="radio" style="left: 0px;">
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+<script src="../js/mui.min.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/mui.view.js "></script>
+<script src="../js/common.js"></script>
+<script>
+	mui.init({
+		swipeBack: false, //启用右滑关闭功能
+		keyEventBind: {
+			backbutton: true
+		}
+	});
+	var viewApi = mui('#app').view({
+		defaultPage: '#main'
+	});
+	mui.plusReady(function() {
+		//关闭等待框
+	    plus.nativeUI.closeWaiting();
+	    //显示当前页面
+	    mui.currentWebview.show();
+	    
+		//添加商品
+		window.addEventListener('addItems', function(event) {
+			alert(22);
+			var data = event.detail.data;
+			var selectedItemsList = document.body.querySelector('#selectedItemsList');
+			for (var i = 0; i < data.length; i++) {
+				var li = document.createElement('li');
+				li.className = 'mui-table-view-cell text_bg';
+				li.style.marginRight = '40px';
+				li.innerHTML = '<a class="mui-navigate-right" style="margin-right: -49px;">' +
+					'<div class="mui-media-body text" style="overflow: visible;">' +
+					'<div>' + data[i].name + '</div>' +
+					'<div>' +
+					'*' + data[i].number + data[i].unit +
+					'</div>' +
+					'</div>' +
+					'</a>';
+				selectedItemsList.appendChild(li);
+			}
+		});
+		
+	});
+	
+	mui('.mui-content .mui-switch').each(function() { //循环所有toggle
+		/**
+		 * toggle 事件监听
+		 */
+		this.addEventListener('toggle', function(event) {
+			//event.detail.isActive 可直接获取当前状态
+			//alert(event.detail.isActive);
+			if (event.detail.isActive) {
+				document.getElementById('chooseOrder').style.display = 'block';
+				document.getElementById('noLinkOrder').style.display = 'none';
+			} else {
+				document.getElementById('chooseOrder').style.display = 'none';
+				document.getElementById('noLinkOrder').style.display = 'block';
+				document.getElementById('linkOrder').style.display = 'none';
+			}
+		});
+	});
+	/*
+			//选择订单
+			document.getElementById('choose_order').addEventListener('tap', function() {
+				mui.openWindow({
+						url:"test.html",
+	    				id:"test.html",
+	    				extras:{
+	    					
+	    				}
+					});
+			});*/
+	(function($) {
+		var view = viewApi.view;
+		//处理view的后退与webview后退
+		var oldBack = $.back;
+		$.back = function() {
+			if (viewApi.canBack()) { //如果view可以后退，则执行view的后退
+				viewApi.back();
+			} else { //执行webview后退
+				oldBack();
+			}
+		};
+		//监听页面切换事件方案1,通过view元素监听所有页面切换事件，目前提供pageBeforeShow|pageShow|pageBeforeBack|pageBack四种事件(before事件为动画开始前触发)
+		//第一个参数为事件名称，第二个参数为事件回调，其中e.detail.page为当前页面的html对象
+		view.addEventListener('pageBeforeShow', function(e) {
+			//				console.log(e.detail.page.id + ' beforeShow');
+		});
+		view.addEventListener('pageShow', function(e) {
+			//				console.log(e.detail.page.id + ' show');
+		});
+		view.addEventListener('pageBeforeBack', function(e) {
+			//		console.log(e.detail.page.id + ' beforeBack');
+		});
+		view.addEventListener('pageBack', function(e) {
+			//				console.log(e.detail.page.id + ' back');
+		});
+		$('.mui-scroll-wrapper').scroll();
+		//选择仓库
+		mui('input[name="wharehouse"]').each(function(ele) {
+			mui('input[name="wharehouse"]')[ele].addEventListener('tap', function(e) {
+				//alert(mui('input[name="wharehouse"]')[ele].value);
+				document.getElementById('wharehouse').innerText = mui('input[name="wharehouse"]')[ele].getAttribute('data-text');
+				viewApi.back();
+			});
+		});
+		//选择供应商
+		mui('input[name="supplier"]').each(function(ele) {
+			mui('input[name="supplier"]')[ele].addEventListener('tap', function(e) {
+				//alert(mui('input[name="wharehouse"]')[ele].value);
+				document.getElementById('supplier').innerText = mui('input[name="supplier"]')[ele].getAttribute('data-text');
+				viewApi.back();
+			});
+		});
+		//业务日期
+		document.getElementById('selectBusinessDate').addEventListener('tap', function() {
+			var dDate = new Date();
+			dDate.setFullYear(2014, 7, 16);
+			var minDate = new Date();
+			minDate.setFullYear(2010, 0, 1);
+			var maxDate = new Date();
+			maxDate.setFullYear(2016, 11, 31);
+			plus.nativeUI.pickDate(function(e) {
+				var d = e.date;
+				var dateStr = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+				document.getElementById('businessDate').innerText = dateStr;
+			}, function(e) {}, {
+				title: "请选择日期",
+				date: dDate,
+				minDate: minDate,
+				maxDate: maxDate
+			});
+		});
+	})(mui); //选择订单回调函数
+	function orderSelectCallback(orderId) {
+			//alert(orderId);
+			//mui("#linkOrderSwitch").hide();
+			document.getElementById('chooseOrder').style.display = 'none';
+			document.getElementById('noLinkOrder').style.display = 'none';
+			document.getElementById('linkOrder').style.display = 'block';
+		}
+		//选择商品回调函数
+
+	function itemsSelectCallback(items) {
+			var items = mui.parseJSON(items);
+			addItem(items);
+		}
+		//添加商品
+
+	function addItem(data) {
+			var selectedItemsList = document.body.querySelector('#selectedItemsList');
+			for (var i = 0; i < data.length; i++) {
+				var li = document.createElement('li');
+				li.className = 'mui-table-view-cell text_bg';
+				li.setAttribute("id", 'item_' + data[i].id);
+				li.style.paddingRight = '40px';
+				li.innerHTML = '<a href="javascript:clicked(\'stock-in-item-edit.html\',true,true,{itemId:\'' + data[i].id + '\'});" class="mui-navigate-right" itemId="' + data[i].id + '" style="margin-right: -49px;"  >' +
+					'<div class="mui-media-body text" style="overflow: visible;">' +
+					'<div>' + data[i].name + '</div>' +
+					'<div>' +
+					'*' + data[i].number + data[i].unit +
+					'</div>' +
+					'</div>' +
+					'</a>';
+				alert(li.getAttribute('id'));
+				selectedItemsList.appendChild(li);
+			}
+		}
+		//删除商品回调
+
+	function deleteItem(itemId) {
+			document.getElementById('item_' + itemId).remove();
+		}
+		//修改商品回调
+
+	function updateItem(data) {
+			data = mui.parseJSON(data);
+			var li = document.getElementById('item_' + data.id);
+			li.innerHTML = '<a href="javascript:clicked(\'stock-in-item-edit.html\',true,true,{itemId:\'' + data.id + '\'});" class="mui-navigate-right" itemId="' + data.id + '" style="margin-right: -49px;"  >' +
+				'<div class="mui-media-body text" style="overflow: visible;">' +
+				'<div>' + data.name + '</div>' +
+				'<div>' +
+				'*' + data.number + data.unit +
+				'</div>' +
+				'</div>' +
+				'</a>';
+		}
+		//选择经手人回调
+
+	function updateHandled(data, elementId) {
+		data = mui.parseJSON(data);
+		document.getElementById(elementId).innerText = data.name;
+		document.getElementById(elementId).setAttribute('data-value', data.id);
+	}
+</script>
+	</body>
+
+</html>

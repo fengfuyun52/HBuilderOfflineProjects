@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" >
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/search.css" />
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<style type="text/css">
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0px;
+			}
+			.mui-table-view-cell {
+				padding-top: 8px;
+				padding-bottom: 8px;
+			}
+			.mui-table-view-cell .mui-table-view .mui-table-view-cell:after,
+			.mui-table-view-cell:after {
+				left: 0px;
+			}
+			.mui-table-view span.mui-media-object {
+				max-width: 100%;
+				height: 42px;
+				line-height: 42px;
+			}
+			.mui-table-view-cell img.mui-pull-right {
+				height: 42px;
+				width: 20px;
+				padding: 11px 0px;
+			}
+			.mui-pull-right:hover {
+				cursor: pointer;
+			}
+			
+			.mui-table-view-cell.mui-collapse .mui-table-view .mui-table-view-cell {
+			    padding-left: 11px;
+			}
+			.mui-table-view-cell.mui-collapse .mui-table-view .mui-table-view-cell:after {
+			    left: -15px;
+			}
+			.pic{
+				width: 100px;
+				height: 100px;
+				border: solid 1px;				
+				background-size: 100% 100%;
+				float: left;
+				margin: 10px 10px;
+				
+			}
+			.mui-ellipsis{
+				color: #000000;
+			}
+			.good-pic{
+				width: 98px;
+				height: 98px;
+				background-size: 100% 100%;
+				background-image: url(../images/product_detail_u19.png);
+			}
+			.commodity_num{
+				float: right;
+				margin-right: 30px;
+			}
+			.inventory{
+				float: right;
+				margin-right: 10px;
+			}
+		</style>
+		<title>添加快捷功能</title>
+	</head>
+
+	<body>
+		<div id="main" class="mui-inner-wrap">
+			<div class="mui-bar mui-bar-nav" style="background-color: #007AFF;">				
+					<span class="mui-icon mui-icon-left-nav" style="color: #FFFFFF;">
+					<span style="font-size: 17px;">商品库存</span>				
+			</div>
+			<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell"><span>库存数量</span><span class="inventory">3</span></li>
+	               <li class="mui-table-view-divider">仓库列表</li>	
+						<li class="mui-table-view-cell"><span>雨花仓</span><span class="inventory">3部</span></li>
+						<li class="mui-table-view-cell"><span>秦淮仓</span><span class="inventory">30部</span></li>
+	
+				</ul>
+			</div>
+			
+		
+		<!-- 测试用数据-->
+		<script src="../json/shortcut.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/addShortcut.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+		
+		<!--<script type="text/javascript" charset="utf-8">
+			mui.plusReady(function() {
+				//关闭等待框
+			    plus.nativeUI.closeWaiting();
+			    //显示当前页面
+			    mui.currentWebview.show();
+		 	});
+			(function() { 
+				mui.init();
+				mui.back = function(){
+					clicked("../main.html",true, true, {});
+				}
+				var obj = addShortcut.getShortcuts();
+				if(obj == null || obj == undefined){
+					localStorage.setItem("$shortcuts", JSON.stringify(_shortcut));
+					obj = _shortcut;
+				}
+				addShortcut.showShortcuts(obj.modules);
+			})();
+		</script>-->
+	</body>
+</html>

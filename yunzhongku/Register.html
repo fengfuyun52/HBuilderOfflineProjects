@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>注册帐号</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <link href="css/mui.min.css" rel="stylesheet" />
+	<link href="css/style.css" rel="stylesheet" />
+		<style>
+			.mui-views,
+			.mui-view,
+			.mui-pages,
+			.mui-page,
+			.mui-page-content {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #efeff4;
+			}
+			.mui-pages {
+				top: 46px;
+				height: auto;
+			}
+			.mui-scroll-wrapper,
+			.mui-scroll {
+				background-color: #efeff4;
+			}
+			.mui-page.mui-transitioning {
+				-webkit-transition: -webkit-transform 300ms ease;
+				transition: transform 300ms ease;
+			}
+			.mui-page-left {
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+			.mui-ios .mui-page-left {
+				-webkit-transform: translate3d(-20%, 0, 0);
+				transform: translate3d(-20%, 0, 0);
+			}
+			.mui-navbar {
+				position: fixed;
+				right: 0;
+				left: 0;
+				z-index: 10;
+				height: 44px;
+				background-color: #f7f7f8;
+			}
+			.mui-navbar .mui-bar {
+				position: absolute;
+				background: transparent;
+				text-align: center;
+			}
+			.mui-android .mui-navbar-inner.mui-navbar-left {
+				opacity: 0;
+			}
+			.mui-ios .mui-navbar-left .mui-left,
+			.mui-ios .mui-navbar-left .mui-center,
+			.mui-ios .mui-navbar-left .mui-right {
+				opacity: 0;
+			}
+			.mui-navbar .mui-btn-nav {
+				-webkit-transition: none;
+				transition: none;
+				-webkit-transition-duration: .0s;
+				transition-duration: .0s;
+			}
+			.mui-navbar .mui-bar .mui-title {
+				display: inline-block;
+				position: static;
+				width: auto;
+			}
+			.mui-page-shadow {
+				position: absolute;
+				right: 100%;
+				top: 0;
+				width: 16px;
+				height: 100%;
+				z-index: -1;
+				content: '';
+			}
+			.mui-page-shadow {
+				background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+				background: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .01) 50%, rgba(0, 0, 0, .2) 100%);
+			}
+			.mui-navbar-inner.mui-transitioning,
+			.mui-navbar-inner .mui-transitioning {
+				-webkit-transition: opacity 300ms ease, -webkit-transform 300ms ease;
+				transition: opacity 300ms ease, transform 300ms ease;
+			}
+			.mui-page {
+				display: none;
+			}
+			.mui-pages .mui-page {
+				display: block;
+			}
+			.mui-page .mui-table-view:first-child {
+				margin-top: 15px;
+			}
+			.mui-page .mui-table-view:last-child {
+				margin-bottom: 30px;
+			}
+			.mui-table-view {
+				margin-top: 20px;
+			}
+			.mui-table-view:after {
+				height: 0;
+			}
+			.mui-table-view span.mui-pull-right {
+				color: #999;
+			}
+			.mui-table-view-divider {
+				background-color: #efeff4;
+				font-size: 14px;
+			}
+			.mui-table-view-divider:before,
+			.mui-table-view-divider:after {
+				height: 0;
+			}
+			.head {
+				height: 40px;
+			}
+			#head {
+				line-height: 40px;
+			}
+			.head-img {
+				width: 40px;
+				height: 40px;
+			}
+			#head-img1{
+				position: absolute;
+				bottom: 10px;right: 40px;
+				width: 40px;height: 40px;
+			}
+			.update{font-style: normal;color: #999999;margin-right: -25px;font-size: 15px}
+			
+			.mui-fullscreen{
+				position: fixed;
+				z-index: 20;
+				background-color: #000;
+			}
+		</style>
+	<style>
+				html,
+		body {
+			height: 100%;
+			overflow: hidden;
+			margin: 0px;
+			padding: 0px;
+			background-color:#FAFAFA;
+			  }
+		.mui-content{
+			position: relative;
+			width: 100%;
+			height: 50px;
+			background-image: url(images/login_u6.png);
+			background-size:cover;
+			color: #EAFFFF;
+				}	
+		.mui-content p{
+			position: absolute;
+			font-family: '微软雅黑 Regular', '微软雅黑';
+			font-style: normal;
+			font-size: 15px;
+			top:13px;
+			left:10px;
+			vertical-align:middle;
+			color: #FFFFFF;
+		}
+		.jiantou {
+			position: absolute;
+			top:13px;
+			left:20px;
+			width: 20px;
+		}
+		.form_css{
+			margin-top:10px;
+		}
+		.ax_shape{
+			width: 100%;
+			height:45px;
+			background-image: url(images/login_u11.png);
+		}
+		.ax_shape p{
+			position: relative;
+			width:30%;
+			margin-top: 2px;
+			font-family:'微软雅黑 Bold', '微软雅黑';
+			font-style: normal;
+			font-size: 10px;
+			top:15px;
+			text-align: center;
+			font-weight: 700;
+			color: #000000;
+		}
+		.ax_shape input{
+			position: relative;
+			width:65%;
+			height: 35px;
+			font-family: '微软雅黑 Regular', '微软雅黑';
+			font-size: 12px;
+			margin-left:35%;
+			top: -25px;
+			border: 0px ;
+		}
+		.reg{
+			text-decoration:none;
+		}
+	</style>
+	</head>
+		<body class="mui-android mui-android-2 mui-android-2-3 mui-android-2-3-4">
+		<div id="app" class="mui-views">
+			<div class="mui-view">
+				<div class="mui-navbar">
+				</div>
+				<div class="mui-pages">
+				</div>
+			</div>
+		</div>
+		
+		
+		<div id="setting" class="mui-page">
+			<!--页面标题栏开始-->
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav"></span>
+				</button>
+				<h1 class="mui-center mui-title">注册</h1>
+			</div>
+		
+		<form class="form_css">
+			<div class="ax_shape">
+				<p>用户名</p>
+				<input id="account" type="text" placeholder="手机号或邮箱" width:100px/>
+			</div>
+			<div class="ax_shape">
+				<p>密码</p>
+				<input id="passwd"  type="password"   placeholder="密码必须6位以上" />
+			</div>
+			<div class="ax_shape">
+				<p>确认密码</p>
+				<input id="conpasswd" type="password" class="ax_shape_text" placeholder="确认密码" />
+			</div>
+		</form>
+		<form class="form_css">
+			<div class="ax_shape">
+				<p>公司名称</p>
+				<input type="text" id="company" class="ax_shape_text"/>
+			</div>
+			<div class="ax_shape">
+				<p>联系人</p>
+				<input type="text" id="contact" class="ax_shape_text" />
+			</div>
+			<div class="ax_shape">
+				<p>联系电话</p>
+				<input type="text"  id="phone_number" class="ax_shape_text" />
+			</div>
+			<div class="ax_shape">
+				<a  href="javascript:clicked('job-list.html',true,true,{elementId:'woke_type'})" >
+				<p>行业</p>
+					<input type='text' id="woke_type" class="ax_shape_text" value="请选择行业" readonly="readonly"/>
+				</a>
+			</div>
+		</form>
+		<form class=form_css>
+			<div class="ax_shape">
+				<p>邀请人帐号</p>
+				<input type="text" id="invite_people" class="ax_shape_text" placeholder="填写邀请人账户" />
+			</div>
+		</form>
+					<div class="mui-content-padded">
+				<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">注册</button>
+			</div>
+			
+		</div>
+		
+		
+		
+	</body>
+	<script src="js/mui.min.js"></script>
+	<script src="js/mui.view.js"></script>
+	 <script src="js/common.js"></script>
+	<script>
+	var viewApi = mui('#app').view({
+			defaultPage: '#setting'
+		});
+		 //初始化单页的区域滚动
+		mui('.mui-scroll-wrapper').scroll();
+		var view = viewApi.view;
+		(function($) {
+			//处理view的后退与webview后退
+			var oldBack = $.back;
+			$.back = function() {
+				if (viewApi.canBack()) { //如果view可以后退，则执行view的后退
+					viewApi.back();
+				} else { //执行webview后退
+					oldBack();
+				}
+			};
+			//监听页面切换事件方案1,通过view元素监听所有页面切换事件，目前提供pageBeforeShow|pageShow|pageBeforeBack|pageBack四种事件(before事件为动画开始前触发)
+			//第一个参数为事件名称，第二个参数为事件回调，其中e.detail.page为当前页面的html对象
+			view.addEventListener('pageBeforeShow', function(e) {
+				//				console.log(e.detail.page.id + ' beforeShow');
+			});
+			view.addEventListener('pageShow', function(e) {
+				//				console.log(e.detail.page.id + ' show');
+			});
+			view.addEventListener('pageBeforeBack', function(e) {
+				//				console.log(e.detail.page.id + ' beforeBack');
+			});
+			view.addEventListener('pageBack', function(e) {
+				//				console.log(e.detail.page.id + ' back');
+			});
+		})(mui);
+			function jobselect(data, elementId) {
+					data = mui.parseJSON(data);
+					document.getElementById(elementId).setAttribute('data-value', data.id);
+					document.getElementById(elementId).value=data.name;
+				}
+		</script>
+</html>

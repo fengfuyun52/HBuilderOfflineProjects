@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>调拨历史</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+			
+			.mui-icon.span-font {
+				font-size: 250%;
+				line-height: 0.65;
+				color: #F0AD4E;
+			}
+			.mui-input-row label {
+				/*float: left;*/
+				
+				width: 10%;
+				padding: 0px;
+				font-family: "Helvetica Neue", Helvetica, sans-serif;
+				line-height: 1.1;
+			}
+			.mui-input-row label~input {
+				float: left;
+				width: 70%;
+				padding-left: 0;
+				margin-bottom: 0;
+				border: 0;
+			}
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0px;
+			}
+			#barcodeBtn {
+				width: 20%;
+				line-height: 0.9;
+			}
+			li.mui-table-view-cell a.mui-navigate-right p {
+				color: #000000;
+			}
+			li.mui-table-view-cell a.mui-navigate-right p img {
+				vertical-align: middle;
+			}
+			.barcodeBtn:hover{
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content" id = "divlist mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul id = "dataList" class="mui-table-view">
+					
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/common.js"></script>
+	<script type="text/javascript">
+		mui.init({
+			pullRefresh: {
+				container: "#divlist", //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+				down: {
+					contentdown: "下拉可以刷新", //可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+					contentover: "释放立即刷新", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+					contentrefresh: "正在刷新...", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+					callback: pullfreshDown //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+				},
+				up : {
+			      	contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+			      	contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+			      	callback :pullfreshUp //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+			    }
+			}
+		});
+		mui.plusReady(function(){
+			plus.webview.currentWebview().show();
+		});
+		mui('#divlist').scroll();
+		mui('.mui-scroll').scroll();
+		function pullfreshDown() {
+			//业务逻辑代码，比如通过ajax从服务器获取新数据；
+			//注意，加载完新数据后，必须执行如下代码，注意：若为ajax请求，则需将如下代码放置在处理完ajax响应数据之后
+			mui('#divlist').pullRefresh().endPulldownToRefresh();
+		}
+		
+		function pullfreshUp() {
+		    //业务逻辑代码，比如通过ajax从服务器获取新数据；
+		    //注意，加载完新数据后，必须执行如下代码，true表示没有更多数据了，两个注意事项：
+		    //1、若为ajax请求，则需将如下代码放置在处理完ajax响应数据之后
+		    //2、注意this的作用域，若存在匿名函数，需将this复制后使用，参考hello mui中的代码示例；
+		    this.endPullupToRefresh(true|false);
+		}
+		var data = [{"warehouseOut": "默认仓库", //出库仓库
+			"warehouseIn": "默认仓库", //入库仓库
+			"operatorId": "1", //经手人ID
+			"date": "2015-01-01", //业务日期
+			"remark": "250.00", //备注   
+			"Rows": [{
+					"id": "1", //商品Id
+					"num": "2", //数量
+					"unitId": "个", //单位ID
+					"remark": "0" //备注
+				}, {
+					"id": "2", //商品Id
+					"num": "2", //数量
+					"unitId": "个", //单位ID
+					"remark": "0" //备注
+				}] //商品列表
+		}, {
+			"warehouseOut": "默认仓库2", //出库仓库
+			"warehouseIn": "默认仓库2", //入库仓库
+			"operatorId": "2", //经手人ID
+			"date": "2015-01-02", //业务日期
+			"remark": "250.00", //备注   
+			"Rows": [{
+					"id": "1", //商品Id
+					"num": "2", //数量
+					"unitId": "个", //单位ID
+					"remark": "0" //备注
+				}, {
+					"id": "2", //商品Id
+					"num": "2", //数量
+					"unitId": "个", //单位ID
+					"remark": "0" //备注
+				}] //商品列表
+		}];
+		// 添加调拨单位回调方法
+		window.addEventListener('insertTransferOrder', function(event){
+			plus.webview.currentWebview().show();
+			var data = event.detail;
+			var dateTitle = document.querySelector('#dataList').querySelectorAll('.mui-table-view-divider');
+			console.log(dateTitle.length);
+			var goods = '';
+			for(var i = 0; i < data.Rows.length; i++){
+				goods += '<span id="">'+data.Rows[i].name+(i < data.Rows.length-1? ',' : '')+'</span>';
+			}
+			var flag = true;
+			for(var i = 0; i < dateTitle.length; i++){
+				if(data.date == dateTitle[i].innerText){
+					var html = '<a href="javascript: clicked("stock_transfer_detail.html", false, false, {data:\''+JSON.stringify(data)+'\'});" class="mui-navigate-right">'+
+									'<p>'+data.date+'</p>'+
+									'<p><img src="../images/transfer_in_icon.png" style="margin-left: 15px;" />'+data.warehouseOut+'</p>'+
+									'<p><img src="../images/transfer_out_icon.png" style="margin-left: 15px;" />'+data.warehouseIn+'</p>'+
+									'<p class="mui-ellipsis-2">'+goods+'</p>'+
+								'</a>';
+					var e2 = document.createElement('li');
+					e2.className = 'mui-table-view-cell';
+					e2.innerHTML = html;
+					//mui('dataList').insertAfter(dateTitle);
+					document.getElementById('dataList').insertBefore(e2, dateTitle.nextElementSibling);
+					flag = false;
+					break;
+				}
+			}
+			if(flag){
+				var e1 = document.createElement('li');
+				e1.className = 'mui-table-view-divider';
+				e1.innerText = data.date;
+				var html = '<a href="javascript: clicked(\'stock_transfer_detail.html\', false, false, '+JSON.stringify(data)+');" class="mui-navigate-right">'+
+							'<p>'+data.date+'</p>'+
+							'<p><img src="../images/transfer_in_icon.png" style="margin-left: 15px;" />'+data.warehouseOut+'</p>'+
+							'<p><img src="../images/transfer_out_icon.png" style="margin-left: 15px;" />'+data.warehouseIn+'</p>'+
+							'<p class="mui-ellipsis-2">'+goods+'</p>'+
+						'</a>';
+				var e2 = document.createElement('li');
+				e2.className = 'mui-table-view-cell';
+				e2.innerHTML = html;
+				var _firstchild = document.getElementById('dataList').firstElementChild;
+				if(_firstchild){
+					_firstchild.parentNode.insertBefore(e1, _firstchild);
+					_firstchild.parentNode.insertBefore(e2, _firstchild);
+				}else{
+					document.getElementById('dataList').appendChild(e1);
+					document.getElementById('dataList').appendChild(e2);
+				}
+			}
+			console.log(flag);
+			plus.webview.currentWebview().show();
+		});
+		/**
+		 * 解析json数据，并显示； 
+		 * @param {Object} data
+		 */
+		function showData(data) {
+			var list = data.Rows;
+			for (var i = 0; i < data.length; i++) {
+				var li1 = document.createElement("li");
+				var li2 = document.createElement("li");
+				/*for(){
+					
+				}*/
+			}
+		}
+	</script>
+
+</html>

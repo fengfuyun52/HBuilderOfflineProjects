@@ -1,0 +1,76 @@
+.mui-grid-view.mui-grid-9 {
+  		/*background-color: #1F98F5;*/
+    background: -webkit-linear-gradient(#1F98F5, #31B0D2); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#1F98F5, #31B0D2); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#1F98F5, #31B0D2); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right,#1F98F5, #31B0D2); /* 标准的语法（必须放在最后） */
+	color: white;
+}
+    	
+.inforNum{
+    	font-size: xx-large;
+}
+
+.inforTextTopic{
+    	font-size: 15px;
+    	line-height: 35px;
+}
+
+.inforText{
+    	font-size: 17px;
+    	line-height: 35px;
+}
+
+.inforTextNum{
+    	font-size: 20px;
+    	vertical-align: -1px;
+}
+
+.mui-backdrop {
+    z-index: 1;
+    background-color: rgba(0,0,0,.3);
+}
+
+.slideDivider{
+	background-color: #333;
+	/*background: linear-gradient(#333, gray);*/
+	color: #7A8086;
+	font-size: 13px;
+	border-style: none;
+	height: 30px;
+}
+
+.slideDivider:before{
+	background-color: rgba(0,0,0,0);
+}
+
+.slideDivider:after{
+	background-color:  rgba(0,0,0,0);
+}
+
+.slideInput{
+	background: linear-gradient(to bottom right,#393939,#333,#393939);
+	/*background-color: #393939;*/
+	color: #CACBCC;
+	font-size: 16px;
+}
+
+.slideInput:before{
+	background-color:  rgba(0,0,0,0);
+}
+
+.slideInput:after{
+	background-color:  rgba(0,0,0,0);
+}
+
+.mui-input-group .mui-input-row:after {
+  background-color: rgba(0,0,0,0);
+  
+}
+
+.slideBtn{
+	width: 40%;
+	float: right;
+	background-color: #333;
+	color: white;
+}

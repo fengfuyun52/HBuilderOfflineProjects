@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+	</head>
+	<style>
+		.title {
+			margin: 20px 15px 10px;
+			color: #eef2f3;
+			font-size: 15px;
+			text-align: center;
+		}
+	</style>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h4 class="mui-title">行业</h4>
+		</header>
+
+		<div class="mui-content">
+			<div class="title">
+			</div>
+			<form id="list" class="mui-input-group">
+				<div class="mui-input-row ">
+					<label>工程机械</label>
+				</div>
+				<div class="mui-input-row ">
+					<label>重工</label>
+				</div>
+			</form>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			var ws = null,
+				wo = null;
+			var elementsId;
+			var value;
+			 // H5 plus事件处理
+			function plusReady() {
+				if (ws || !window.plus || !domready) {
+					return;
+				}
+				// 获取窗口对象
+				ws = plus.webview.currentWebview();
+				elementsId = ws.elementsId;
+				wo = ws.opener();
+				// 显示页面并关闭等待框
+				ws.show("slide-in-right", 200);
+				wo.evalJS("closeWaiting()");
+			}
+			if (window.plus) {
+				plusReady();
+			} else {
+				document.addEventListener("plusready", plusReady, false);
+			}
+			 // 监听DOMContentLoaded事件
+			document.addEventListener("DOMContentLoaded", function() {
+				domready = true;
+				plusReady();
+			}, false);
+			 //备份mui.back，mui.back已将窗口关闭逻辑封装的比较完善（预加载及父子窗口），因此最好复用mui.back
+			var old_back = mui.back;
+			mui.back = function() {
+			//	value = getselectdata();
+			//	wo.evalJS("callback_selet_data('" + value + "','" + elementsId + "');");
+				old_back();
+			}
+
+			function getselectdata() {
+				var radionum = document.getElementById("list").dataitem;
+				for (var i = 0; i < radionum.length; i++) {
+					if (radionum[i].checked) {
+						return radionum[i].value;
+					}
+				}
+			}
+			document.querySelector('.mui-input-group').addEventListener('change', function(e) {
+				mui.back();
+			});
+		</script>
+	</body>
+
+</html>

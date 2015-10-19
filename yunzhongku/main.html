@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="css/mui.min.css">
+		
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			.mui-icon-home1{
+				background-image: url(images/home.png);
+				background-size:cover; 
+			}
+			.mui-icon-home1-selected{
+				background-image: url(images/home_down.png);
+				background-size:cover; 
+			}
+			.mui-icon-inventory{
+				background-image: url(images/inventory.png);
+				background-size:cover; 
+			}
+			.mui-icon-report{
+				background-image: url(images/report.png);
+				background-size:cover; 
+			}
+			.mui-icon-inventory-selected{
+				background-image: url(images/inventory_down.png);
+				background-size:cover; 
+			}
+			.mui-icon-report-selected{
+				background-image: url(images/report_down.png);
+				background-size:cover; 
+			}
+			input.saoma-right{
+				position: absolute;
+				background-image: url(images/main_u61.png);
+				background-position: center center;
+				margin-top:6px;
+				background-size: 100% 100%;	
+				width: 40px;
+				margin-left: 5px;		
+				background-color: #007AFF;
+			}
+			input.mui-input-search{
+				width: 90%!important;
+				top:5px;
+			}
+			.mui-bar-nav{
+				padding-right:0px !important; 
+			}
+			.mui-bar .mui-title{
+				overflow:visible;
+			}
+			
+			.mui-bar-tab .mui-tab-item .mui-icon{
+				top:10px;
+				width:32px;
+				height: 32px;
+			}
+			.mui-bar-tab .mui-tab-item .mui-icon~.mui-tab-label{
+				font-size: 10px;
+			}
+			
+			</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color: #007AFF;">
+			<a id="offCanvasBtn" class="mui-pull-left" style="color: #FFFFFF;">
+				<img src="images/stock_u10.png" class="" style="margin: 0px; padding: 0px; position: relative; top: 0px; height: 44px; width: 44px;" />
+			</a>
+			<h1 id="title" class="mui-title">
+					<a href="javascript:clicked('modules/search.html',false,false,'');" >
+						<input type="button" id="search"class="mui-input-search" value="搜索"></input>
+					</a>
+					<a href="javascript:openBarcodeScan('modules/barcode_scan.html');" data-target = "modules/barcode_scan.html">
+						<input type="button" class="saoma-right"></input>
+					</a>
+				</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a id="defaultTab" class="mui-tab-item mui-active" href="modules/home.html">
+				<span class="mui-icon mui-icon-home1-selected"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="modules/stock.html">
+				<span class="mui-icon mui-icon-inventory"><span class="mui-badge">9</span></span>
+				<span class="mui-tab-label">库存</span>
+			</a>
+			<a class="mui-tab-item" href="modules/report-list.html">
+				<span class="mui-icon mui-icon-report"></span>
+				<span class="mui-tab-label">报表</span>
+			</a>
+		</nav>
+		<script src="js/mui.min.js" charset="utf-8"></script>
+		<script src="js/common.js" charset="utf-8"></script>
+		<script src="js/main.js" charset="utf-8"></script>
+	</body>
+
+</html>

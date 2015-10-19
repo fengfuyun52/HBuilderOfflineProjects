@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>调拨明细</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<style>
+			span.mui-icon {
+				font-size: 14px;
+				color: #007aff;
+				padding-right: 10px;
+			}
+			header#stock_transfer_header{
+				background-color: #1F97F6;
+			}
+			.mui-icon.span-font{
+				font-size: 250%;
+				line-height: 0.65;	
+				color: #F0AD4E;
+			}
+			.mui-input-row label {
+			    /*float: left;*/
+			    width: 10%;
+			    padding: 0px;
+			    font-family: "Helvetica Neue", Helvetica, sans-serif;
+			    line-height: 1.1;
+			}
+			
+			.mui-input-row label~input {
+			    float: left;
+			    width: 70%;
+			    padding-left: 0;
+			    margin-bottom: 0;
+			    border: 0;
+			}
+			.mui-content>.mui-table-view:first-child {
+			     margin-top: 0px; 
+			}
+			#barcodeBtn{
+				width: 20%;
+				line-height: 0.9;
+			}
+			li.mui-table-view-cell 
+			a.mui-navigate-right
+			p{
+				color: #000000;
+			}
+			li.mui-table-view-cell 
+			a.mui-navigate-right
+			p img{
+				vertical-align: middle;
+			}
+			.span-font-style1{
+				font-weight: bold;
+				color: #999999;
+			}
+			.span-font-style2{
+				color: #000000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" id="stock_transfer_header">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+				<span class="mui-icon mui-icon-left-nav" style="color: #FFFFFF;"><span style="font-size: 17px;">调拨明细</span></span>
+			</button>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<span class="span-font-style1">单号</span>
+					<span id = "no" class="mui-pull-right span-font-style2">ASN201506020001</span>
+				</li>
+				<li class="mui-table-view-cell">
+					<span class="span-font-style1">出库仓库</span>
+					<span id = "outWarehouse" class="mui-pull-right span-font-style2">河西仓</span>
+				</li>
+				<li class="mui-table-view-cell">
+					<span class="span-font-style1">入库仓库 </span>
+					<span id = "inWarehouse" class="mui-pull-right span-font-style2">雨花仓</span>
+				</li>
+			</ul>
+			<ul class="mui-table-view" id = "transfersGoods">
+				<li class="mui-table-view-divider">
+					调拨商品
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-divider">
+				</li>
+				<li class="mui-table-view-cell">
+					<span class="span-font-style1">业务日期</span>
+					<span id = "date" class="mui-pull-right span-font-style2">2015-06-01 </span>
+				</li>
+				<li class="mui-table-view-cell">
+					<span class="span-font-style1">经手人</span>
+					<span id = "operator" class="mui-pull-right span-font-style2">张三</span>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-divider">
+				</li>
+				<li class="mui-table-view-cell" style="height: 3em;">
+					<span id = "remark" class="span-font-style1">无</span>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-divider">
+				</li>
+				<li class="mui-table-view-cell">
+					<span class="span-font-style1">制单人</span>
+					<span id = "maker" class="mui-pull-right span-font-style2">admin</span>
+				</li>
+				<li class="mui-table-view-cell">
+					<span class="span-font-style1">制单日期</span>
+					<span id = "makeDate" class="mui-pull-right span-font-style2">2015-06-01 13:01:01</span>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript">
+	//调拨单
+		var staticdata = {
+		   "res": "0",     //0-成功1-失败
+		   "data": {
+		       "no":"FHD20150629001",//单号
+		       "outWarehouse":"默认仓库",    //出库仓库
+		       "inWarehouse":"默认仓库",    //入库仓库
+		        "operator":"张三",      //经手人
+		        "date":"2015-01-01",      //业务日期
+		        "remark":"250.00",      //备注 
+		        "maker":"admin" ,     //制单人
+		        "makeDate":"2015-01-01 12:00:00",      //制单日期
+		        "Rows":[{
+		                                "id":"1",
+		                                "name":"溢流阀",      //商品名称
+		                                "num":"2",      //数量
+		                                "unit":"个"      //单位
+		                        }]    //商品列表
+		    },   
+		    "msg": ""          
+		};
+		function showData(data){
+			var bill = data.data;
+			var rows = bill.Rows;
+			for(var b in bill){
+				if(b != "Rows"){
+					setInnerTextById(b, bill[b]);
+				}
+			}
+			var ulrows = document.getElementById("transfersGoods");
+			var html = "";
+			for(var r = 0; r < rows.length; r++){
+				var li = document.createElement("li");
+				li.className = "mui-table-view-cell";
+				li.innerHTML = '<a href="" class="mui-navigate-right">' +
+									'<p>'+rows[r].name+'</p>'+
+									'<p>*'+rows[r].num+rows[r].unit+'</p>'+
+								'</a>';
+				ulrows.appendChild(li);
+			}
+		}
+		function setInnerTextById(id, text){
+			var e = document.getElementById(id);
+			e && (e.innerText = text);
+		}
+		showData(staticdata);
+	</script>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/app.js"></script>
+		<script type="text/javascript" src="../js/common.js" ></script>
+		<script type="text/javascript" charset="utf-8">
+	      	mui.init();
+	    </script>
+		<title>我</title>
+		<style>
+			html,
+			body {
+				height: 100%;
+				overflow: hidden;
+				margin: 0px;
+				padding: 0px;
+				background-color: #efeff4;
+				background-image: url(../images/my_u3.jpg);
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+			}
+			.voice{
+				position: absolute;
+				right: 5%;
+				top: 2%;
+				width: 37px;
+				height: 37px;
+				background-image: url(../images/my_u13.png);
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+			}
+			.logo{
+				position: absolute;
+				left:50%;margin-left:-85px;
+				top: 10%;
+				width: 170px;
+				height: 170px;
+				background-image: url(../images/my_u8.png);
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+			}
+			.links{
+				position: absolute;
+				top : 50%;
+				width: 100%;
+				
+			}
+			.c1{
+				height: 30px;
+				width: 90%;
+				border-bottom: 1px solid #FFFFFF;
+				background: transparent;
+				margin-left: 10%;
+			}
+			.c1 a{
+				color: #FFFFFF;
+				margin-left: 20%;
+				line-height: 35px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mui-content">
+			<div class="voice"></div>
+			<div class="logo"></div>
+			<div class="links">
+				<div class="c1">
+					<a href="javascript:clicked('my-account-info.html',true,true,{})">账户信息</a>
+				</div>
+				<div class="c1">
+					<a href="javascript:clicked('my-setting.html',true,true,{})">设置</a>
+				</div>
+				<div class="c1">
+					<a href="javascript:clicked('my-change-wharehouse.html',true,true,{})">更换仓库</a>
+				</div>
+			</div>
+			
+		</div>
+	</body>
+</html>

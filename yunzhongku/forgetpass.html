@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>忘记密码</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	    <meta name="apple-mobile-web-app-capable" content="yes"/>
+	    <link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<style>
+		html,
+		body {
+			height: 100%;
+			overflow: hidden;
+			margin: 0px;
+			padding: 0px;
+			background-color:#FAFAFA;
+			  }
+		.ax_shape{
+			width: 100%;
+			height:60px;
+			background-image: url(images/login_u11.png);
+		}
+		.ax_shape p{
+			position: relative;
+			width:25%;
+			margin-top: 5px;
+			font-family:'微软雅黑 Bold', '微软雅黑';
+			font-style: normal;
+			font-size: 16px;
+			top:20px;
+			text-align: center;
+			font-weight: 700;
+			color: #000000;
+		}
+		.ax_shape_text{
+			position: relative;
+			height: 35px;
+			font-family: '微软雅黑 Regular', '微软雅黑';
+			font-style: normal;
+			font-size: auto;
+			margin-left:30%;
+			top: -18px;
+			border: 0px!important;
+			padding: 0px!important;
+		}
+		.ax_shape_text1{
+			position: relative;
+			height: 35px;
+			font-family: '微软雅黑 Regular', '微软雅黑';
+			font-style: normal;
+			font-size: auto;
+			margin-left:30%;
+			top: -18px;
+			border: 0px;
+			width: 100px;
+		}
+		.button{
+			position: relative;
+			float: right;
+			top:-18px;
+		}
+		.form_css{
+			margin-top:50px;
+		}
+		</style>
+	</head>
+	<body class="mui-android mui-android-2 mui-android-2-3 mui-android-2-3-4">
+		<div class="mui-inner-wrap">
+			<header class="mui-bar mui-bar-nav" style="display: block;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 class="mui-title">修改密码</h1>
+				<span class="mui-icon mui-icon-checkmarkempty mui-pull-right"></span>
+			</header>
+			<form class="form_css">
+		<div class="ax_shape">
+			<p>用户名</p>
+			<input id="account" class="ax_shape_text" placeholder="手机号或邮箱" />
+		</div>
+		<div class="ax_shape">
+			<p>效验码</p>
+			<input id="confirm" class="ax_shape_text1" placeholder="获得的校验码"  />
+			<button id="get_confirm" class="button">获取效验码</button>
+		</div>
+		<div class="ax_shape">
+			<p>密码</p>
+			<input id="passwd" type="password" class="ax_shape_text" placeholder="新密码" />
+		</div>
+		<div class="ax_shape">
+			<p>确认密码</p>
+			<input id="conpasswd" type="password" class="ax_shape_text" placeholder="确认密码" />
+		</div>
+		</form>  
+	</body>
+</html>

@@ -1,0 +1,19 @@
+[0715/142257:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2
+[0715/142258:ERROR:renderer_main.cc(227)] Running without renderer sandbox
+[0715/142259:INFO:CONSOLE(14)] "Uncaught TypeError: undefined is not a function", source: http://127.0.0.1:8020/chartDemo/js/echarts.js (14)
+[0715/142306:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2
+[0715/143405:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2
+[0715/143607:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2
+[0715/145012:INFO:CONSOLE(6)] "在该浏览器下，不支持创建子页面", source: http://127.0.0.1:8020/mui/js/mui.min.js (6)
+[0715/145020:INFO:CONSOLE(6)] "在该浏览器下，不支持创建子页面", source: http://127.0.0.1:8020/mui/js/mui.min.js (6)
+[0717/102137:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2
+[0717/102138:ERROR:renderer_main.cc(227)] Running without renderer sandbox
+[0717/102146:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2
+[0717/155153:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2
+[0717/155155:ERROR:renderer_main.cc(227)] Running without renderer sandbox
+[0717/155202:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2
+[0717/163935:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2
+[0717/164157:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2
+[0720/172553:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2
+[0720/172554:ERROR:renderer_main.cc(227)] Running without renderer sandbox
+[0720/172602:WARNING:dhcp_proxy_script_adapter_fetcher_win.cc(264)] Error fetching PAC URL from DHCP: 2

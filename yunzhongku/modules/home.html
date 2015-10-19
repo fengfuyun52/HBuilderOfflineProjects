@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/app.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/main.css" />
+		<title></title>
+	</head>
+
+	<body>
+		<div id="homeRefreshContainer" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll mui-content">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell ui-main-blu">
+						<span id="" class="">今日收货单数/金额</span>
+						<span id="in" class="mui-pull-right">5笔/￥6669.8</span>
+					</li>
+					<li class="mui-table-view-cell ui-main-blu">
+						<span id="" class="mui-pull-left">今日发货单数/金额</span>
+						<span id="out" class="mui-pull-right">3笔/￥4369.8</span>
+					</li>
+				</ul>
+				<!--数据列表-->
+				<ul id="shortcutList" class="mui-table-view mui-table-view-chevron">
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="../json/shortcut.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/addShortcut.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/common.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		(function() {
+			mui.init({
+				pullRefresh : {
+				    container:"#homeRefreshContainer",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+				    down : {
+				      	contentdown : "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+				      	contentover : "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+				      	contentrefresh : "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+				      	callback :homePageDownPullfresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+				    },
+				    up : {
+				    	contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+				      	contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+				      	callback :  homePageUpPullfresh//必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+				    }
+				  }
+			});
+			function homePageDownPullfresh() {
+			     //业务逻辑代码，比如通过ajax从服务器获取新数据；
+			     //注意，加载完新数据后，必须执行如下代码，注意：若为ajax请求，则需将如下代码放置在处理完ajax响应数据之后
+			     mui('#homeRefreshContainer').pullRefresh().endPulldownToRefresh();
+			}
+			function homePageUpPullfresh() {
+			     //业务逻辑代码，比如通过ajax从服务器获取新数据；
+			     //注意，加载完新数据后，必须执行如下代码，注意：若为ajax请求，则需将如下代码放置在处理完ajax响应数据之后
+			     mui('#homeRefreshContainer').pullRefresh().endPulldownToRefresh();
+			}
+			/** 测试*/
+			var obj = addShortcut.getShortcuts();
+			if(obj == null || obj == undefined){
+				localStorage.setItem("$shortcuts", JSON.stringify(_shortcut));
+				obj = _shortcut;
+			}
+			showShortcut(obj.modules);
+			//mui('#homeRefreshContainer').scroll();
+			function showShortcut(shortcuts){
+				var test = {
+						    "res": "0",     //0-成功1-失败
+						    "data": {
+						        "inputQty": "1",                  //收货笔数
+						        "inputMoney": "250",       //收货金额
+						        "outputQty": "1",          //发货笔数
+						        "outputMoney": "250"       //发货金额
+						    },   
+						    "msg": ""          
+					};
+				document.getElementById("in").innerText = test.data.inputQty+"笔/￥"+test.data.inputMoney;
+				document.getElementById("out").innerText = test.data.outputQty+"笔/￥"+test.data.outputMoney;
+				var html = '';
+				for (var i = 0; i < shortcuts.length; i++) {
+					for (var j = 0; j < shortcuts[i].shortcuts.length; j++) {
+						if (shortcuts[i].shortcuts[j].state == 1) {
+							with(shortcuts[i].shortcuts[j]){
+								html += '<li class="mui-media">'+
+								'<div class="list_left  mui-table-view-cell">'+
+									'<a class="" href="javascript:clicked(\'stock-in-history.html\',true,true,{})">'+
+										'<img class="mui-media-object mui-pull-left" src="'+icon+'">'+
+										'<div class="mui-media-body" style="overflow: visible;">'+
+											'<div class="list_title">'+ name+'</div>'+
+										'</div>'+
+									'</a>'+
+								'</div>'+
+								'<div class="right_pluse  mui-table-view-cell">'+
+									'<a class="" href="javascript:clicked(\'stock-input-new.html\',true,true,{})">'+
+										'<span class="mui-icon mui-icon-plusempty"></span>'+
+									'</a>'+
+								'</div>'+
+								'<div class="clear"></div>'+
+							'</li>';
+							}
+							
+						}
+					}
+				}
+				html += '<li class="mui-table-view-cell ui-main-btn-plus">'+
+								'<a class="" href="javascript:clicked(\'add_shortcut.html\',true,true,{})">'+
+									'<span class="mui-icon mui-icon-plusempty"></span>'+
+									'<span class="mui-tab-label">添加快捷功能</span>'+
+								'</a>'+
+							'</li>';
+				document.getElementById("shortcutList").innerHTML = html;
+			}
+		})();
+	</script>
+
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title></title>
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../fahuo/css/fliter_menu.css" rel="stylesheet" />
+		<script src="../js/common.js" charset="utf-8"></script>
+		<style type="text/css">
+			.mui-bar-nav~.mui-content {
+				padding-top: 44px;
+			}
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0px;
+			}
+			.fliter-clear-btn {
+				background-color: #000000;
+				border-bottom: 1px solid #c8c7cc;
+			}
+			.datePick span {
+				position: absolute;
+				right: 30px;
+			}
+			.clearFliter:active{
+				background-color: #eee;
+			}
+			#doFliterBtn{
+			 	width: 42px;
+			    height: 100%;
+			    line-height: 44px;	
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav mui-table-view-chevron mui-table-view-inverted">
+			<h4 class="mui-pull-left white">筛选调发单</h4>
+			<div class="mui-pull-right" id = "doFliterBtn">
+				<span class="font-blue ver-center">筛选</span>
+			</div>
+		</header>
+		<!--<div id="offCanvasSideScroll" class="mui-content mui-scroll-wrapper">-->
+		<div class="mui-content">
+			<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted" id = "fliterList">
+				<li class="mui-table-view-divider background-light-black title">制单日期</li>
+				<li class="mui-table-view-cell datePick">
+					<a class="mui-navigate-right">开始日期<span class="mui-pull-right"></span></a>
+				</li>
+				<li class="mui-table-view-cell datePick">
+					<a class="mui-navigate-right">结束日期<span class="mui-pull-right"></span></a>
+				</li>
+				<li class="mui-table-view-divider background-light-black title">销售日期</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right datePick">开始日期<span class="mui-pull-right"></span></a>
+				</li>
+				<li class="mui-table-view-cell datePick">
+					<a class="mui-navigate-right">结束日期<span class="mui-pull-right"></span></a>
+				</li>
+				<li class="mui-table-view-divider background-light-black"></li>
+				<li class="mui-table-view-cell" id="warehouseOut">
+					<a class="mui-navigate-right" href="javascript: selectStock('selectOutStock', 'warehouseOut');">出库仓库<span class="mui-pull-right" id=""></a>
+				</li>
+				<li class="mui-table-view-cell" id="operator">
+					<a class="mui-navigate-right" href="javascript: selectBrocker('selectBrocker', 'operator');">经手人<span class="mui-pull-right" id=""></span></a>
+				</li>
+				<li class="mui-table-view-cell" id = "billMaker">
+					<a class="mui-navigate-right">制单人<span class="mui-pull-right" id=""></span></a>
+				</li>
+				<li class="mui-table-view-divider background-light-black"></li>
+			</ul>
+			<div class="mui-title font-blue fliter-clear-btn" id = "clearFliter">清空所有筛选条件</div>
+		</div>
+		<!--</div>-->
+	</body>
+	<script type="text/javascript">
+		(function() {
+			var ws = null;
+			var wo = null;
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+			document.getElementById('doFliterBtn').addEventListener('tap', function(event){
+				var fliterList = document.getElementById('fliterList').querySelectorAll('span.mui-pull-right');
+				var data = {
+					cDateStart: fliterList[0].innerText,
+					cDateEnd: fliterList[1].innerText,
+					sDateStart: fliterList[2].innerText,
+					sDateEnd: fliterList[3].innerText,
+					stock: {
+						id: fliterList[4].id,
+						name: fliterList[4].innerText,
+					},
+					operator:{
+						id: fliterList[5].id,
+						name: fliterList[5].innerText,
+					},
+					marker:{
+						id: fliterList[6].id,
+						name: fliterList[6].innerText,
+					}
+				};
+				mui.fire(wo, 'fliter', data );
+			});
+			// 清空筛选
+			document.getElementById('clearFliter').addEventListener('tap', function(event){
+				var fliterList = document.getElementById('fliterList').querySelectorAll('span.mui-pull-right');
+				for(var i = 0; i < fliterList.length; i++){
+					fliterList[i].id = fliterList[i].innerText = '';
+				}
+			});
+			document.getElementById('warehouseOut').addEventListener('tap', function(event){
+				var id = this.querySelector('span').getAttribute('id');
+				var extras = {
+					data: {
+						id:id,
+						eventName: 'selectOutStock'
+					}
+				};
+				clicked('stock_transfer_select_stock.html', true, true, extras);
+			});
+			// 进入选择经手人页面
+			document.getElementById('operator').addEventListener('tap', function() {
+				var id = this.querySelector('span').getAttribute('id');
+				var extras = {
+					brokerId: id,
+					eventName: 'selectBrocker'
+				};
+				clicked('out-handled-list.html', true, true, extras);
+			});
+			
+			// 进入选择经手人页面
+			document.getElementById('billMaker').addEventListener('tap', function() {
+				var id = this.querySelector('span').getAttribute('id');
+				var extras = {
+					brokerId: id,
+					eventName: 'billMaker'
+				};
+				clicked('out-handled-list.html', true, true, extras);
+			});
+			// 出库仓库回调
+			window.addEventListener('selectOutStock', function(event) {
+				var res = event.detail.resultsData;
+				var span = document.getElementById("warehouseOut").querySelector('span');
+				span.setAttribute('id', res.id);
+				span.innerText = res.name;
+			});
+			// 经手人回调
+			window.addEventListener('billMaker', function(event) {
+				var data = JSON.parse(event.detail);
+				if (null == data) {
+					return;
+				}
+				var span = document.getElementById("billMaker").querySelector('span');
+				span.setAttribute('id', data.brokerId);
+				span.innerText = data.brokerName;
+			});
+			// 经手人回调
+			window.addEventListener('selectBrocker', function(event) {
+				var data = JSON.parse(event.detail);
+				if (null == data) {
+					return;
+				}
+				var span = document.getElementById("operator").querySelector('span');
+				span.setAttribute('id', data.brokerId);
+				span.innerText = data.brokerName;
+			});
+			mui.plusReady(function() {
+				ws = plus.webview.currentWebview();
+				wo = ws.opener();
+				mui('.mui-content').on('tap', '.datePick', function(event) {
+					var dDate = new Date();
+					var span = this.querySelector('span');
+					if (span.innerText) {
+						var tmp = span.innerText;
+						var arr = tmp.split('-');
+						dDate.setFullYear(Number(arr[0]), arr[1] - 1, arr[2]);
+					}
+					var minDate = new Date();
+					minDate.setFullYear(2000, 0, 1);
+					var maxDate = new Date();
+					maxDate.setFullYear(2088, 11, 31);
+					var md = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+					/** 0 1 2 3 4 5 6 7 8 9 10 11 */
+					plus.nativeUI.pickDate(function(e) {
+						var d = e.date;
+						var year = d.getFullYear();
+						var month = d.getMonth();
+						var currDate = d.getDate() + 1;
+						md[1] = (year % 4 == 0 || year % 400 == 0) ? 29 : 28;
+						if (currDate > md[month]) {
+							currDate = currDate % md[month];
+							month++;
+							if (month > 11) {
+								year += 1;
+							}
+						}
+						span.innerText = year + "-" + (month % 12 + 1) + "-" + currDate;
+					}, function(e) {
+						span.innerText = "您没有选择日期";
+					}, {
+						title: "请选择业务日期",
+						date: dDate,
+						minDate: minDate,
+						maxDate: maxDate
+					});
+				});
+			});
+		})();
+	</script>
+
+</html>

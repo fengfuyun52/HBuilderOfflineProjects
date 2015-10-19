@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet">
+		<link href="css/delivery_history_main.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav background-blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h4 class="mui-pull-left white">出库历史</h4>
+			<span id="offCanvasBtn" class="mui-icon mui-action-menu mui-icon-bars mui-pull-right"></span>
+			<span id="addNewOrder" class="mui-icon mui-icon-plusempty mui-pull-right larger"></span>
+		</header>
+		<!--<div class="mui-content"></div>-->
+		<div class="mui-bar mui-bar-header-secondary">
+			<div class="mui-input-row">
+				<label><span class="mui-icon mui-icon-search mui-pull-left"></span></label>
+				<input type="search" placeholder="单据编号、商品名称">
+				<span class="mui-icon mui-icon-camera mui-pull-right"></span>
+			</div>
+		</div>
+		<div class="mui-content height"></div>	
+		<div class="mui-off-canvas-backdrop"></div>
+		<script type="text/javascript" src="js/delivery_history_main.js"></script>
+	</body>
+</html>

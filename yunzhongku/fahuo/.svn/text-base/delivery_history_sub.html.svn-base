@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet"/>
+		<link href="css/delivery_history_sub.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<!--<aside id="offCanvasSide" class="mui-off-canvas-right">
+					
+					<header class="mui-bar mui-bar-nav mui-table-view-chevron mui-table-view-inverted">
+						<h4 class="mui-pull-left white">筛选销售单</h4>
+						<span class="mui-pull-right font-blue ver-center">筛选</span>
+					</header>
+					<div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+						<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted gap">
+							<li class="mui-table-view-divider background-light-black title">制单日期</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">开始日期</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">结束日期</a>
+							</li>
+							<li class="mui-table-view-divider background-light-black title">销售日期</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">开始日期</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">结束日期</a>
+							</li>
+							<li class="mui-table-view-divider background-light-black"></li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">出库仓库</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">经手人</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">制单人</a>
+							</li>
+							<li id="showDiscard" class="mui-table-view-cell">  
+	                			显示作废 
+			                    <div class="mui-switch mui-active">  
+			                        <div class="mui-switch-handle"></div>  
+			                    </div>
+			                </li>
+			                <li class="mui-table-view-cell">
+								<a class="mui-navigate-right">销售类型</a>
+							</li>
+							<li class="mui-table-view-divider background-light-black"></li>
+							<li class="mui-table-view-cell">
+								<div class="mui-text-center mui-pull-right font-blue">
+									清空所有筛选条件
+								</div>
+							</li>
+						</ul>
+					</div>
+					
+			</aside>-->
+		<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul id="content" class="mui-table-view mui-table-view-chevron">
+					<!--<li class="mui-table-view-divider">2012-09-10</li>
+					<li class = "mui-table-view-cell">
+						<label class = "mui-media mui-input-row mui-checkbox mui-left">
+							<div class="mui-media-body">
+								<span class="mui-media-object mui-pull-right mui-navigate-right"></span>
+								<span>中联重科</span>
+								<p class = "mui-ellipsis">ASN201506020001</p>
+								<p class = "mui-ellipsis">阀门TX,方管</p>
+							</div>
+						</label>
+					</li>
+					<li class="mui-table-view-divider">2012-09-10</li>
+					<li class = "mui-table-view-cell">
+						<label class = "mui-media mui-input-row mui-checkbox mui-left">
+							<div class="mui-media-body">
+								<span class="mui-media-object mui-pull-right mui-navigate-right"></span>
+								<span>中联重科</span>
+								<p class = "mui-ellipsis">ASN201506020001</p>
+								<p class = "mui-ellipsis">阀门TX,方管</p>
+							</div>
+						</label>
+					</li>
+					<li class = "mui-table-view-cell">
+						<label class = "mui-media mui-input-row mui-checkbox mui-left">
+							<div class="mui-media-body">
+								<span class="mui-media-object mui-pull-right mui-navigate-right"></span>
+								<span>中联重科</span>
+								<p class = "mui-ellipsis">ASN201506020001</p>
+								<p class = "mui-ellipsis">阀门TX,方管</p>
+							</div>
+						</label>
+					</li>
+					<li class = "mui-table-view-cell">
+						<label class = "mui-media mui-input-row mui-checkbox mui-left">
+							<div class="mui-media-body">
+								<span class="mui-media-object mui-pull-right mui-navigate-right"></span>
+								<span>中联重科</span>
+								<p class = "mui-ellipsis">ASN201506020001</p>
+								<p class = "mui-ellipsis">阀门TX,方管</p>
+							</div>
+						</label>
+					</li>
+					<li class = "mui-table-view-cell">
+						<label class = "mui-media mui-input-row mui-checkbox mui-left">
+							
+							<div class="mui-media-body">
+								
+								<span>中联重科</span>
+								<p class = "mui-ellipsis">ASN201506020001</p>
+								<p class = "mui-ellipsis">阀门TX,方管</p>
+							</div>
+							
+						</label>
+						<span class="mui-pull-right mui-navigate-right"></span>
+					</li>-->
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/delivery_history_sub.js"></script>
+	</body>
+</html>

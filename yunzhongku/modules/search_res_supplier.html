@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/search.css"/>
+		<style type="text/css">
+			.mui-navigate-right p{
+				color: #000000;
+			}
+		</style>
+		<title></title>
+	</head>
+
+	<body>
+		<div id="main" class="mui-inner-wrap">
+			<div class="mui-bar mui-bar-nav" style="background-color: #007AFF;">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav" style="color: #FFFFFF;"></span>
+				</button>
+				<div class="mui-title mui-under-line">
+					<a id="titleSelect" href="#topPopover" class="droplist mui-pull-left">供应商</a>
+					<input id = "searchKey" name = "searchKey" type="search" class="mui-search" placeholder="输入搜索关键字" />
+				</div>
+				<img src="../images/stock_history_search_icon.png"  class="mui-pull-right show_search" />
+			</div>
+			<div class="mui-content">
+				<ul id = "customers" class="mui-table-view">
+				</ul>
+			</div>
+		</div>
+		<!--右上角弹出菜单-->
+		<div id="topPopover" class="mui-popover">
+			<div class="mui-popover-arrow"></div>
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell"><a href="javascript:void(0);" onclick="reVal(this)">商品</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="javascript:void(0);" onclick="reVal(this)">单据</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="javascript:void(0);" onclick="reVal(this)">供应商</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="javascript:void(0);" onclick="reVal(this)">客户</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+			<script type="text/javascript">
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+			mui('.mui-scroll-wrapper').scroll();
+			mui('body').on('shown', '.mui-popover', function(e) {
+				//console.log('shown', e.detail.id);//detail为当前popover元素
+			});
+			mui('body').on('hidden', '.mui-popover', function(e) {
+				//console.log('hidden', e.detail.id);//detail为当前popover元素
+			});
+			function reVal(obj){
+				document.getElementById("titleSelect").innerHTML=obj.innerHTML;
+			}
+			var testdata = {
+						   "res": "0",     //0-成功1-失败
+						   "data": {
+						        "Rows":[{
+		                                "id":"1",
+		                                "name":"MBP",      //名称
+		                                "contacts":"张三",      //联系人
+		                                "Tel": "025965180" ,//联系电话
+		                                "arrears": "0"
+						              },
+						              {
+		                                "id":"1",
+		                                "name":"MBP",      //名称
+		                                "contacts":"张三" ,     //联系人
+		                                "Tel": "025965180" ,//联系电话
+		                                "arrears": "0"
+						              },
+						              {
+		                                "id":"1",
+		                                "name":"MBP",      //名称
+		                                "contacts":"张三" ,     //联系人
+		                                "Tel": "025965180" ,//联系电话
+		                                "arrears": "0"
+						              }
+						        ]
+						    },   
+						    "msg": ""          
+						};
+					
+			(function($){
+				showData(testdata.data.Rows);
+			})(mui);
+			function showData(rows){
+				var ul = document.getElementById("customers");
+				for(var i = 0; i < rows.length; i++){
+					var li = document.createElement("li");
+					li.className = "mui-table-view-cell";
+					var a  = document.createElement("a");
+					//a.href = "";
+					a.className = "mui-navigate-right";
+					var p1 = document.createElement("p");
+					p1.innerText = rows[i].name;
+					var p2 = document.createElement("p");
+					p2.innerText = "联系人：" + rows[i].contacts;
+					var span = document.createElement("span");
+					span.style.marginLeft = "1em"; 
+					span.innerText = "联系电话："+ rows[i].Tel;
+					p2.appendChild(span);
+					var p3 = document.createElement("p");
+					p3.innerText = "应付欠款：￥"+ rows[i].arrears;
+					a.appendChild(p1);
+					a.appendChild(p2);
+					a.appendChild(p3);
+					li.appendChild(a);
+					ul.appendChild(li);
+				}
+			}
+		</script>
+</html>

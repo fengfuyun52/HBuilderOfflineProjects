@@ -1,0 +1,56 @@
+.background-blue {
+	background-color: #007AFF;
+}
+a {
+	color: #FAFAFA;
+}
+
+.white {
+	color: #FAFAFA;
+	padding-top: 8px;
+}
+
+.mui-icon.larger {
+	font-size: 200%;
+	line-height: 0.65;	
+}
+
+.mui-input-row label {
+    float: left;
+    width: 10%;
+    padding: 0px;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    line-height: 1.1;
+}
+
+.mui-input-row label~input {
+    float: left;
+    width: 70%;
+    padding-left: 0;
+    margin-bottom: 0;
+    border: 0;
+}
+
+.gap {
+	top: 44px;
+}
+
+.background-light-black {
+	background-color: #555555;
+}
+
+.title {
+	font-size: 0.8em;
+}
+
+.font-blue {
+	color: #0062CC;
+}
+
+.font-blue.ver-center {
+	padding-top: 10px;
+}
+
+/*p.mui-ellipsis {
+	width: 90%;
+}*/

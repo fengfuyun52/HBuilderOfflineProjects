@@ -1,0 +1,42 @@
+span.mui-icon {
+	font-size: 14px;
+	color: #007aff;
+	padding-right: 10px;
+}
+header#stock_transfer_header {
+	background-color: #1F97F6;
+}
+.mui-icon.span-font {
+	font-size: 250%;
+	line-height: 0.65;
+	color: #F0AD4E;
+}
+.mui-input-row label {
+	/*float: left;*/
+	
+	width: 10%;
+	padding: 0px;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	line-height: 1.1;
+}
+.mui-input-row label~input {
+	float: left;
+	width: 70%;
+	padding-left: 0;
+	margin-bottom: 0;
+	border: 0;
+}
+#barcodeBtn {
+	width: 20%;
+	line-height: 0.9;
+}
+li.mui-table-view-cell a.mui-navigate-right p {
+	color: #000000;
+}
+li.mui-table-view-cell a.mui-navigate-right p img {
+	vertical-align: middle;
+}
+.span-right {
+	position: absolute;
+	right: 35px;
+}

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+		<style>
+			.save{
+				right:10px;
+				display: inline-block;
+				font-size: 17px;
+				font-weight: 500;
+				line-height: 44px;
+				position: absolute;
+			}
+		
+		
+		 .list{
+				width:100%;
+				height: 130px;
+				background-color: #FFFFFF;
+				border: 1px solid #AAAAAA;
+			}
+			 .list_left{
+				width:40%;
+				height: 100%;
+				float: left;
+			}
+			 .list_center{
+				width:30%;
+				height: 100%;
+				float: left;
+			}
+			 .list_right{
+				width:30%;
+				height: 100%;
+				float: left;
+			}
+			.clear{
+				clear: both;
+			}
+			 .img_bg{
+				width: 110px;
+				height: 110px;
+				border: 1px solid #000000;
+				margin-left: 10px;
+				margin-top: 10px;
+			}
+			 .noImg{
+				background-image: url(../images/stock_chose_items_default_img_u42.jpg);
+				background-position: center center;
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				width: 77px;
+				height: 77px;
+				margin-left: 15px;
+				margin-top: 10px;
+			}
+			 .noImgTxt{
+				text-align: center;
+			}
+			 .list_center p{
+				margin-bottom: 3px;
+				font-family: 'Arial Normal', 'Arial';
+				font-weight: 400;
+				font-style: normal;
+				font-size: 14px;
+				color: #000000;
+				text-align: left;
+				line-height: normal;
+			}
+			 .item_detail{
+				z-index: 2;
+				position: relative;
+				top: 175px;
+			}
+			 .detail_left{
+				font-family: '微软雅黑 Regular', '微软雅黑';
+				font-weight: 400;
+				font-style: normal;
+				font-size: 14px;
+				text-align: left;
+				left: 0px;
+				position: relative;
+			}
+			 .detail_right{
+				font-family: '微软雅黑 Regular', '微软雅黑';
+				font-weight: 400;
+				font-style: normal;
+				font-size: 14px;
+				text-align: left;
+				color: rgb(204, 204, 204);
+				right: 0px;
+				float: right;
+			}
+			 .detail_count{
+				width: 100%;
+				height: 40px;
+				background-color: #FFFFFF;
+				position: relative;
+				top: 480px;
+				text-align: center;
+				padding-top: 10px;
+				color: #1F97F6;
+			}
+			.item-delete{
+				color: red !important;
+				text-align: center !important;
+				
+			}
+	    </style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<header class="mui-bar mui-bar-nav" style="display: block; background-color: #1F97F6;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: #FFFFFF;"><span style="font-size: 17px;">商品修改</span></a>
+				<span class="save" style = "color: #FFFFFF;">保存</span>
+			</header>
+
+			<div class="mui-scroll-wrapper" style="top: 45px;">
+					<div class="list">
+							<div class="list_left">
+								<div class="img_bg">
+									<div class="noImg"></div>
+									<div class="noImgTxt">暂无图片</div>
+								</div>
+							</div>
+							<div class="list_center">
+								<p>
+									<span id='itemName'>IPHONE5S 白</span>
+								</p>
+								<p>
+									<span>规格：</span><span>无</span>
+								</p>
+								<p>
+									<span>属性：</span><span>无</span>
+								</p>
+								<p>
+									<span>编号：</span><span>WO001</span>
+								</p>
+								<p>
+									<span>备注：</span><span>无</span>
+								</p>
+								<p>
+									<span>库存数量：</span><span>3部</span>
+								</p>
+							</div>
+							<div class="list_right">
+							</div>
+							<div class="clear"></div>
+						</div>
+				</div>
+				<div class="item_detail">
+						<ul class="mui-table-view mui-table-view-chevron" style="margin-top: 0px;">
+							<li class="mui-table-view-cell">
+								<a href="javascript:;" class="mui-navigate-right">
+									<span class="detail_left">单位</span>
+									<span class="detail_right" id="unit">部</span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="javascript:;" class="mui-navigate-right">
+									<span class="detail_left">单价</span>
+									<span class="detail_right">2550.00</span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="javascript:;" class="mui-navigate-right">
+									<span class="detail_left">数量 </span>
+									<span class="detail_right">
+										<div class="mui-numbox" data-numbox-min='1'>
+											<button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+											<input id="testBox" class="mui-numbox-input" type="number" />
+											<button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+										</div>
+									</span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="javascript:;" class="mui-navigate-right">
+									<span class="detail_left">商品状态  </span>
+									<span class="detail_right">良品</span>
+								</a>
+							</li>
+							<li class="mui-table-view-cell" >
+								<a href="javascript:;" class="item-delete">
+									<span>删除</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+			
+			
+			
+		</div>
+	    <script src="../js/app.js"></script>
+		<script src="../js/mui.view.js "></script>
+		<script>
+			mui.init({
+				beforeback: function(){
+					
+					//返回true，继续页面关闭逻辑
+					return true;
+				}
+			});
+		
+			
+		
+			//B页面onload从服务器获取列表数据；
+			window.onload = function(){
+			  mui.plusReady(function(){
+			    //关闭等待框
+			    plus.nativeUI.closeWaiting();
+			    //显示当前页面
+			    mui.currentWebview.show();
+			    
+			    var ws = null,
+					wo = null;
+				var itemId;
+			    ws = plus.webview.currentWebview();
+			    wo = ws.opener();
+				itemId = ws.itemId;
+			    var old_back = mui.back;
+			    
+			    //删除商品
+			    mui(".item-delete")[0].addEventListener('tap',function(){
+			    	mui.fire(wo, ws.eventName, {itemId: itemId, opt: 'delete'});
+			    	/*wo.evalJS('deleteItem("'+itemId+'");');*/
+			    	old_back();
+			    });
+			    
+			    //保存更新
+			    mui(".save")[0].addEventListener('tap',function(){
+			    	var itemInfo ={
+							id : itemId,
+							name : document.getElementById('itemName').innerText,
+							number : document.getElementById('testBox').value,
+							unit : document.getElementById('unit').innerText
+						};
+					mui.fire(wo, ws.eventName, {data: itemInfo, opt: 'update'});
+					/*wo.evalJS("updateItem('"+JSON.stringify(itemInfo)+"');");*/
+			    });
+			    
+			  });
+			}
+		</script>
+	</body>
+
+</html>

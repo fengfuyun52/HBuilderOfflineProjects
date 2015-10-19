@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <script src="js/fliter_menu.js"></script>
+    <link href="css/fliter_menu.css" rel="stylesheet"/>
+    <script src="../js/common.js" charset="utf-8"></script>
+    <script src="../js/selectdata.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav mui-table-view-chevron mui-table-view-inverted">
+		<h4 class="mui-pull-left white">筛选销售单</h4>
+		<span class="mui-pull-right font-blue ver-center">筛选</span>
+	</header>
+	<!--<div id="offCanvasSideScroll" class="mui-content mui-scroll-wrapper">-->
+		<div class="mui-content">
+			<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+				<li class="mui-table-view-divider background-light-black title">制单日期</li>
+				<li name="time" id="createOrderStart" class="mui-table-view-cell">
+					<span class="mui-pull-right mui-navigate-right"></span>
+					<span class="mui-pull-right right-words"></span>
+					<span>开始日期</span>
+				</li>
+				<li name="time" id="createOrderEnd" class="mui-table-view-cell">
+					<span class="mui-pull-right mui-navigate-right"></span>
+					<span class="mui-pull-right right-words"></span>
+					<span>结束日期</span>
+				</li>
+				<li class="mui-table-view-divider background-light-black title">销售日期</li>
+				<li name="time" id="saleOrderStart" class="mui-table-view-cell">
+					<span class="mui-pull-right mui-navigate-right"></span>
+					<span class="mui-pull-right right-words"></span>
+					<span>开始日期</span>
+				</li>
+				<li name="time" id="saleOrderEnd" class="mui-table-view-cell">
+					<span class="mui-pull-right mui-navigate-right"></span>
+					<span class="mui-pull-right right-words"></span>
+					<span>结束日期</span>
+				</li>
+				<li class="mui-table-view-divider background-light-black"></li>
+				<li id="warehouseLi" class="mui-table-view-cell">
+					<span class="mui-pull-right mui-navigate-right"></span>
+					<span id="warehouse" class="mui-pull-right right-words"></span>
+					<span>出库仓库</span>
+				</li>
+				<li id="operatorLi" class="mui-table-view-cell">
+					<span class="mui-pull-right mui-navigate-right"></span>
+					<span class="mui-pull-right right-words" id="operator"></span>
+					<span>经手人</span>
+				</li>
+				<li id="customerLi" class="mui-table-view-cell">
+					<span class="mui-pull-right mui-navigate-right"></span>
+					<span id="customer" class="mui-pull-right right-words"></span>
+					<span>制单人</span>
+				</li>
+				<li class="mui-table-view-cell">  
+	    			显示作废 
+	                <div id="switch" class="mui-switch mui-active">  
+	                    <div class="mui-switch-handle"></div>  
+	                </div>  
+	            </li>
+	            <li class="mui-table-view-cell mui-hidden">
+					<span class="mui-pull-right mui-navigate-right"></span>
+					<span class="mui-pull-right right-words"></span>
+					<span>销售类型</span>
+				</li>
+				<li class="mui-table-view-divider background-light-black"></li>
+				<div class="mui-title font-blue background-dark">清空所有筛选条件</div>
+			</ul>
+		</div>
+	<!--</div>-->
+</body>
+</html>

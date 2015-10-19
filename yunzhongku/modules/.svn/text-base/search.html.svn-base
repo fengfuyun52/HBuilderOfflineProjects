@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>查询</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <script src="../js/mui.min.js"></script>
+        <script src="../js/app.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/search.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/search.css"/>		
+		
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			/*跨webview需要手动指定位置*/
+			#topPopover {
+				position: fixed;
+				top: 11px;
+				left: 9px;
+			}
+			#topPopover .mui-popover-arrow {
+				left: 0px;
+				right: auto;
+			}
+			.mui-popover {
+				height: 140px;
+			}
+			.mui-content {
+				padding: 100px;
+			}
+			.popwidth{
+				width: 90px;
+				
+			}
+			.cell-height{
+				height: 30px;
+			}
+			
+			
+		
+			/*p {
+				text-indent: 22px;
+			}
+			span.mui-icon {
+				font-size: 14px;
+				color: #007aff;
+				margin-left: -15px;
+				padding-right: 10px;
+			}
+			.mui-pull-left{
+				left:0px;
+			}
+			
+			.mui-popover {
+				height: 180px;
+				width:100px;
+			}
+			.mui-content {
+				padding: 10px;
+			}
+			.mui-scroll-wrapper{
+				width:90px;
+			}
+			.jiantou {
+			position: absolute;
+			top:13px;
+			left:1px;
+			width: 20px;
+		}
+		.droplist{
+			position: absolute;
+			top:12px;
+			left:45px;
+			color:#000000;
+		}
+		.mui-bar input{
+			top:2px;
+			position: absolute;
+			width:220px;
+			text-align: left;
+			left:100px;
+			background-color:transparent;
+		}
+		.show_search{
+			width:20px;
+			height: 20px;
+			float: right;
+			margin-right: 10px;
+			margin-top:13px;
+		}*/
+		</style>
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+			mui('.mui-scroll-wrapper').scroll();
+			mui('body').on('shown', '.mui-popover', function(e) {
+				//console.log('shown', e.detail.id);//detail为当前popover元素
+			});
+			mui('body').on('hidden', '.mui-popover', function(e) {
+				//console.log('hidden', e.detail.id);//detail为当前popover元素
+			});
+			function reVal(obj){
+			document.getElementById("titleSelect").innerHTML=obj.innerHTML;
+			}
+			function open(){
+				
+				
+			}
+			
+		</script>
+	</head>
+	<body >
+	    <div id="main" class="mui-inner-wrap">
+			<div class="mui-bar mui-bar-nav" style="background-color: #007AFF;">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav" style="color: #FFFFFF;"></span>
+				</button>
+				<div class="mui-title mui-under-line">
+					<a id="menu" href="#topPopover" class="droplist mui-pull-left">商品</a>
+					<input id = "searchKey" name = "searchKey" type="search" class="mui-search" placeholder="输入搜索关键字" />
+				</div>
+				<img src="../images/stock_history_search_icon.png"  class="mui-pull-right show_search" onclick="search()"/>
+			</div>
+			<div class="mui-content">
+			</div>
+		</div>
+			<!--<div class="mui-scroll-wrapper" style="top: 45px; width:100%">
+				<div class="title">历史记录</div>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<a href="javascript:clicked('product_detail.html',true,true,{})"  class="mui-navigate-right">
+									iphone5s白
+								<span class="mui-pull-right" style="margin-right: 50px;">商品</span>
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a href="javascript:clicked('client_detail.html',true,true,{})"class="mui-navigate-right">
+									柏雪为
+								<span class="mui-pull-right" style="margin-right: 50px;">客户</span>
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a href="javascript:clicked('main.html',true,true,{})" class="mui-navigate-right">
+									果汁供应商
+								<span class="mui-pull-right" style="margin-right: 50px;">供应商</span>
+							</a>
+						</li>						
+					</ul>
+			</div>-->
+			
+			
+			
+	    <div id="topPopover" class="mui-popover popwidth">			
+			<div class="mui-scroll-wrapper  ">
+				<div class="mui-scroll">
+					<ul class="mui-table-view" >					
+						<li class="mui-table-view-cell cell-height" onclick="selecttype(1)">商品	</li>              
+
+						<li class="mui-table-view-cell cell-height" onclick="selecttype(2)">单据
+						</li>
+						<li class="mui-table-view-cell cell-height" onclick="selecttype(3)">客户
+						</li>
+						<li class="mui-table-view-cell cell-height" onclick="selecttype(4)">供应商
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+		
+</html>

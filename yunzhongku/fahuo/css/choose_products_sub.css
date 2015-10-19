@@ -1,0 +1,29 @@
+.mui-table-view .mui-media-object {
+    max-width: 105px;
+    height: auto;
+    line-height: 42px;
+}
+
+.mui-checkbox input[type=checkbox], .mui-radio input[type=radio] {
+    position: absolute;
+    top: 40%;
+    right: 20px;
+    display: inline-block;
+    width: 28px;
+    height: 26px;
+    border: 0;
+    outline: 0!important;
+    background-color: transparent;
+    -webkit-appearance: none;
+}
+
+.mui-checkbox {
+    position: initial;
+}
+
+.right-words {
+	position: absolute;
+	top: 50%;
+	right : 10%;
+	-webkit-transform: translateY(-50%);
+}

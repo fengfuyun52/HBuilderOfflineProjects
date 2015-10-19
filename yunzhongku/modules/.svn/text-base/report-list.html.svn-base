@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <link href="../css/appStyle.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+//取消浏览器的所有事件，使得active的样式在手机上正常生效
+document.addEventListener('touchstart',function(){
+    return false;
+},true);
+// 禁止选择
+document.oncontextmenu=function(){
+	return false;
+};
+// H5 plus事件处理
+var as='slide-in-right',at=200;// 默认动画时间
+function plusReady(){
+	// 隐藏滚动条
+	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
+	// Android处理返回键
+	plus.key.addEventListener('backbutton',function(){
+		if(confirm('确认退出？')){
+			plus.runtime.quit();
+		}
+	},false);
+	compatibleAdjust();
+}
+if(window.plus){
+	plusReady();
+}else{
+	document.addEventListener('plusready',plusReady,false);
+}
+// DOMContentLoaded事件处理
+var _domReady=false;
+document.addEventListener('DOMContentLoaded',function(){
+	_domReady=true;
+	compatibleAdjust();
+},false);
+// 兼容性样式调整
+var _adjust=false;
+function compatibleAdjust(){
+	if(_adjust||!window.plus||!_domReady){
+		return;
+	}
+	_adjust=true;
+	// iOS平台使用div的滚动条
+	if('iOS'==plus.os.name){
+		as='pop-in';
+		at=300;
+		document.getElementById('content').className='scontent';
+	}
+	// 预创建二级窗口
+	preateWebviews();
+	// 关闭启动界面
+	setTimeout(function(){
+		plus.navigator.closeSplashscreen();
+	},500);
+}
+// 处理点击事件
+var _openw=null;
+function clicked(id){
+	if(_openw){return;}
+	_openw=preate[id];
+	if(_openw){
+		if(_openw.showded){
+			_openw.show(as,at);
+		}else{
+			_openw.show(as,at);
+			_openw.showded=true;
+		}
+		_openw=null;
+	}else{
+		var wa=plus.nativeUI.showWaiting();
+		_openw=plus.webview.create(id,id,{scrollIndicator:'none',scalable:false,popGesture:'hide'},{preate:true});
+		preate[id]=_openw;
+		_openw.addEventListener('loaded',function(){//叶面加载完成后才显示
+//		setTimeout(function(){//延后显示可避免低端机上动画时白屏
+			wa.close();
+			_openw.show(as,at);
+			_openw.showded=true;
+			_openw=null;
+//		},200);
+		},false);
+		_openw.addEventListener('close',function(){//页面关闭后可再次打开
+			_openw=null;
+			preate[id]&&(preate[id]=null);//兼容窗口的关闭
+		},false);
+	}
+}
+// 预创建二级页面
+var preate={};
+function preateWebviews(){
+	preateWebivew('plus/webview.html');
+	var plist=document.getElementById('plist').children;
+	// 由于启动是预创建过多Webview窗口会消耗较长的时间，所以这里限制仅创建5个
+	for( var i=0;i<plist.length&&i<2;i++){
+		var id=plist[i].id;
+		id&&(id.length>0)&&preateWebivew(id);
+	}
+}
+function preateWebivew(id){
+	if(!preate[id]){
+		var w=plus.webview.create(id,id,{scrollIndicator:'none',scalable:false,popGesture:'hide'},{preate:true});
+		preate[id]=w;
+		w.addEventListener('close',function(){//页面关闭后可再次打开
+			_openw=null;
+			preate[id]&&(preate[id]=null);//兼容窗口的关闭
+		},false);
+	}
+}
+// 清除预创建页面(仅)
+function preateClear(){
+	for(var p in preate){
+		var w=preate[p];
+		if(w&&w.showded&&!w.isVisible()){
+			w.close();
+			preate[p]=null;
+		}
+	}
+}
+		</script>
+		<link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8"/>
+		<style type="text/css">
+/*li {
+	padding:0.8em;
+	border-bottom:1px solid #eaeaea;
+}*/
+li:active {
+	background:#f4f4f4;
+}
+.iabout {
+	background:no-repeat center center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABYCAYAAAADWlKCAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAK6wAACusBgosNWgAAABZ0RVh0Q3JlYXRpb24gVGltZQAwOS8xMi8xM5w+I3MAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAADkUlEQVR4nO2b63HTQBRGTxj+EyrAVBAzWwBKBYQO0kHcAU4HTgehApwKUArYwa4ApwJwBeGHNuAY2URaSfczuWcmk3jH+xid7N596ej+/h5HhxfWDXAe40LEcCFiuBAxXIgYLkQMFyKGCxHDhYjhQsRwIWK4EDFciBguRAwXIoYLEcOFiOFCxHAhYrgQMVyIGC5EDBcihgsRw4WI4ULEeGndgKbEGEdAkX7GwMmOry6BBVAC8xDCz/5bl8/RodztjTEWwAT40LKIG2AWQii7alMfyAuJMY6BGfC+oyJvgamqGGkhMcYZcNFT8VchhElPZbdGUkiM8Zhq7N8VH7piCRRK8UVulpWGqJL+ZZDqWKQ6JZDqIalnLIA3GcUs0+8mQmV6iloPKWkv4zPwOoQwDiGMgVNg/cS8J6luc2R6SGYAvw0hFDVlzmk2TTYP9BI9JK0xcmZTsx3pq4blXFjHEwkhwLSncs9a5NkldxDMh6zUO75mFvMoKKfJwTXtV/WnVgtHhb2sLsbsE2AVY1ykz7mr+glGQd60h6T/5B9mDdjP2xDCauhKrWNImzF+KAqLSq2FFMb176OwqNRaSFdTzDvgkmqYOaJaFOZiMv21Duq5+1VrYBJCuN5MDCGUMcbMogfZS/sL6x6SwyUw2pYBvycLB8khCllTrROmwPGOh18M2qIOOUQh58AorTm+Uz/WF0M2qEusY0gbvmx+2LGiLgZpSQ8cYg/Z5HY7IQ1hJgG5C6yFLP/9lb0satKKzDIfyG1bK6yF1D3QJpQ1aV2t/nPb1gprIWUP+YvMMveV3TuHLGS5fQaebjXmnMdvMu+onEaYCkm7qTcts5c1aaONv6+oztnbcGN14cG6h0D7E7qyJm1F2tOiOoVsux9ldmpofmIIEGMsaX6otPO8Ip2Lz2k3fNVemBgKlYXhBPjWJEOdjLQGmQCfMtoyzcibjUQPgVbXgD6GEOYp7zHVlsqEvKBufg1IRghA2p966ip7zZ+1Qhc345fpgp0pCkF9k4Knr5BfUYnoQsYdIvtfUkLSVPOc6gENxRI4U7jXC2JD1gPP+XUESSEPPMcXdqSGrG3SAzulZps9g1vgnaIMEO8hm/hLn6Kk+HJGs9eiS4tbiG04OCH/O9Ix5DniQsRwIWK4EDFciBguRAwXIoYLEcOFiOFCxHAhYrgQMVyIGC5EDBcihgsRw4WI4ULEcCFiuBAxfgHyQw1G9FJgWwAAAABJRU5ErkJggg==);
+	background-size:50px 44px;
+}
+.item {
+	display:block;
+	background:no-repeat right center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAsCAYAAAB/nHhDAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAKwwAACsMBNCkkqwAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNC8yOC8xMqLz6JEAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAABJ0lEQVRYhe3Wv6rCMBQG8C/VN1AEd3HSzuYO3jr4knkY0UE62xTBcp9A8A0uHhc72CZp/lQQyZmT7xfSJKeMiPDOSt6aHoEIRKAbkLKioqiCrroWkLKi+51ARAhBlEAdXlcI0gLK8u8lPBRpAYvFjCUJUw72QZRbtFzOe0O0H7kvxHhM83yfhiJdF+2c5/utCTmdLnS93rQQs2mZQogN59lOdbrqmk7HmExGrZVYAU9kzXl2cEWsgSfys1r9Hk1TmogTAABFcTFOaQJOr6mUlVO4E9B8n2zCrQHfcAAYmoKFEAPOs39dOGMMaTpXX5J6jGlTTSu3CQcsGk5IuBboK1wJ6BqOT7gS0DUcn3AlALR7gW84YHGKiOAd3gn0UV/+6xiBCHwG8AByzMrOPKV7sAAAAABJRU5ErkJggg==);
+	background-size:12px 22px;
+	-ms-touch-action:auto;
+}
+.chs {
+	font-size:0.8em;
+	color:#838383;
+}input.mui-input-search {
+				width: 90%!important;
+				top: 5px;
+			}
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0px;
+			}
+			.ui-main-blu {
+				background-color: #007AFF;
+				color: #FFFFFF;
+				font-size: 18px;
+				padding-right: 15px;
+			}
+			.ui-main-img{
+				width: 42px;
+ 			    text-align: center;
+			    padding-top: 8px;
+			}
+			.mui-table-view-cell:after{
+				left: 0px;
+			}
+			.mui-table-view-cell-e{
+				padding: 0 15px;
+				margin: 11px 0px;
+			}
+			.ui-main-plus{
+				width: 23px;
+				height: 23px;
+			}
+			.mui-media-object:before{
+				  position: absolute;
+				  right: 0;
+				  bottom: 0;
+				  right: 75px;
+				  width: 1px;
+				  height: 150px;
+				  content: '';
+				  top: -40px;
+				  background-color: #c8c7cc;
+				  -webkit-transform: scaleY(.5);
+				  transform: scaleY(.5);
+			}
+			.ui-main-btn-plus{
+				text-align: center;
+				color: #929292;
+			}
+			.mui-icon-home1{
+				background-image: url(../images/home.png);
+				background-size:cover; 
+			}
+			.mui-icon-home1-selected{
+				background-image: url(../images/home_down.png);
+				background-size:cover; 
+			}
+			.mui-icon-inventory{
+				background-image: url(../images/inventory.png);
+				background-size:cover; 
+			}
+			.mui-icon-report{
+				background-image: url(../images/report.png);
+				background-size:cover; 
+			}
+			.mui-icon-addsh{
+				background-image: url(../images/stock_u31.png);
+				background-size:cover; 
+			}
+			.mui-icon-inventory-selected{
+				background-image: url(../images/inventory_down.png);
+				background-size:cover; 
+			}
+			.mui-icon-report-selected{
+				background-image: url(../images/report_down.png);
+				background-size:cover; 
+			}
+			.list_title{
+				position: relative;
+				top: 11px;
+				width: 100%;
+				word-wrap: break-word;
+				/*font-family: '微软雅黑 Regular', '微软雅黑';*/
+				font-weight: 400;
+				font-style: normal;
+				font-size: 16px;
+				text-align: left;
+			}
+
+			.right_pluse{
+				float: right;
+				top: 0px;
+				right: 0px;
+				width: 20%;
+				height: 64px;
+				border-left: 1px solid  rgb(207, 207, 207);
+				border-bottom: 1px solid  rgb(207, 207, 207);
+				line-height: 45px;
+				text-align: center;
+			}
+			.mui-icon-plusempty{
+				
+			}
+			.title {
+				/*margin: 20px 15px 0px;*/
+				margin: 0px 10px;
+				height: 25px;
+				line-height: 25px;
+				color: rgb(109, 109, 114);
+				font-size: 15px;
+				font-weight: bold;
+			}
+			/*a img{
+				border-radius: 20px;
+			}*/
+			.list_left{
+				float: left;
+				width: 80%;
+				height: 100%;
+			}
+			.clear{
+				clear: both;
+			}
+		</style>
+	</head>
+	<body onselectstart="return false;">
+		<!--<header class="mui-bar mui-bar-nav">
+  			<h1 class="mui-title">测试主页</h1>
+		</header>-->
+		<div class="mui-off-canvas-wrap">
+			<div class="mui-inner-wrap">
+			<div class="mui-content">
+			
+			
+		<ul class="mui-table-view">
+			 
+			<li class="mui-table-view-divider">进货统计</li>
+			
+			<li class="mui-table-view-cell mui-media" id="charts/purchase_history.html" onclick="clicked(this.id);">
+					<img class="mui-media-object mui-pull-left" src="../images/purchase_history.png">
+					<div class="mui-media-body">
+						进货历史
+						<p class='mui-ellipsis'>
+							进货数量/金额与时间的相关趋势
+						</p>
+					</div>
+			</li>
+			
+			<li class="mui-table-view-cell mui-media" id="charts/purchase_percent.html" onclick="clicked(this.id);">
+					<img class="mui-media-object mui-pull-left" src="../images/purchase_percent.png">
+					<div class="mui-media-body">
+						进货比例
+						<p class='mui-ellipsis'>
+							各类商品所占进货总量的比例
+						</p>
+					</div>
+			</li>
+			
+			<li class="mui-table-view-cell mui-media" id="charts/purchase_flow.html" onclick="clicked(this.id);">
+					<img class="mui-media-object mui-pull-left" src="../images/purchase_flow.png">
+					<div class="mui-media-body">
+						进货流向
+						<p class='mui-ellipsis'>
+							进货流向
+						</p>
+					</div>
+			</li>
+			
+			<li class="mui-table-view-divider">发货统计</li>
+			
+			<li class="mui-table-view-cell mui-media" id="shipping_history.html" onclick="clicked(this.id);">
+					<img class="mui-media-object mui-pull-left" src="../images/shipping_history.png">
+					<div class="mui-media-body">
+						发货历史(unfinished)
+						<p class='mui-ellipsis'>
+							发货数量/金额与时间的相关趋势
+						</p>
+					</div>
+			</li>
+			
+			<li class="mui-table-view-cell mui-media" id="shipping_percent.html" onclick="clicked(this.id);">
+					<img class="mui-media-object mui-pull-left" src="../images/shipping_percent.png">
+					<div class="mui-media-body">
+						发货比例(unfinished)
+						<p class='mui-ellipsis'>
+							各类商品所占发货总量的比例
+						</p>
+					</div>
+			</li>
+			
+			<li class="mui-table-view-cell mui-media" id="shipping_flow.html" onclick="clicked(this.id);">
+					<img class="mui-media-object mui-pull-left" src="../images/shipping_flow.png">
+					<div class="mui-media-body">
+						发货流向(unfinished)
+						<p class='mui-ellipsis'>
+							发货流向
+						</p>
+					</div>
+			</li>
+			
+			<li class="mui-table-view-divider">库存统计</li>
+			
+			<li class="mui-table-view-cell mui-media" id="inventory_percent.html" onclick="clicked(this.id);">
+					<img class="mui-media-object mui-pull-left" src="../images/inventory_percent.png">
+					<div class="mui-media-body">
+						库存比例(unfinished)
+						<p class='mui-ellipsis'>
+							各类商品所占库存总量比
+						</p>
+					</div>
+			</li>
+			
+			<li class="mui-table-view-cell mui-media" id="inventory_history.html" onclick="clicked(this.id);">
+					<img class="mui-media-object mui-pull-left" src="../images/inventory_history.png">
+					<div class="mui-media-body">
+						库存历史(unfinished)
+						<p class='mui-ellipsis'>
+							库存变化历史
+						</p>
+					</div>
+			</li>
+			
+			<li class="mui-table-view-divider">库存周转率</li>
+			
+			<li class="mui-table-view-cell mui-media" id="charts/turnover_rate.html" onclick="clicked(this.id);">
+					<img class="mui-media-object mui-pull-left" src="../images/turnover_rate.png">
+					<div class="mui-media-body">
+						库存周转率
+						<p class='mui-ellipsis'>
+							待定
+						</p>
+					</div>
+			</li>
+			
+			<li class="mui-table-view-divider">呆滞品统计</li>
+			
+			<li class="mui-table-view-cell mui-media" id="unsalableGoods_percent.html" onclick="clicked(this.id);">
+					<img class="mui-media-object mui-pull-left" src="../images/unsalableGoods_percent.png">
+					<div class="mui-media-body">
+						呆滞品分布(unfinished)
+						<p class='mui-ellipsis'>
+							呆滞品占库存总量比
+						</p>
+					</div>
+			</li>
+			
+			<li class="mui-table-view-cell mui-media" id="unsalableGoods_top5.html" onclick="clicked(this.id);">
+					<img class="mui-media-object mui-pull-left" src="../images/unsalableGoods_top5.png">
+					<div class="mui-media-body">
+						呆滞品top5(unfinished)
+						<p class='mui-ellipsis'>
+							数量最多的5种呆滞品
+						</p>
+					</div>
+			</li>
+			
+			<li class="mui-table-view-divider">作业量统计</li>
+			
+			<li class="mui-table-view-cell mui-media" id="workload_percent.html" onclick="clicked(this.id);">
+					<img class="mui-media-object mui-pull-left" src="../images/workload_percent.png">
+					<div class="mui-media-body">
+						作业量比例(unfinished)
+						<p class='mui-ellipsis'>
+							待定
+						</p>
+					</div>
+			</li>
+			
+			<li class="mui-table-view-cell mui-media" id="charts/workload_history.html" onclick="clicked(this.id);">
+					<img class="mui-media-object mui-pull-left" src="../images/workload_history.png">
+					<div class="mui-media-body">
+						作业历史
+						<p class='mui-ellipsis'>
+							员工/业务类型/业务量与时间相关
+						</p>
+					</div>
+			</li>
+			
+			<!--<li class="mui-table-view-cell mui-media" id="purchase_history.html" onclick="clicked(this.id);">
+					<img class="mui-media-object mui-pull-left" src="img/test.png" style="max-width: 72px;height: 72px;">
+					<div class="mui-media-body">
+						滤清器
+						<br />
+						<p class='mui-ellipsis' style="width: 50%;float: left;">编码：8800978</p>
+						<p class='mui-ellipsis' style="width: 50%;float: left;">规格：件</p>
+					</div>
+			</li>-->
+		</ul>
+		
+		
+		
+		</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			mui('.mui-off-canvas-wrap').scroll();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="css/mui.min.css">
+	</head>
+	<style>
+		.title {
+			margin: 20px 15px 10px;
+			color: #eef2f3;
+			font-size: 15px;
+			text-align: center;
+		}
+	</style>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h4 class="mui-title">行业</h4>
+		</header>
+
+		<div class="mui-content">
+			<div class="title">
+			</div>
+				<ul class="mui-table-view" id="joblist">
+						<li class="mui-table-view-cell" data-value='mechanical'>机械工程</li>
+						<li class="mui-table-view-cell" data-value='food'>食品</li>
+						<li class="mui-table-view-cell" data-value='clothes'>服装</li>
+						<li class="mui-table-view-cell" data-value='ohter'>其他</li>
+				</ul>
+		</div>
+		<script src="js/mui.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/mui.view.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init({
+				beforeback: function(){
+					
+					//返回true，继续页面关闭逻辑
+					return true;
+				}
+			});
+			mui('.mui-scroll-wrapper').scroll();
+			
+			window.onload = function(){
+			  	mui.plusReady(function(){
+			  		//关闭等待框
+				    plus.nativeUI.closeWaiting();
+				    //显示当前页面
+				    mui.currentWebview.show();
+				    var ws = null,
+						wo = null;
+					var elementId;
+				    ws = plus.webview.currentWebview();
+				    elementId=ws.elementId;
+				    wo = ws.opener();
+				    var old_back = mui.back;
+			  		
+			  		
+			  		mui("#joblist").on('tap','li',function(){
+			  			var jobd={
+			  				id : this.getAttribute('date-value'),
+			  				name : this.innerText
+			  			};
+			  			wo.evalJS("jobselect('"+JSON.stringify(jobd)+"','"+elementId+"')");
+			  			old_back();
+			  		});
+			  	});
+			}
+			
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,53 @@
+.triple-size {
+	width: 8em;
+}
+
+.background-blue {
+	background-color: #007AFF;
+}
+
+a {
+	color: #FAFAFA;
+}
+
+.white {
+	color: #FAFAFA;
+	padding-top: 8px;
+}
+
+.mui-input-row label {
+    float: left;
+    width: 15%;
+    padding: 0px;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    line-height: 2.3;
+}
+
+.mui-input-row label~input {
+    float: left;
+    width: 70%;
+    padding-left: 0;
+    margin-bottom: 0;
+    border: 0;
+}
+
+.mui-content>.mui-table-view:first-child {
+    margin-top: 0px;
+}
+
+.mui-table-view .mui-media-object {
+    max-width: 105px;
+    height: auto;
+    line-height: 42px;
+}
+
+.right-words {
+	position: absolute;
+	top: 50%;
+	right : 10%;
+	-webkit-transform: translateY(-50%);
+}
+
+.red {
+	color: red;
+}

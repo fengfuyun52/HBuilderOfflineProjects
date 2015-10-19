@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>商品详情</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	    <meta name="apple-mobile-web-app-capable" content="yes"/>
+	    <link href="../css/mui.min.css" rel="stylesheet" />
+		<link href="../css/style.css" rel="stylesheet" />
+		<style>
+		html,
+		body {
+			height: 100%;
+			overflow: hidden;
+			margin: 0px;
+			padding: 0px;
+			background-color:#EFEFF4;
+			  }
+		.media-body{
+			height: 150px;
+			width: 100%;
+			border-bottom:1px solid #DDDDDD;
+			margin-top:50px;
+		}
+		.mui-media-body{
+			position: absolute;
+			height: 100px;
+			width:80px;
+			margin-left: 30px;
+			margin-top: 20px;
+		}
+		.img_size{
+			height:80px;
+			width:80px;
+		}
+		.words_location{
+			width:80px;
+			text-align: center;
+			color: #000000;
+		}
+		.attributes{
+			height: 100px;
+			width:50%;
+			float: right;
+			margin-top: 15px;
+		}
+		.attributes p{
+			color:#000000;
+			font-family: '微软雅黑 Regular', '微软雅黑';
+			margin-bottom: 0px;
+		}
+		.price{
+			background-color: white;
+			height:40px;
+			margin-top: 10px;
+		}
+		.text_size{
+			line-height: 40px;
+			font-size: 14px;
+			color:#000000;
+			font-family: '微软雅黑 Regular', '微软雅黑';
+			vertical-align: middle;
+		}
+		.price_size{
+			line-height: 40px;
+			font-size: 14px;
+			font-family: '微软雅黑 Regular', '微软雅黑';
+			color:#CCCCCC;
+			vertical-align: middle;
+			float:right;
+			margin-right: 10px;
+		}
+		.textarea_design{
+			margin-top: 5px;
+			border: 1px;
+			height:80%;
+		}
+		.textarea_design textarea{
+			height: 100%;
+			color:#CCCCCC;
+		}
+		</style>
+	</head>
+	<body class="mui-android mui-android-2 mui-android-2-3 mui-android-2-3-4">
+		<div class="mui-inner-wrap">
+			<header class="mui-bar mui-bar-nav" style="display: block;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 class="mui-title">商品详情</h1>
+				<span class="mui-icon mui-icon-compose mui-pull-right"></span>
+			</header>
+		<div class="media-body">
+			<div class="mui-media-body">
+				<img src="../images/login_u19.png"  class="img_size" />
+				<p class="words_location">
+					<span>暂无图片</span>
+				</p>
+		</div>
+		<div class="attributes">
+			<p>
+				<span>IPHONE5S 白</span>
+			</p>
+			<p>
+				<span>规格：</span>
+				<span>无</span>
+			</p>
+			<p>
+				<span>属性：</label>
+				<span>无</span>
+			</p>
+			<p>
+				<span>编号：</span>
+				<span>WO001</span>
+			</p>
+			<p>
+				<span>备注：</span>
+				<span>无</span>
+			</p>
+			<p>
+				<span>库存数量：</span>
+				<span>3部</span>
+			</p>
+			
+		</div>
+	</div>
+	<div class="price">
+			<span class="text_size">参考进货价</span>
+			<span class="price_size">2550.00</span>
+	</div>
+	<div  class="textarea_design">
+		<textarea disabled="disabled" placeholder="无"></textarea>
+	</div>	
+	</body>
+</html>

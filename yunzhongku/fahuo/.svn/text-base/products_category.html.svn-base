@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<script src="../js/mui.min.js"></script>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<script src="js/products_category.js"></script>
+		<link href="css/products_category.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav background-blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h4 class="mui-pull-left white">商品分类</h4>
+		</header>
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul class='mui-table-view'>
+					<li id="all" class="mui-table-view-cell mui-radio mui-left">
+						<input name="radio" type="radio" checked="checked">全部
+					</li>
+					<li id="iPhone" class="mui-table-view-cell mui-radio mui-left">
+						<input name="radio" type="radio">iPhone
+					</li>
+					<li id="topUpCard" class="mui-table-view-cell mui-radio mui-left">
+						<input name="radio" type="radio">冲值卡
+					</li>
+					<li id="payment" class="mui-table-view-cell mui-radio mui-left">
+						<input name="radio" type="radio">手工费
+					</li>
+					<li id="cellPhone" class="mui-table-view-cell mui-radio mui-left">
+						<input name="radio" type="radio">手机
+					</li>
+					<li id="phoneCardNo" class="mui-table-view-cell mui-radio mui-left">
+						<input name="radio" type="radio">手机卡号
+					</li>
+					<li id="phoneAccessories" class="mui-table-view-cell mui-radio mui-left">
+						<input name="radio" type="radio">手机配件
+					</li>
+					<li id="defaultCategory" class="mui-table-view-cell mui-radio mui-left">
+						<input name="radio" type="radio">默认分类
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

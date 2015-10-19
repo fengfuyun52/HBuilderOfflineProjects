@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>新建调拨单</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!--<link rel="stylesheet" type="text/css" href="../css/transfer.css"/>-->
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" href="../css/main.css"/>
+		<style>
+			span.mui-icon {
+				font-size: 14px;
+				padding-right: 10px;
+			}
+			header#stock_transfer_header{
+				background-color: #1F97F6;
+			}
+			.mui-icon.span-font{
+				font-size: 250%;
+				line-height: 0.65;	
+				color: #F0AD4E;
+			}
+			.mui-input-row label {
+			    /*float: left;*/
+			    width: 10%;
+			    padding: 0px;
+			    font-family: "Helvetica Neue", Helvetica, sans-serif;
+			    line-height: 1.1;
+			}
+			
+			.mui-input-row label~input {
+			    float: left;
+			    width: 70%;
+			    padding-left: 0;
+			    margin-bottom: 0;
+			    border: 0;
+			}
+			#barcodeBtn{
+				width: 20%;
+				line-height: 0.9;
+			}
+			li.mui-table-view-cell 
+			a.mui-navigate-right
+			p{
+				color: #000000;
+			}
+			li.mui-table-view-cell 
+			a.mui-navigate-right
+			p img{
+				vertical-align: middle;
+			}
+			.span-right{
+				position: absolute;
+				right: 35px;
+			}
+			.choose-btn{
+				position: relative;
+				float: left;
+				width: 80%;
+				height: 1.5em;
+				line-height: 1.5em;
+				vertical-align: middle;
+				display: table-cell;
+			}
+			.choose-btn:active{
+				background-color: #eee;
+			}
+			.barcode-btn{
+				position: relative;
+				width: 42px;
+				height: 1.5em;
+				/*right: 15px;*/
+				display: inline;
+				text-align: center;
+				padding-left: 15px;
+				/*border-left: 1px solid rgb(207, 207, 207);*/
+			}
+			.barcode-btn img{
+				position: relative;
+				width: 42px;
+				height: 1.5em;
+				margin: 0 auto;
+			}
+			.barcode-btn:before{
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				right: 90%;
+				width: 1px;
+				height: 150px;
+				content: '';
+				top: -60px;
+				background-color: #c8c7cc;
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5);
+			}
+			#selectedBtn.mui-table-view-cell{
+				padding: 3px 11px;
+			}
+			#selectedBtn.mui-table-view-cell.mui-active{
+				background-color: #FFFFFF;
+			}
+			.span-font-style1{
+				font-weight: bold;
+				color: #999999;
+			}
+			.span-font-style2{
+				color: #000000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav" id="stock_transfer_header">
+			<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+				<span class="mui-icon mui-icon-left-nav" style="color: #FFFFFF;"><span style="font-size: 17px;">新建调拨单</span></span>
+			</button>
+			<button id = "saveTransferOrder" type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-right mui-hidden hidden">
+				<span id="saveBtnText" class="mui-icon" style="color: #FFFFFF;">
+					保存
+				</span>
+			</button>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a href="javascript: selectStock('selectOutStock', 'warehouseOut')" class="mui-navigate-right">
+						<span class="">出库仓库 </span>
+						<span id = "warehouseOut" class="span-right" data-house-id = "" style="color: #CCCCCC; font-weight: bold;">河西仓</span>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a href="javascript: selectStock('selectInStock', 'warehouseIn')" class="mui-navigate-right">
+						<span class="">入库仓库 </span>
+						<span id = "warehouseIn" class="span-right" data-house-id = "" style="color: #CCCCCC; font-weight: bold;">河西仓</span>
+					</a>
+				</li>
+			</ul>
+			<ul id = "selectedItemsList" class="mui-table-view">
+				<li class="mui-table-view-divider">出库商品</li>
+				<li id = "selectedBtn" class="mui-table-view-cell">
+					<div class="choose-btn mui-table-cell">
+						<a id="icon-plus" class="mui-navigate-right">
+							<span class="mui-icon mui-icon-plus-filled">选择商品</span>
+							<span class="span-right" style="color: #CCCCCC; font-weight: bold;">请选择商品</span>
+						</a>
+					</div>
+					<div id = "barcodeBtn" class="barcode-btn">
+						<img src="../images/main_u61.png" />
+					</div>
+				</li>
+				
+			</ul>
+			
+			<ul id = "" class="mui-table-view hidden mui-hidden">
+				<li class="mui-table-view-divider"></li>
+				<li class="mui-table-view-cell">
+					<span class="span-font-style1">业务日期</span>
+					<span id = "businessDate" class="span-right span-font-style2">2015-01-01</span>
+				</li>
+				<li class="mui-table-view-cell" >
+					<a href="javascript: selectBrocker('selectBrocker', 'operator');" class="mui-navigate-right">
+						<span class="span-font-style1">经手人</span>
+						<span id = "operator" data-operator-id = "user1" class="span-font-style2 span-right">张三</span>
+					</a>
+				</li>
+				<li class="mui-table-view-divider"></li>
+			</ul>
+			<div class="mui-input-row mui-hidden hidden" style="margin: 0px -1px;">
+				<textarea rows="5" placeholder="备注信息" id = "newBillRemark"></textarea>
+			</div>
+		</div>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/common.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		(function(){
+			var ws = null;
+			var wo = null;
+			mui.init();
+			mui.plusReady(function(){
+				ws = plus.webview.currentWebview();
+				wo = ws.opener();
+			});
+			// 点击保存按键
+			document.querySelector('#saveTransferOrder').addEventListener('tap', function(e){
+				/*var data = {
+				       "warehouseOut":"默认仓库",    //出库仓库
+				       "warehouseIn":"默认仓库",    //入库仓库
+				        "operatorId":"1" ,     //经手人ID
+				        "date":"2015-01-01",      //业务日期
+				        "remark":"250.00" ,     //备注   
+				        "Rows":[{
+				                        "id":"1",             //商品Id
+				                        "num":"2",      //数量
+				                        "unitId":"个",      //单位ID
+				                        "remark":"0"    //备注
+				                        },
+				        		{
+				                        "id":"3",             //商品Id
+				                        "num":"2",      //数量
+				                        "unitId":"个",      //单位ID
+				                        "remark":"0"    //备注
+				                       },
+				                {
+				                        "id":"5",             //商品Id
+				                        "num":"2",      //数量
+				                        "unitId":"个",      //单位ID
+				                        "remark":"0"    //备注
+				                        }
+				        ]    //商品列表
+				};*/
+				var warehouseOut = document.getElementById('warehouseOut').getAttribute('data-house-id');
+				var warehouseIn = document.getElementById('warehouseIn').getAttribute('data-house-id');
+				var operatorId = document.getElementById('operator').getAttribute('data-operator-id');
+				var dDate = document.getElementById('businessDate').innerText;
+				var remark = document.getElementById('newBillRemark').value;
+				var Rows = new Array;
+				var elist = document.querySelectorAll('li[id^=item_]');
+				for(var i = 0; i < elist.length; i++){
+					var obj = JSON.parse(elist[i].querySelector('.obj').value);
+					Rows.push(obj);
+				}
+				Rows.push();
+				var data = {
+					warehouseOut: warehouseOut,
+					warehouseIn: warehouseIn,
+					operatorId: operatorId,
+					date: dDate,
+					remark: remark,
+					Rows: Rows
+				};
+				mui.fire(plus.webview.getWebviewById('stock_transfer_history.html'), 'insertTransferOrder', data);
+				mui.back();
+			},false);
+			/**
+			 * 打开选择仓库页面，
+			 * @param {Object} eventName
+			 * 					回调事件；
+			 * @param {Object} elementsId
+			 * 					携带数据元素id；
+			 */
+			window.selectStock = function(eventName, elementsId){
+				var id = document.getElementById(elementsId).getAttribute('data-house-id');
+				var extras = {
+					data: {
+						id:id,
+						eventName:eventName
+					}
+				};
+				clicked('stock_transfer_select_stock.html', true, true, extras);
+			};
+			
+			// 进入选择经手人页面
+			window.selectBrocker = function(eventName, elementsId){
+				var id = document.getElementById(elementsId).getAttribute('data-operator-id');
+				var extras = {
+					brokerId: id,
+					eventName: 'selectBrocker'
+				};
+				clicked('out-handled-list.html', true, true, extras);
+			};
+			// 出库仓库回调
+			window.addEventListener('selectOutStock', function(event){
+				var res = event.detail.resultsData;
+				var span = document.getElementById("warehouseOut");
+				span.setAttribute('data-house-id', res.id);
+				span.innerText = res.name;
+			});
+			// 入库仓库回调
+			window.addEventListener('selectInStock', function(event){
+				var res = event.detail.resultsData;
+				var span = document.getElementById("warehouseIn");
+				span.setAttribute('data-house-id', res.id);
+				span.innerText = res.name;
+			});
+			// 经手人回调
+			window.addEventListener('selectBrocker', function(event){
+				var data = JSON.parse(event.detail);
+				if(null == data){
+					return;
+				}
+				var span = document.getElementById("operator");
+				span.setAttribute('data-operator-id', data.brokerId);
+				span.innerText = data.brokerName;
+			});
+			/**
+			 * 	
+			 */
+			var goodsNum = 0;
+			var goodsList = null;
+			// 选择商品
+			window.addEventListener('selectGoods', function(event){
+				var list = goodsList = event.detail;
+				if(!list || list.length < 1){
+					return;
+				}else {
+					addItem(list);
+					goodsNum = list.length;
+					showInputModule('show');
+				}
+			});
+			// 更新商品
+			window.addEventListener('updateGoods', function(event){
+				var opt = event.detail.opt;
+				if(opt == 'delete'){
+					var e = document.getElementById('item_' + event.detail.itemId);
+					e.parentNode.removeChild(e);
+					goodsNum--;
+					if(goodsNum < 1){
+						showInputModule('hidden');
+					}
+				}else if(opt == 'update'){
+					var data = event.detail.data;
+					var li = document.getElementById('item_' + data.id);
+					li.innerHTML = '<a href="javascript:clicked(\'stock_transfer_goods_edit.html\',true,true,{itemId:\'' + data.id + '\', eventName:\'updateGoods\'});" class="mui-navigate-right" data-item-id="' + data.id + '" style="margin-right: -49px;"  >' +
+										'<div class="mui-media-body text" style="overflow: visible;">' +
+										'<div>' + data.name + '</div>' +
+										'<div>' +
+										'*' + data.number + data.unit +
+										'</div>' +
+										'</div>' +
+										'<input class = "obj" type="hidden" value=\''+JSON.stringify(data)+'\'/>'+
+									'</a>';
+				}
+			});
+			
+			/**
+			 * 显示所选择的商品；
+			 * @param {Object} data
+			 * 					数据
+			 */
+			window.addItem = function(data) {
+				var selectedItemsList = document.querySelector('#selectedItemsList');
+				for (var i = 0; i < data.length; i++) {
+					var li = document.createElement('li');
+					li.className = 'mui-table-view-cell text_bg';
+					li.setAttribute("id", 'item_' + data[i].id);
+					li.style.paddingRight = '40px';
+					li.innerHTML = '<a href="javascript:clicked(\'stock_transfer_goods_edit.html\',true,true,{itemId:\'' + data[i].id + '\', eventName:\'updateGoods\'});" class="mui-navigate-right" data-item-id="' + data[i].id + '" style="margin-right: -49px;"  >' +
+										'<div class="mui-media-body text" style="overflow: visible;">' +
+										'<div>' + data[i].name + '</div>' +
+										'<div>' +
+										'*' + data[i].number + data[i].unit +
+										'</div>' +
+										'</div>' +
+										'<input class = "obj" type="hidden" value=\''+JSON.stringify(data)+'\'/>'+
+									'</a>';
+					selectedItemsList.appendChild(li);
+				}
+			};
+			// 进入选择商品画面事件；
+			document.getElementById('selectedBtn').addEventListener('tap', function(){
+				var data = {
+					eventName: 'selectGoods',
+					Rows : []
+				};
+				clicked('stock_transfer_chose_items.html', true, false, data);
+			}, false);
+			
+			/**
+			 * 打开条码扫描页面事件；
+			 */
+			document.getElementById('barcodeBtn').addEventListener('tap', function(){
+				clicked('barcode_scan.html', true, false, '');
+			}, false);
+			window.showInputModule = function(ctrl){
+				var elements = document.querySelectorAll('.hidden');
+				if(ctrl == 'show'){
+					for(var i = 0; i < elements.length; i++){
+						elements[i].classList.remove('mui-hidden');
+					}
+				}else {
+					for(var i = 0; i < elements.length; i++){
+						elements[i].classList.add('mui-hidden');
+					}
+				}
+			};
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+			var info = document.getElementById("businessDate");
+			
+			info.addEventListener('tap', function() {
+				var dDate = new Date();
+				if(info.innerText){
+					var tmp = info.innerText;
+					var arr = tmp.split('-');
+					dDate.setFullYear(Number(arr[0]), arr[1]-1, arr[2]);
+				}
+				var minDate = new Date();
+				minDate.setFullYear(2000, 0, 1);
+				var maxDate = new Date();
+				maxDate.setFullYear(2088, 11, 31);
+				var md = [31,28,31,30,31,30,31,31,30,31,30,31];
+				/** 0 1 2 3 4 5 6 7 8 9 10 11 */
+				plus.nativeUI.pickDate(function(e) {
+					var d = e.date;
+					var year = d.getFullYear();
+					var month = d.getMonth();
+					var currDate = d.getDate()+1;
+					md[1] = (year % 4 == 0|| year % 400 == 0) ? 29 : 28;
+					if(currDate > md[month]){
+						currDate = currDate%md[month];
+						month++;
+						if(month > 11){
+							year += 1;
+						}
+					}
+					info.innerText =  year + "-" + (month%12+1) + "-" + currDate;
+				}, function(e) {
+					info.innerText = "您没有选择日期";
+				}, {
+					title: "请选择业务日期",
+					date: dDate,
+					minDate: minDate,
+					maxDate: maxDate
+				});
+			});
+		})();
+	</script>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+     <script src="../../js/mui.min.js"></script>
+		<script src="../../js/echarts.js"></script>
+		<script src="../../js/echart_config.js"></script>
+		<script src="../../js/jquery-1.11.2.min.js"></script>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/appStyle.css" rel="stylesheet" />
+		<link href="../../css/appStyleChart.css" rel="stylesheet" />
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+    <script type="text/javascript">
+    	require.config(
+			{
+				paths:{                                      //not path
+						echarts:'../../js'
+//						echarts: 'http://echarts.baidu.com/build/dist'
+					  }
+			}
+		);
+		
+		require(											//添加所需图表库
+		
+				[
+					'echarts',
+					'echarts/chart/line' ,
+					'echarts/chart/pie' ,
+					'echarts/chart/bar' ,
+				],
+				function(ec)
+				{
+						
+						var myChart4 =ec.init( document.getElementById("chart4") ); //初始化图表
+						
+						var option4 = 											//option
+						{
+							backgroundColor:"white",
+							title:{
+								show:false,
+								text:"周转率Top10",
+								textStyle:{
+									fontStyle:"normal",
+									fontSize:14,
+									color:"#767980",
+								}
+							},
+							
+							tooltip:{
+								show:false,
+								showDelay:0,
+								hideDelay:0,
+							},
+							grid:{
+								x:50,
+								x2:35,
+								y2:30,
+								y:25
+							},
+							xAxis: 
+							[
+								{
+									type : 'category',
+//									name:'流通比率(%)',
+									axisLabel:{
+										 textStyle:{
+										 	fontSize:10,
+										 }
+									},
+									data : ["机罩锁","矩形圈","滚针","机油滤芯","锁紧螺母"],
+								}
+                    		],
+                    		
+							yAxis:
+							[
+								{
+									type : 'value',
+									name:'库存周转率（%）',
+									
+								}
+                    		],
+                    		
+                    		series:
+							[
+								{
+//									"name":"配件数量",
+									"type":"bar",
+//									"stack":"this",
+									"data":[90,78,70,64,43],
+									itemStyle:{
+					                		normal:{
+					                			//color:sersColor[PARAMINDEX],
+					                			//color:'#2ecc71',
+					                			color:(
+					                				function () {
+                        							var zrColor = require('zrender/tool/color');
+	                        						return zrColor.getLinearGradient
+	                        						(0, 0, 400, 400,[[0, '#31B0D2'], [0.7, '#1F98F5']]);
+	                    						}
+					                			),}}
+								},
+								
+                    		],
+						};
+		     
+						myChart4.setOption(option4);
+				}
+	    );
+    </script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<a class="mui-icon mui-icon-more mui-pull-right"></a>
+		<h1 class="mui-title">周转率分析</h1>
+	</header>
+	<div class="mui-content">
+		<!--<div id="chart" style="height:250px"></div>
+		<ul class="mui-table-view"><li class="mui-table-view-divider"></li></ul>-->
+		<div id="chart4" style="height:250px"></div>
+		
+		<ul class="mui-table-view mui-grid-view mui-grid-9">
+						<li class="mui-table-view-cell mui-col-xs-6 ">
+							<span class="inforTextTopic">总周转率</span><br />
+							<span class="inforNum">43%</span>
+						</li>
+						<li class="mui-table-view-cell mui-col-xs-6 ">
+							<span class="inforTextTopic">近7日周转率最高</span><br />
+							<span class="inforText">机罩锁</span>
+							<span class="inforTextNum">90%</span>
+						</li>
+			</ul>
+		
+		<ul class="mui-table-view">
+		  <li class="mui-table-view-divider"></li>
+		  <li class="mui-table-view-cell">
+		    <a class="mui-navigate-right">
+		      报表详细
+		    </a>
+		  </li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,113 @@
+input.mui-input-search {
+	width: 90%!important;
+	top: 5px;
+}
+.mui-content>.mui-table-view:first-child {
+	margin-top: 0px;
+}
+.ui-main-blu {
+	background-color: #007AFF;
+	color: #FFFFFF;
+	font-size: 18px;
+	padding-right: 15px;
+}
+.ui-main-img {
+	width: 42px;
+	text-align: center;
+	padding-top: 8px;
+}
+.mui-table-view-cell:after {
+	left: 0px;
+}
+.mui-table-view-cell-e {
+	padding: 0 15px;
+	margin: 11px 0px;
+}
+.ui-main-plus {
+	width: 23px;
+	height: 23px;
+}
+.mui-media-object:before {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	right: 75px;
+	width: 1px;
+	height: 150px;
+	content: '';
+	top: -40px;
+	background-color: #c8c7cc;
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5);
+}
+.ui-main-btn-plus {
+	text-align: center;
+	color: #929292;
+}
+.mui-icon-home1 {
+	background-image: url(../images/home.png);
+	background-size: cover;
+}
+.mui-icon-home1-selected {
+	background-image: url(../images/home_down.png);
+	background-size: cover;
+}
+.mui-icon-inventory {
+	background-image: url(../images/inventory.png);
+	background-size: cover;
+}
+.mui-icon-report {
+	background-image: url(../images/report.png);
+	background-size: cover;
+}
+.mui-icon-addsh {
+	background-image: url(../images/stock_u31.png);
+	background-size: cover;
+}
+.mui-icon-inventory-selected {
+	background-image: url(../images/inventory_down.png);
+	background-size: cover;
+}
+.mui-icon-report-selected {
+	background-image: url(../images/report_down.png);
+	background-size: cover;
+}
+.list_left {
+	float: left;
+	width: 80%;
+	height: 100%;
+}
+.clear {
+	clear: both;
+}
+.right_pluse {
+	float: right;
+	top: 0px;
+	right: 0px;
+	width: 20%;
+	height: 64px;
+	border-left: 1px solid rgb(207, 207, 207);
+	line-height: 45px;
+	text-align: center;
+}
+.list_title {
+	position: relative;
+	top: 11px;
+	width: 100%;
+	word-wrap: break-word;
+	/*font-family: '微软雅黑 Regular', '微软雅黑';*/
+	
+	font-weight: 400;
+	font-style: normal;
+	font-size: 16px;
+	text-align: left;
+}
+.mui-table-view-chevron .mui-table-view-cell {
+    padding-right: 0px;
+}
+.mui-table-view-chevron .mui-table-view-cell>a:not(.mui-btn) {
+    margin-right: -15px;
+}
+.right_pluse.mui-table-view-cell{
+	padding-left: 0px;
+}

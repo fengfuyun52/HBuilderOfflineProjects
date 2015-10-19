@@ -1,0 +1,12 @@
+.mui-bar {
+  background-color: #1F98F5;
+}
+
+.mui-title {
+  color: white;
+}
+
+a {
+  color: white;
+}
+

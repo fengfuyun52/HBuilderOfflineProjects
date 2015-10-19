@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<script src="../js/mui.min.js"></script>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link href="css/choose_delivery_plan.css" rel="stylesheet"/>
+		<script src="js/choose_delivery_plan.js"></script>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav background-blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h4 class="mui-pull-left white">选择出货计划</h4>
+			<span id="offCanvasBtn" class="mui-icon mui-action-menu mui-icon-bars mui-pull-right"></span>
+		</header>
+		<div class="mui-bar mui-bar-header-secondary">
+			<div class="mui-input-row">
+				<label><span class="mui-icon mui-icon-search mui-pull-left"></span></label>
+				<input type="search" placeholder="单据编号、商品名称">
+				<span class="mui-icon mui-icon-camera mui-pull-right"></span>
+			</div>
+		</div>
+		<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul id="content" class="mui-table-view mui-table-view-chevron">
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

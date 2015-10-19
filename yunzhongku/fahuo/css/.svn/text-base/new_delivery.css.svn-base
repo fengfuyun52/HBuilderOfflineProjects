@@ -1,0 +1,84 @@
+.background-blue {
+	background-color: #007AFF;
+}
+
+a {
+	color: #FAFAFA;
+}
+
+.white {
+	color: #FAFAFA;
+	padding-top: 8px;
+}
+
+.mui-content>.mui-table-view:first-child {
+    margin-top: 0px;
+}
+
+.font-blue {
+	color: #0062CC;
+}
+
+.navigate{
+	position: absolute;
+	top: 50%;
+	right : 8%;
+	-webkit-transform: translateY(-50%);
+}
+
+.right-words {
+	position: absolute;
+	top: 50%;
+	right : 10%;
+	-webkit-transform: translateY(-50%);
+}
+
+.mui-input-row label {
+    float: left;
+    width: 28%;
+    padding: 10px 15px;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    line-height: 1.1;
+}
+
+.alignment {
+	padding-right: 20px;
+	padding-top: 5px;
+}
+
+.mui-input-row label~input {
+    float: right;
+    width: 50%;
+    padding-left: 0;
+    margin-bottom: 0;
+    border: 0;
+}
+
+.mui-table-view-cell>a:not(.mui-btn) {
+    position: relative;
+    display: inline;
+    padding: inherit;
+    margin: -11px -15px;
+    overflow: hidden;
+    color: #007AFF;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+a.add-icon {
+	color: #007aff;
+}
+
+.split {
+	border-left: groove;
+	margin-left: 10px;
+	padding-left: 10px;
+}
+
+.space {
+	position: absolute;
+	top: 50%;
+	right : 18%;
+	-webkit-transform: translateY(-50%);
+}
+

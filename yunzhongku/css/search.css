@@ -1,0 +1,60 @@
+.mui-content>.mui-table-view:first-child {
+    margin-top: 0px;
+}
+.mui-bar input{
+	text-align: left;
+	color: #FFFFFF;
+	background-color:transparent;
+}
+.show_search{
+	width:20px;
+	height: 20px;
+	float: right;
+	margin-right: 10px;
+	margin-top:13px;
+}
+.mui-under-line{
+	color: #FFFFFF;
+}
+.mui-under-line:after{
+	position: absolute;
+	right: 0px;
+	left: 0px;
+	bottom: 4px;
+	height: 1px;
+	content: '';
+	border-bottom: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #F7F7F8;
+	background-color: #F7F7F8;
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5)
+}
+.mui-title .droplist{
+	width: 4em;
+    border: 1px solid #EC971F;
+    height: 23px;
+    padding: 0 0;
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+    padding-right: 15px;
+    line-height: 23px;
+}
+.mui-title .mui-search{
+	min-width: 80%;
+	left: 4em;
+}
+.droplist:after{
+	position: absolute;
+	font-family: Muiicons;
+	content: "\e581";
+	color: #000000;
+	right: 0px;
+	width: 15px;
+	height: 40px;
+	top: -10px;
+	background-color: #F7F7F8;
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5)
+}

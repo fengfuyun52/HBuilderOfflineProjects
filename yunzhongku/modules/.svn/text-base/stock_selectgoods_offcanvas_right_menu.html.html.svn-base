@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+    <script src="../fahuo/js/fliter_menu.js"></script>
+    <link href="../fahuo/css/fliter_menu.css" rel="stylesheet"/>
+    <script src="../js/common.js" charset="utf-8"></script>
+    <script src="../js/selectdata.js" type="text/javascript" charset="utf-8"></script>   
+</head>
+<body>
+		<header class="mui-bar mui-bar-nav mui-table-view-chevron mui-table-view-inverted">
+			<h4 class="mui-pull-left white">筛选调发单</h4>
+			<span class="mui-pull-right font-blue ver-center">筛选</span>
+		</header>
+	<!--<div id="offCanvasSideScroll" class="mui-content mui-scroll-wrapper">-->
+		<div class="mui-content">
+		<ul class="mui-table-view mui-table-view-chevron mui-table-view-inverted">
+			<li class="mui-table-view-divider background-light-black title">制单日期</li>
+			<li class="mui-table-view-cell">
+				<a class="mui-navigate-right">商品分类</a>
+			</li>
+			<li class="mui-table-view-cell">
+				<a class="mui-navigate-right">仓库</a>
+			</li>
+			<li id="showDiscard" class="mui-table-view-cell">  
+    			显示停用商品
+                <div class="mui-switch mui-active">  
+                    <div class="mui-switch-handle"></div>  
+                </div>  
+            </li>
+            <li id="showDiscard" class="mui-table-view-cell">  
+    			显示零库存商品
+                <div class="mui-switch mui-active">  
+                    <div class="mui-switch-handle"></div>  
+                </div>  
+            </li>
+			<li class="mui-table-view-cell">
+				<a class="mui-navigate-right">出库仓库</a>
+			</li>
+			
+			<li class="mui-table-view-divider background-light-black"></li>			
+			
+            <li>
+            	<input type="textarea" value="请输入备注" style='height:80px;width:100% ;padding: 0px; color: #FFFFFF;	background-color: #333333;border: solid 0px #C71585;' >
+            		
+            	</input>
+				
+			</li>
+			<li class="mui-table-view-divider background-light-black"></li>
+			<!--<li class="mui-table-view-cell">
+				<div class="mui-title">
+					清空所有筛选条件
+				</div>
+			</li>-->
+		</ul>
+		<div class="mui-title font-blue background-dark">清空所有筛选条件</div>
+		</div>
+	<!--</div>-->
+</body>
+</html>

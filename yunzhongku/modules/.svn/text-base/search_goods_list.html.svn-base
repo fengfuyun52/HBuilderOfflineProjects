@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/search.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/search.css"/>
+		<style type="text/css">
+			.contact-phone{
+				margin-left: 30px;
+			}			
+			.pic{
+				width: 100px;
+				height: 100px;
+				border: solid 1px;
+				background-image: url(../images/my_u8.png);
+				background-size: 100% 100%;
+				float: left;
+				margin: 10px 10px;
+			}
+			.gap{
+				top: 48px;
+			}
+			
+			.mui-ellipsis{
+				color: #000000;
+			}
+			#topPopover {
+				position: fixed;
+				top: 11px;
+				left: 9px;
+			}
+			#topPopover .mui-popover-arrow {
+				left: 0px;
+				right: auto;
+			}
+			.mui-popover {
+				height: 140px;
+			}
+			.popwidth{
+				width: 90px;
+				
+			}
+			.cell-height{
+				height: 30px;
+			}
+			
+		</style>
+		<!--<script type="text/javascript">
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+			mui('.mui-scroll-wrapper').scroll();
+			mui('body').on('shown', '.mui-popover', function(e) {
+				//console.log('shown', e.detail.id);//detail为当前popover元素
+			});
+			mui('body').on('hidden', '.mui-popover', function(e) {
+				//console.log('hidden', e.detail.id);//detail为当前popover元素
+			});
+			function reVal(obj){
+				document.getElementById("titleSelect").innerHTML=obj.innerHTML;
+			}
+		</script>-->
+		<title></title>
+	</head>
+
+	<body>
+		<div id="main" class="mui-inner-wrap">
+			<div class="mui-bar mui-bar-nav" style="background-color: #007AFF;">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav" style="color: #FFFFFF;"></span>
+				</button>
+				<div class="mui-title mui-under-line">
+					<a id="menu" href="#topPopover" class="droplist mui-pull-left">商品</a>
+					<input id = "searchKey" name = "searchKey" type="search" class="mui-search" placeholder="输入搜索关键字" />
+				</div>
+				<img src="../images/stock_history_search_icon.png"  class="mui-pull-right show_search" onclick="search()" />
+			</div>
+			<div class="mui-content">
+			</div>
+		</div>			
+		
+		
+		<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper gap">
+			<div class="mui-scroll">
+				<ul id="content" class="mui-table-view mui-table-view-chevron">
+				
+				</ul>
+			</div>
+		</div>
+       <div id="topPopover" class="mui-popover popwidth">			
+			<div class="mui-scroll-wrapper  ">
+				<div class="mui-scroll">
+					<ul class="mui-table-view" >
+						<li class="cell-height" onclick="selecttype(1)">商品
+						</li>
+						<li class="cell-height" onclick="selecttype(2)">单据
+						</li>
+						<li class="cell-height" onclick="selecttype(3)">客户
+						</li>
+						<li class="cell-height" onclick="selecttype(4)">供应商
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+        <script src="../js/chart/search-goods-list.js"></script>
+	</body>
+</html>

@@ -1,0 +1,12 @@
+.background-blue {
+	background-color: #007AFF;
+}
+
+a {
+	color: #FAFAFA;
+}
+
+.white {
+	color: #FAFAFA;
+	padding-top: 8px;
+}

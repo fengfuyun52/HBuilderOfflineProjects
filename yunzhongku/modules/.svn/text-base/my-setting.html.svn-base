@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+		<style>
+			.mui-switch{
+	    		border-radius:5px;
+	    	}
+	    	button{
+	    		background-color: #fd763e !important;
+	    	}
+		</style>
+	</head>
+	<body>
+		<div class="mui-content">
+			<header class="mui-bar mui-bar-nav" style="display: block;">
+				<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+				<h1 class="mui-title" style="right: initial;">系统设置</h1>
+			</header>
+			<div class="mui-scroll-wrapper" style="top: 45px;">
+				<div class="mui-scroll">
+					<div class="title">
+						系统配置
+					</div>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							接收新消息通知
+							<div class="mui-switch mui-switch-blue mui-active">
+								<div class="mui-switch-handle"></div>
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							仅在wifi下加在商品图片
+							<div class="mui-switch mui-switch-blue mui-active">
+								<div class="mui-switch-handle"></div>
+							</div>
+						</li>
+						<li class="mui-table-view-cell">
+							隐藏列表商品图片
+							<div class="mui-switch mui-switch-blue mui-active">
+								<div class="mui-switch-handle"></div>
+							</div>
+						</li>
+					</ul>
+					<div class="title">
+						账号配置
+					</div>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								修改密码
+							</a>
+						</li>
+					</ul>
+					<div class="title">
+						了解我们
+					</div>
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								关于我们
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								意见和反馈
+							</a>
+						</li>
+						<li class="mui-table-view-cell">
+							<a class="mui-navigate-right">
+								更新版本
+							</a>
+						</li>
+					</ul>
+					<button class="mui-btn mui-btn-block">注销登录</button>
+				</div>
+			</div>
+		</div>
+	
+	<script>
+		mui.init({
+			beforeback: function(){
+				
+				//返回true，继续页面关闭逻辑
+				return true;
+			}
+		});
+		window.onload = function(){
+		  	mui.plusReady(function(){
+		  		//关闭等待框
+			    plus.nativeUI.closeWaiting();
+			    //显示当前页面
+			    mui.currentWebview.show();
+		  		
+		  	});
+		}
+	</script>
+	</body>
+
+</html>

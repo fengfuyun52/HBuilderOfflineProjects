@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<script src="../js/mui.min.js"></script>
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<script src="js/choose_price.js"></script>
+		<link href="css/choose_price.css" rel="stylesheet"/>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav background-blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h4 class="mui-pull-left white">选择价格</h4>
+		</header>
+		<div class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<ul class="mui-table-view mui-table-view-radio">
+					<li id="1" class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+							<span class="mui-pull-right">100.00</span>批发价
+						</a>
+					</li>
+					<li id="2" class="mui-table-view-cell">
+						<a class="mui-navigate-right">
+							<span class="mui-pull-right">1000.00</span>零售价
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

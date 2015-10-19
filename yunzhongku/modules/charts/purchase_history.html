@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/echarts.js"></script>
+		<script src="../../js/echart_config.js"></script>
+		<script src="../../js/jquery-1.11.2.min.js"></script>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/appStyle.css" rel="stylesheet" />
+		<link href="../../css/appStyleChart.css" rel="stylesheet" />
+		<!--<script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>-->
+
+		<script type="text/javascript">
+			function getRadioValue(){								//获取checkbox值
+					var a = $("input[name='radio2']:checked").val();
+					var b = $("input[name='radio1']:checked").val();
+					return b+a;
+					console.log(a);console.log(b);
+					}
+		</script>
+
+		<script type="text/javascript">
+		var chartGrid = {						//echarts grid属性
+			x: 40,
+			x2: 35,
+			y2: 25,
+			y: 25,
+		};
+		var chartBgColor = "white";				//echarts 图表背景色
+		var chartxAxis = [{						//echarts X轴
+			type: 'time',
+			name: "日期",
+			splitNumber: 6,
+			axisLabel:{							//echarts X轴日期格式
+					formatter:function(params){
+						return (params.getMonth()+1)+'-'+params.getDate();
+					}
+				}
+		},
+		{						
+			type: 'time',
+			name: "日期",
+			splitNumber: 5,
+			axisLabel:{							
+					formatter:function(params){
+						return (params.getMonth()+1)+'-'+params.getDate();
+					}
+				}
+			}
+		];
+		var chartyAxis = [{						//echarts Y轴
+				type: 'value',
+				name: '进货量(件)',
+			},
+			{
+				type: 'value',
+				name: '进货金额(元)',
+			}];
+		
+		var optionWn = {						//echarts option week&num
+			backgroundColor: chartBgColor,
+			grid: chartGrid,
+			xAxis : chartxAxis[0],
+			yAxis : chartyAxis[0],
+			series : [
+			{
+				name: '进货',
+				type: 'line',
+				showAllSymbol: true,
+				itemStyle: {normal: {color:'#1F98F5'}},
+				smooth:true,
+//				data: [
+//						[new Date(2015, 6, 1),160],
+//						[new Date(2015, 6, 2),180],
+//						[new Date(2015, 6, 3),140],
+//						[new Date(2015, 6, 4),120],
+//						[new Date(2015, 6, 5),160],
+//						[new Date(2015, 6, 6),140],
+//						[new Date(2015, 6, 7),100],
+//						]
+				data: (function () {
+						             var d = [];
+						             var len = 0;
+//						             var now = new Date();
+						             while (len++ < 7) {
+						                 d.push([
+						                     new Date(2015, 6,len),
+						                     (Math.random()*100).toFixed(2)
+						                 ]);
+						             }
+						             return d;
+						         })()
+			},
+					 ]
+		};
+		
+		var optionWm = {						//echarts option week&money
+			backgroundColor: chartBgColor,
+			grid: chartGrid,
+			xAxis : chartxAxis[0],
+			yAxis : chartyAxis[1],
+			series : [
+			{
+				name: '进货',
+				type: 'line',
+				showAllSymbol: true,
+				itemStyle: {normal: {color:'#1F98F5'}},
+				smooth:true,
+//				data: [
+//						[new Date(2015, 6, 1),1600],
+//						[new Date(2015, 6, 2),2800],
+//						[new Date(2015, 6, 3),3800],
+//						[new Date(2015, 6, 4),1800],
+//						[new Date(2015, 6, 5),800],
+//						[new Date(2015, 6, 6),7800],
+//						[new Date(2015, 6, 7),6800],
+//						]
+				data: (function () {
+						             var d = [];
+						             var len = 0;
+						             while (len++ < 7) {
+						                 d.push([
+						                     new Date(2015, 6,len),
+						                    Math.floor(Math.random()*(6000-3000+1)+3000).toFixed(0)
+						                 ]);
+						             }
+						             return d;
+						         })()
+			},
+					 ]
+		};
+		
+		var optionMn = {						//echarts option month&money
+			backgroundColor: chartBgColor,
+			grid: chartGrid,
+			xAxis : chartxAxis[1],
+			yAxis : chartyAxis[0],
+			series : [
+			{
+				name: '进货',
+				type: 'line',
+//				showAllSymbol: true,
+				itemStyle: {normal: {color:'#1F98F5'}},
+				smooth:true,
+				data: (function () {
+						             var d = [];
+						             var len = 0;
+						             while (len++ < 31) {
+						                 d.push([
+						                     new Date(2015, 6,len),
+											Math.floor(Math.random()*(180-60+1)+60).toFixed(0)
+						                 ]);
+						             }
+						             return d;
+						         })()
+			},
+					 ]
+		};
+		
+		var optionMm = {						//echarts option month&money
+			backgroundColor: chartBgColor,
+			grid: chartGrid,
+			xAxis : chartxAxis[1],
+			yAxis : chartyAxis[1],
+			series : [
+			{
+				name: '进货',
+				type: 'line',
+//				showAllSymbol: true,
+				itemStyle: {normal: {color:'#1F98F5'}},
+				smooth:true,
+				data: (function () {
+						             var d = [];
+						             var len = 0;
+						             while (len++ < 31) {
+						                 d.push([
+						                     new Date(2015, 6,len),
+											Math.floor(Math.random()*(6000-3000+1)+3000).toFixed(0)
+						                 ]);
+						             }
+						             return d;
+						         })()
+			},
+					 ]
+		};
+		
+		var optionYn = {						//echarts option year&money
+			backgroundColor: chartBgColor,
+			grid: chartGrid,
+			xAxis : chartxAxis[1],
+			yAxis : chartyAxis[0],
+			series : [
+			{
+				name: '进货',
+				type: 'line',
+//				showAllSymbol: true,
+				itemStyle: {normal: {color:'#1F98F5'}},
+				smooth:true,
+				data: (function () {
+						             var d = [];
+						             var len = 0;
+						             while (len++ < 365) {
+						                 d.push([
+						                     new Date(2015, 6,len),
+											Math.floor(Math.random()*(180-60+1)+60).toFixed(0)
+						                 ]);
+						             }
+						             return d;
+						         })()
+			},
+					 ]
+		};
+		
+		var optionYm = {						//echarts option year&money
+			backgroundColor: chartBgColor,
+			grid: chartGrid,
+			xAxis : chartxAxis[1],
+			yAxis : chartyAxis[1],
+			series : [
+			{
+				name: '进货',
+				type: 'line',
+//				showAllSymbol: true,
+				dataFilter:'average',
+				itemStyle: {normal: {color:'#1F98F5'}},
+				smooth:true,
+				data: (function () {
+						             var d = [];
+						             var len = 0;
+						             while (len++ < 365) {
+						                 d.push([
+						                     new Date(2015, 6,len),
+//											Math.floor(Math.random()*(6000-2000+1)+2000).toFixed(0)
+											Math.floor(Math.random()*(6000-2000+1)+len%50*100).toFixed(0)
+						                 ]);
+						             }
+						             return d;
+						         })()
+			},
+					 ]
+		};
+			require.config(
+					{
+						paths:{                                      
+								echarts:'../../js'
+		//						echarts: 'http://echarts.baidu.com/build/dist'
+							  }
+					}
+				);
+				
+				require(											//添加所需图表库
+				
+						[
+							'echarts',
+							'echarts/chart/line' ,
+							'echarts/chart/pie' ,
+						],
+						function(ec)
+						{
+								var myChart4 =ec.init( document.getElementById("chart") ); //初始化图表
+								myChart4.setOption(optionWn);
+						}
+			    );
+		</script>
+
+	</head>
+
+	<body>
+		<!-- 侧滑导航根容器 -->
+		<div class="mui-off-canvas-wrap mui-draggable" id="asideMenu">
+
+			<!-- 主页面容器 -->
+			<div class="mui-inner-wrap" id="mainPage">
+				<!-- 菜单容器 -->
+				<aside class="mui-off-canvas-right" id="offCanvas">
+					<div class="mui-scroll-wrapper">
+						<div class="mui-scroll"  style="background-color: #333;">
+							<!-- 菜单具体展示内容 -->
+
+							<ul class="mui-table-view slideInput" >
+								<li class="mui-table-view-divider slideDivider" style="font-size: 16px;height: 44px;line-height: 35px;">参数选择</li>
+								<li class="mui-table-view-divider slideDivider" >时间跨度</li>
+								<!--<li class="mui-table-view-cell mui-input-group">-->
+								<form class="mui-input-group slideInput">
+									<div class="mui-input-row mui-radio">
+										<label>一周</label>
+										<input name="radio1" type="radio" value="W" checked>
+									</div>
+
+									<div class="mui-input-row mui-radio">
+										<label>一月</label>
+										<input name="radio1" type="radio" value="M">
+									</div>
+
+									<div class="mui-input-row mui-radio">
+										<label>一年</label>
+										<input name="radio1" type="radio" value="Y">
+									</div>
+								</form>
+
+								<li class="mui-table-view-divider slideDivider">统计维度</li>
+								<form class="mui-input-group slideInput">
+									<div class="mui-input-row mui-radio">
+										<label>数量</label>
+										<input name="radio2" type="radio" value="n" checked>
+									</div>
+
+									<div class="mui-input-row mui-radio">
+										<label>金额</label>
+										<input name="radio2" type="radio" value="m">
+									</div>
+								</form>
+							</ul>
+							<div style="height: 20px;"></div>
+							<div style="width:5%;float: right;">&nbsp;</div>
+							<button class="mui-btn slideBtn" id="cancel">取消</button>
+							<div style="width:5%;float: right;">&nbsp;</div>
+							<button class="mui-btn slideBtn" id="confirm">确认</button>
+						</div>
+					</div>
+				</aside>
+
+				<header class="mui-bar mui-bar-nav">
+					<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+					<a class="mui-icon mui-icon-more mui-pull-right" href="#offCanvas"></a>
+					<h1 class="mui-title">进货历史</h1>
+				</header>
+
+				<div class="mui-content mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div id="chart" style="height:250px"></div>
+						<ul class="mui-table-view mui-grid-view mui-grid-9">
+							<li class="mui-table-view-cell mui-col-xs-6 " id="ib1">
+								今日进货量<br /><br />
+								<span class="inforNum">100</span>
+							</li>
+							<li class="mui-table-view-cell mui-col-xs-6 " id="ib2">
+								近7日进货量<br /><br />
+								<span class="inforNum">1100</span>
+							</li>
+						</ul>
+
+						<ul class="mui-table-view">
+							<li class="mui-table-view-divider"></li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">报表详细 </a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- off-canvas backdrop -->
+				<div class="mui-off-canvas-backdrop" id="backDrop"></div>
+			</div>
+
+		</div>
+	</body>
+	<script>
+//		getRadioValue();
+	    document.getElementById('confirm').addEventListener('tap',function(){
+																				var cOption = getRadioValue();
+																				console.log(cOption);
+																				switch(cOption){		
+																					case 'Wn':
+//																						alert(cOption);
+																						require('echarts').init(document.getElementById("chart")).setOption(optionWn);
+																						document.getElementById("ib1").innerHTML='今日进货量<br /><br /><span class="inforNum">100</span>';
+																						document.getElementById("ib2").innerHTML='近7日进货量<br /><br /><span class="inforNum">1100</span>';
+																						break;
+																					case 'Wm':
+//																						alert(cOption);
+																						require('echarts').init(document.getElementById("chart")).setOption(optionWm);
+																						document.getElementById("ib1").innerHTML='今日进货金额<br /><br /><span class="inforNum">4300</span>';
+																						document.getElementById("ib2").innerHTML='近7日进货金额<br /><br /><span class="inforNum">61000</span>';
+																						break;
+																					case 'Mn':
+//																						alert(cOption+"待完成");
+																						require('echarts').init(document.getElementById("chart")).setOption(optionMn);
+																						document.getElementById("ib1").innerHTML='今日进货量<br /><br /><span class="inforNum">100</span>';
+																						document.getElementById("ib2").innerHTML='近30日进货量<br /><br /><span class="inforNum">4700</span>';
+																						break;
+																					case 'Mm':
+//																						alert(cOption);
+																						require('echarts').init(document.getElementById("chart")).setOption(optionMm);
+																						document.getElementById("ib1").innerHTML='今日进货金额<br /><br /><span class="inforNum">4300</span>';
+																						document.getElementById("ib2").innerHTML='近7日进货金额<br /><br /><span class="inforNum">132000</span>';
+																						break;
+																					case 'Yn':
+//																						alert(cOption);
+																						require('echarts').init(document.getElementById("chart")).setOption(optionYn);
+																						document.getElementById("ib1").innerHTML='今日进货量<br /><br /><span class="inforNum">100</span>';
+																						document.getElementById("ib2").innerHTML='近1年进货量<br /><br /><span class="inforNum">33600</span>';
+																						break;
+																					case 'Ym':
+//																						alert(cOption);
+																						require('echarts').init(document.getElementById("chart")).setOption(optionYm);
+																						document.getElementById("ib1").innerHTML='今日进货金额<br /><br /><span class="inforNum">4300</span>';
+																						document.getElementById("ib2").innerHTML='近1年进货金额<br /><br /><span class="inforNum">1240000</span>';
+																						break;
+																					}
+//																				require('echarts').init(document.getElementById("chart4")).setOption(option3);
+																				mui('.mui-off-canvas-wrap').offCanvas('close');
+//																				var myChart = require('echarts').init(document.getElementById("chart4"));
+//																				document.getElementById("backDrop").style.display=
+																			});
+																			
+		 document.getElementById('cancel').addEventListener('tap',function(){mui('.mui-off-canvas-wrap').offCanvas('close');});
+	</script>
+
+</html>

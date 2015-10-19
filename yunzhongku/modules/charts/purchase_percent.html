@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../../js/mui.min.js"></script>
+		<script src="../../js/echarts.js"></script>
+		<script src="../../js/echart_config.js"></script>
+		<script src="../../js/jquery-1.11.2.min.js"></script>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/appStyle.css" rel="stylesheet" />
+		<link href="../../css/appStyleChart.css" rel="stylesheet" />
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+    <script type="text/javascript">
+    	require.config(
+			{
+				paths:{                                      //not path
+						echarts:'../../js'
+//						echarts: 'http://echarts.baidu.com/build/dist'
+					  }
+			}
+		);
+		
+		require(											//添加所需图表库
+		
+				[
+					'echarts',
+					'echarts/chart/line' ,
+					'echarts/chart/pie' ,
+				],
+				function(ec)
+				{
+						
+						var myChart =ec.init( document.getElementById("chart") ); //初始化图表
+						var option = 
+						{
+							backgroundColor:"white",
+							title:{
+								text:"商品进货比例-数量分布",
+								x:"center",
+//								y:"bottom",
+								y:215,
+								textStyle:{
+									fontStyle:"normal",
+									fontSize:14,
+									color:"#767980",
+								}
+							},
+							
+							tooltip:{
+								show:false,
+								showDelay:0,
+								hideDelay:0,
+							},
+							
+							color:colorSeries,
+							
+							series : [ {
+							clickable:false,
+//							name : '商品状态',
+							type : 'pie',
+//							selectedMode : 'null',
+//							selectedOffset:5,
+							radius : '60%',
+					        center: ['50%', '50%'],
+							itemStyle : {
+								normal : {
+									label : {
+//										show : false
+// 										position:'inner'
+									},
+									labelLine : {
+//										show : false
+//										length:2,
+									},	
+									borderWidth:1,
+									borderColor:"white",
+								}
+							},
+							
+							data : [  {value:800, name:'油水分离器'},
+						                {value:40, name:'转向器'},
+						                {value:80, name:'泵轮'},
+						                {value:100, name:'油滤芯'},
+						                {value:80, name:'其他'}],
+						},]
+							
+						};
+												
+						myChart.setOption(option);  
+				}
+	    );
+    </script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<a class="mui-icon mui-icon-more mui-pull-right"></a>
+		<h1 class="mui-title">进货比例</h1>
+	</header>
+	<div class="mui-content">
+		<div id="chart" style="height:250px"></div>
+		
+		<ul class="mui-table-view mui-grid-view mui-grid-9">
+						<li class="mui-table-view-cell mui-col-xs-6 ">
+							<span class="inforTextTopic">今日进货量最多</span><br />
+							<span class="inforText">转向器</span>
+							<span class="inforTextNum">120</span>
+						</li>
+						<li class="mui-table-view-cell mui-col-xs-6 ">
+							<span class="inforTextTopic">近7日进货量最多</span><br />
+							<span class="inforText">油水分离器</span>
+							<span class="inforTextNum">800</span>
+						</li>
+			</ul>
+		
+		<ul class="mui-table-view">
+		  <li class="mui-table-view-divider"></li>
+		  <li class="mui-table-view-cell">
+		    <a class="mui-navigate-right">
+		      报表详细
+		    </a>
+		  </li>
+		</ul>
+	</div>
+</body>
+</html>

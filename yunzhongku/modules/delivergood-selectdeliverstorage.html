@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" >
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/search.css" />
+		<script type="text/javascript">
+			mui.init();
+		</script>
+		<style type="text/css">
+			.mui-content>.mui-table-view:first-child {
+				margin-top: 0px;
+			}
+			.mui-table-view-cell {
+				padding-top: 8px;
+				padding-bottom: 8px;
+			}
+			.mui-table-view-cell .mui-table-view .mui-table-view-cell:after,
+			.mui-table-view-cell:after {
+				left: 0px;
+			}
+			.mui-table-view span.mui-media-object {
+				max-width: 100%;
+				height: 42px;
+				line-height: 42px;
+			}
+			.mui-table-view-cell img.mui-pull-right {
+				height: 42px;
+				width: 20px;
+				padding: 11px 0px;
+			}
+			.mui-pull-right:hover {
+				cursor: pointer;
+			}
+			
+			.mui-table-view-cell.mui-collapse .mui-table-view .mui-table-view-cell {
+			    padding-left: 11px;
+			}
+			.mui-table-view-cell.mui-collapse .mui-table-view .mui-table-view-cell:after {
+			    left: -15px;
+			}
+			.gap{
+				top: 48px;
+			}
+			.footerlaber{
+				text-align: center;
+				height: 25px;
+				line-height: 25px;
+				color: #CCCCCC;
+				font-size: 15px;
+				font-weight: bold;
+				padding-bottom: 5px;
+			}
+			.footerlaber:after{
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0px;
+				height: 1px;
+				content: '';
+				background-color: #c8c7cc;
+				-webkit-transform: scaleY(.5);
+				transform: scaleY(.5)
+			}
+			.active {
+			    color: #007aff;
+			    display: none;
+			}
+		</style>
+		<title>添加快捷功能</title>
+	</head>
+
+	<body>
+		<div id="main" class="mui-inner-wrap">
+			<div class="mui-bar mui-bar-nav" style="background-color: #007AFF;">
+				<button type="button" class="mui-left mui-action-back mui-btn  mui-btn-link mui-btn-nav mui-pull-left">
+					<span class="mui-icon mui-icon-left-nav" style="color: #FFFFFF;">
+					<span style="font-size: 17px;">选择发货仓库</span>
+					</span>
+				</button>
+			</div>
+			<div class="mui-content">				
+					<div class="mui-content">				
+					<div class="mui-scroll-wrapper" style="top: 45px;">
+				<div class="mui-scroll">
+					<ul class="mui-table-view" id="handledList">
+						<li class="mui-table-view-cell" id='user1'>
+							<span class="name">上海</span>
+							<span class="active mui-icon mui-icon-checkmarkempty mui-pull-right"></span>
+						</li>
+						<li class="mui-table-view-cell" id='user2'>
+							<span class="name">北京</span>
+							<span class="active mui-icon mui-icon-checkmarkempty mui-pull-right"></span>
+						</li>
+						<li class="mui-table-view-cell" id='user3'>
+							<span class="name">成都</span>
+							<span class="active mui-icon mui-icon-checkmarkempty mui-pull-right"></span>
+						</li>
+						<li class="mui-table-view-cell" id='user3'>
+							<span class="name">火星</span>
+							<span class="active mui-icon mui-icon-checkmarkempty mui-pull-right"></span>
+						</li>
+						<li class="mui-table-view-cell" id='user3'>
+							<span class="name">云南</span>
+							<span class="active mui-icon mui-icon-checkmarkempty mui-pull-right"></span>
+						</li>
+						<li class="mui-table-view-cell" id='user3'>
+							<span class="name">杭州</span>
+							<span class="active mui-icon mui-icon-checkmarkempty mui-pull-right"></span>
+						</li>
+						<li class="mui-table-view-cell" id='user3'>
+							<span class="name">昆山</span>
+							<span class="active mui-icon mui-icon-checkmarkempty mui-pull-right"></span>
+						</li>
+						
+					</ul>
+					<div class="footerlaber">数据加载完成</div>
+				</div>
+			</div>
+			
+			</div>
+			
+			</div>
+		</div>
+		<!--<div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper gap">
+			<div class="mui-scroll">
+				<ul id="content" class="mui-table-view mui-table-view-chevron">
+				
+				</ul>
+			</div>
+		</div>
+		
+		<script src="../js/chart/delivergood-selectdeliverstorage.js"></script>-->
+			<script>
+			window.onload = function(){
+				var handled = null;
+				var ws = null,
+					wo = null;
+				mui.init({
+					beforeback: function(){
+						mui.fire(wo,"selectWarehouse",JSON.stringify(handled));
+						return true;
+					}
+				});
+				mui('.mui-scroll-wrapper').scroll();
+				//document.querySelector('.active').style.display = 'none';
+			  	mui.plusReady(function(){
+			  		//关闭等待框
+				    plus.nativeUI.closeWaiting();
+				    //显示当前页面
+				    mui.currentWebview.show();
+				    ws = plus.webview.currentWebview();
+				    wo = ws.opener();
+				    var old_back = mui.back;
+			  		var broker = document.querySelector("[id=\'"+ws.storageId+"\']");
+			  		broker && (broker.childNodes[3].style.display = 'block');
+			  		mui("#handledList").on('tap','li',function(){
+			  			handled={
+			  				storageId : this.getAttribute('id'),
+			  				storageName : this.childNodes[1].innerText
+			  			};
+			  			broker && (broker.childNodes[3].style.display = 'none');
+			  			this.childNodes[3].style.display = 'block';
+			  			broker = this;
+			  			ws.brokerId = handled.brokerId;
+			  		});
+			  		
+			  	});
+			}
+		</script>
+	</body>
+</html>
