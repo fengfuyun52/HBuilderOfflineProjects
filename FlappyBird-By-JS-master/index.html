@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Bird</title>
+<link rel="stylesheet" href="assets/normalize.css">
+<link rel="stylesheet" href="assets/style.css">
+<script src="/socket.io/socket.io.js"></script>
+<script src="assets/zepto.min.js"></script>
+<script src='assets/js.js'></script>
+<!--[if IE]>
+	<style>
+	#bird,#text,#background{display:none;}
+	</style>
+<![endif]-->
+</head>
+<body>
+	<!--[if IE]>
+	<h1>No IE Thanks</h1>
+	<![endif]-->
+	<div id="background" >
+	</div>
+	<div id="bird">
+		<div class="the-bird"></div>
+	</div>
+	<div id="text">
+		<div id="counter">
+			0
+		</div>
+		<div id="start">Tap Space to Start!</div>
+		<div id="gameover">
+			<h1>Game Over!</h1>
+			<p>Esc to restart / longTap on mobile</p>
+			<p>Score：<span id='thisTime'></span>
+			</p>
+			<p>Best：<span id='theBest'></span></p>
+		</div>
+		<div id="author">Author: <a target="_blank" href="http://ruosen.io/">Ruosen</a><br/>on <a href='https://github.com/chairuosen/FlappyBird-By-JS'>GitHub</a></div>
+		<ul id="user-list">
+		</ul>
+		<div id='toast'></div>
+	</div>
+</body>
+</html>

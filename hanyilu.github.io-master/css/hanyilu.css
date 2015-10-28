@@ -1,0 +1,392 @@
+@font-face {
+ font-family: 'archistico';
+ src: url('../fonts/archistico/archistico-webfont.eot');
+ src: url('../fonts/archistico/archistico-webfont.woff') format('woff'),
+      url('../fonts/archistico/archistico-webfont.ttf') format('truetype'),
+      url('../fonts/archistico/archistico-webfont.svg#archisticonormal') format('svg');
+} 
+
+@font-face {
+ font-family: 'exo';
+ src: url('../fonts/exo/exo-webfont.eot');
+ src: url('../fonts/exo/exo-webfont.woff') format('woff'),
+      url('../fonts/exo/exo-webfont.ttf') format('truetype'),
+      url('../fonts/exo/exo-webfont.svg#exothin') format('svg');
+} 
+
+@font-face {
+ font-family: 'twodumb';
+ src: url('../fonts/2dumb/2dumb-webfont.eot');
+ src: url('../fonts/2dumb/2dumb-webfont.woff') format('woff'),
+      url('../fonts/2dumb/2dumb-webfont.ttf') format('truetype'),
+      url('../fonts/2dumb/2dumb-webfont.svg#2dumbregular') format('svg');
+}
+
+@font-face {
+ font-family: 'threedumb';
+ src: url('../fonts/3dumb/3dumb-webfont.eot');
+ src: url('../fonts/3dumb/3dumb-webfont.woff') format('woff'),
+      url('../fonts/3dumb/3dumb-webfont.ttf') format('truetype'),
+      url('../fonts/3dumb/3dumb-webfont.svg#3dumbregular') format('svg');
+}
+
+@font-face {
+ font-family: 'onft';
+ src: url('../fonts/1942/1942-webfont.eot');
+ src: url('../fonts/1942/1942-webfont.woff') format('woff'),
+      url('../fonts/1942/1942-webfont.ttf') format('truetype'),
+      url('../fonts/1942/1942-webfont.svg#1942_report1942_report') format('svg');
+}
+
+@font-face {
+ font-family: 'amaticsc';
+ src: url('../fonts/amaticsc/amaticsc-webfont.eot');
+ src: url('../fonts/amaticsc/amaticsc-webfont.woff') format('woff'),
+      url('../fonts/amaticsc/amaticsc-webfont.ttf') format('truetype'),
+      url('../fonts/amaticsc/amaticsc-webfont.svg#amatic_scregular') format('svg');
+}
+
+@font-face {
+ font-family: 'opensans';
+ src: url('../fonts/opensans/opensans-webfont.eot');
+ src: url('../fonts/opensans/opensans-webfont.woff') format('woff'),
+      url('../fonts/opensans/opensans-webfont.ttf') format('truetype'),
+      url('../fonts/opensans/opensans-webfont.svg#open_sansregular') format('svg');
+}
+
+body {
+    font-family: opensans, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    background: #F7EADC;
+    color: #4D3B36;
+}
+
+h1,h2 {
+    font-family: opensans, Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: #886C36;
+}
+
+a:hover,
+a:focus {
+    color: #FF7E00;
+    text-decoration: none;
+}
+
+section {
+	margin: 30px;
+}
+
+::selection {
+  background: rgba(168,155,123,.99);
+  color: #ffffff;
+}
+
+/*---------------
+    Burger
+-----------------*/
+
+.burger {
+    background: -moz-radial-gradient(center, ellipse cover, rgba(247, 234, 220, 1) 0%, rgba(255, 255, 255, 0) 70%);
+    /* FF3.6+ */
+    
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(247, 234, 220, 1)), color-stop(70%, rgba(255, 255, 255, 0)));
+    /* Chrome,Safari4+ */
+    
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(247, 234, 220, 1) 0%, rgba(255, 255, 255, 0) 70%);
+    /* Chrome10+,Safari5.1+ */
+    
+    background: -o-radial-gradient(center, ellipse cover, rgba(247, 234, 220, 1) 0%, rgba(255, 255, 255, 0) 70%);
+    /* Opera 12+ */
+    
+    background: -ms-radial-gradient(center, ellipse cover, rgba(247, 234, 220, 1) 0%, rgba(255, 255, 255, 0) 70%);
+    /* IE10+ */
+    
+    background: radial-gradient(ellipse at center, rgba(247, 234, 220, 1) 0%, rgba(255, 255, 255, 0) 70%);
+    /* W3C */
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#f7eadc', endColorstr='#007db9e8', GradientType=1);
+    /* IE6-9 fallback on horizontal gradient */
+    
+    border: none;
+    padding: 30px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    border-radius: 0;
+    height: 83px;
+    width: 87px;
+    ;
+}
+
+.burger-contain.open .burger {
+    border: none;
+    background: transparent;
+}
+
+.burger-contain.open .burger:hover {
+    border: none;
+}
+
+.burger-contain:hover:not(.open) .burger {
+    background: transparent;
+}
+
+.bun {
+    background: #EB613B;
+}
+
+.bun-top {
+    height: 3px;
+    top: 0;
+    width: 27px;
+}
+
+.bun-mid {
+    height: 3px;
+    top: 7px;
+    width: 27px;
+}
+
+.bun-bottom {
+    height: 3px;
+    top: 14px;
+    width: 27px;
+}
+
+.burger-contain.open:hover .bun-top,
+.burger-contain.open:hover .bun-bottom {
+    background: #EB613B;
+}
+
+.burger-contain.open .bun-bottom {
+    top: 3px;
+}
+
+.burger-nav {
+    position: fixed;
+    height: 80px;
+    right: 0;
+}
+
+.burger-nav ul {
+    padding-right: 0;
+    height: 0;
+    /*width: 0;*/
+}
+
+.burger-nav li {
+    -webkit-transform: translateX(-300px);
+    -ms-transform: translateX(-300px);
+    transform: translateX(-300px);
+}
+
+.burger-nav li:first-child {
+    padding-top: 80px;
+}
+
+.burger-nav li:not(.open) {
+    -webkit-animation-duration: .4s;
+    animation-duration: .4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: slideOutLeft;
+    animation-name: slideOutLeft;
+}
+
+.burger-nav.open li {
+    -webkit-animation-duration: .4s;
+    animation-duration: .4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: slideInLeft;
+    animation-name: slideInLeft;
+}
+
+.burger-link {
+    margin-right: 34px;
+    font-family: inherit;
+    font-weight: 100;
+    font-size: 2rem;
+    letter-spacing: 0.2em;
+}
+
+.burger-link.active,
+.burger-link:hover {
+    border-right-width: 1px;
+    border-right-color: #EB613B;
+    color: #EB613B;
+    text-decoration: none;
+}
+
+/*---------------
+    Header
+-----------------*/
+#header {
+	margin-top: 58px;
+}
+
+#header .myname>h2 {
+    font-family: archistico;
+	margin-bottom: 16px;
+}
+
+#header .active {
+	border-top: #EB613B solid 1px;
+}
+
+#header .active a {
+	color: #EB613B;
+}
+
+#header .list-inline {
+	margin-top: -1px;
+	margin-left: 0;
+}
+
+#header .list-inline li {
+	margin-right: 22px;
+	padding: 10px 0 0;
+	font-size: 14px;
+    font-weight: 100;
+}
+
+#header hr {
+	border-top: #E8DBC2 solid 1px;
+	margin: 0;
+}
+
+#header h3 {
+	margin: 0;
+	color: #E8DBC2;
+    font-family: twodumb;
+}
+
+/*---------------
+    Contact
+-----------------*/
+#contact, #contact a {
+	color: #E8DBC2;
+}
+
+#contact i:hover {
+	color: #FF7E00;
+}
+
+/*---------------
+    Projects
+-----------------*/
+#projects {
+    margin-top: -30px;
+}
+
+#projects .col {
+    margin-top: 50px;
+}
+
+#projects .tab-content {
+    padding-left: 30px;
+}
+
+#projects .list-group-item{
+    background-color: #F7EADC;
+    text-decoration: none;
+    border-color: #E8DBC2;
+    border-radius: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#projects .list-group-item.active {
+    border-color: #E8DBC2;
+}
+
+#projects .list-group-item a {
+    padding: 10px 15px;
+    display: block;
+}
+
+#projects a.list-group-time {
+    padding: 10px 1px;
+    display: block;
+}
+
+#projects a.list-group-time, #projects a.list-group-time:hover {
+    color: #555;
+    display: block;
+    cursor: default;
+    pointer-events:none;
+}
+
+#projects li.list-group-item a:hover, #projects li.list-group-item a:focus, {
+    color: #FF7E00;
+    background-color: #F7EADC;
+}
+
+#projects li.list-group-item.active a {
+    color: #EB613B;
+    background-color: #E8DBC2;
+}
+
+#projects .title {
+    font-size: 28px;
+}
+
+#projects .time {
+    font-size: 16px;
+    text-align: right;
+    margin-top: 15px;
+}
+
+#projects .details {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+#projects #piece-pic {
+    height: 500px;
+    width: 281px;
+    float: left;
+}
+
+#projects #piece-pic img {
+    height: 500px;
+}
+
+#projects .carousel-inner, #projects .carousel-indicators{
+    width: 281px;
+    bottom: 0;
+    left: 0;
+    margin-left: 0; 
+}
+
+#projects .carousel-indicators{
+    margin-bottom: 0;
+    padding: 5px 0;
+    background-color: rgba(0,0,0,.5);
+    z-index: 8;
+}
+
+#projects #piece .details ul {
+    margin-left: 282px;
+}
+
+#projects .operation, #projects .tag{
+    margin-top: 5px;
+}
+
+#projects .operation{
+    text-align: right;
+}
+
+
+#projects .operation i{
+    margin-left: 5px;
+}
+#projects .operation a:focus {
+    color: #886C36;
+}
+
+

@@ -1,0 +1,399 @@
+#eric{
+	position: relative;
+	width:500px;
+	margin:50px auto;
+}
+#eric #hat{
+	position: absolute;
+	display: block;
+	width: 300px;
+	height: 120px;
+	background:#4bb7c3;
+	border-top-left-radius: 145px 120px;
+	border-top-right-radius: 155px 120px;
+	
+	-ms-transform:rotate(-6deg); /* IE 9 */
+	-moz-transform:rotate(-6deg); /* Firefox */
+	-webkit-transform:rotate(-6deg); /* Safari and Chrome */
+	transform:rotate(-6deg);
+	
+	margin-left:28px;
+	z-index:2;
+}
+
+#hat #hat-top{
+	position: absolute;
+	display: block;
+	width: 50px;
+	height: 30px;
+	background:#fbe201;
+	margin-left:125px;
+	margin-top:-10px;
+	border-radius:15px 20px;
+}
+#hat #hat-top:before{
+	content: '';
+	position: absolute;
+	display: block;
+	width: 30px;
+	height: 40px;
+	background:#fbe201;
+	margin-left:12px;
+	border-radius:20px;
+}
+#hat #hat-top:after{
+	content: '';
+	position: absolute;
+	display: block;
+	width: 50px;
+	height: 30px;
+	background:#fbe201;
+	margin-left:22px;
+	border-radius:20px;
+	-ms-transform:rotate(20deg); /* IE 9 */
+	-moz-transform:rotate(20deg); /* Firefox */
+	-webkit-transform:rotate(20deg); /* Safari and Chrome */
+	transform:rotate(20deg);
+}
+#hat #hat-border{
+	position: absolute;
+	display: block;
+	width: 300px;
+	height: 120px;
+	background:#ffdcb6;
+	margin-left:0px;
+	margin-top:65px;
+	border-radius: 140px 160px /60px;
+	
+	border-top:10px solid #fbe201;
+	z-index:4;
+}
+#eric #head{
+	position: absolute;
+	display: block;
+	width: 300px;
+	height: 250px;
+	margin-left:15px;
+	background:#ffdcb6;
+	border-radius: 145px 155px/125px;
+	margin-left:35px;
+	-ms-transform:rotate(-6deg); /* IE 9 */
+	-moz-transform:rotate(-6deg); /* Firefox */
+	-webkit-transform:rotate(-6deg); /* Safari and Chrome */
+	transform:rotate(-6deg);
+	z-index:1;
+}
+#eric #mouth{
+	position: absolute;
+	display: block;
+	width: 26px;
+	height: 30px;
+	border-radius: 13px/15px;
+	background:#000;
+	margin-left:175px;
+	margin-top:185px;
+	z-index:6;
+}
+#eric #chin{
+	position: absolute;
+	display: block;
+	width: 210px;
+	height: 140px;
+	border-radius: 100px/50px;
+	margin-left:75px;
+	margin-top:98px;
+	border-bottom:1px solid #000;
+	z-index:4;
+}
+#eric #double_chin{
+	position: absolute;
+	display: block;
+	width: 45px;
+	height: 5px;
+	border-radius: 21px/3px;
+	margin-left:167px;
+	margin-top:220px;
+	border-bottom:1px solid #000;
+	z-index:4;
+}
+#eric #eyes{
+	position: absolute;
+	display: block;
+	width: 60px;
+	height: 76px;
+	background:#fff;
+	z-index:5;	
+	border-radius: 30px /38px;
+	margin-left:120px;
+	margin-top:85px;
+	
+	-ms-transform:rotate(26deg); /* IE 9 */
+	-moz-transform:rotate(26deg); /* Firefox */
+	-webkit-transform:rotate(26deg); /* Safari and Chrome */
+	transform:rotate(26deg);
+}
+#eric #eyes:after{
+	content:"";
+	position: absolute;
+	display: block;
+	width: 60px;
+	height: 76px;
+	background:#fff;
+	z-index:5;
+	border-radius: 30px /38px;
+	margin-left:60px;
+	margin-top:-34px;
+	
+	-ms-transform:rotate(-65deg); /* IE 9 */
+	-moz-transform:rotate(-65deg); /* Firefox */
+	-webkit-transform:rotate(-65deg); /* Safari and Chrome */
+	transform:rotate(-65deg);
+}
+#eric #eyeball{
+	position: absolute;
+	display: block;
+	width: 8px;
+	height: 8px;
+	background:#000;
+	z-index:6;
+	border-radius: 4px;
+	margin-left:155px;
+	margin-top:115px;
+}
+#eric #eyeball:after{
+	content:"";
+	position: absolute;
+	display: block;
+	width: 8px;
+	height: 8px;
+	background:#000;
+	z-index:6;
+	border-radius: 4px;
+	margin-left:48px;
+	margin-top:-3px;
+}
+
+#eric #body{
+	position: absolute;
+	display: block;
+	width: 350px;
+	height: 190px;
+	background:#d7203f;
+	
+	margin-top:160px;
+	margin-left:20px;
+	
+	border-top-left-radius: 170px 140px;
+	border-top-right-radius: 180px 160px;
+	border-bottom-left-radius:80px 130px;
+	border-bottom-right-radius:80px 100px;
+	
+	-ms-transform:rotate(2deg); /* IE 9 */
+	-moz-transform:rotate(2deg); /* Firefox */
+	-webkit-transform:rotate(2deg); /* Safari and Chrome */
+	transform:rotate(2deg);
+	z-index:0;
+}
+
+#eric #zipper{
+	position: absolute;
+	display: block;
+	height:100px;
+	width:2px;
+	background:#000;
+	-ms-transform:rotate(5deg); /* IE 9 */
+	-moz-transform:rotate(5deg); /* Firefox */
+	-webkit-transform:rotate(5deg); /* Safari and Chrome */
+	transform:rotate(5deg);
+	margin-left:190px;
+	margin-top:250px;
+}
+#eric #zipper_button{
+	position: absolute;
+	display: block;
+	height:8px;
+	width:10px;
+	border-radius:5px/4px;
+	background:#000;
+	margin-left:175px;
+	margin-top:260px;
+}
+#eric #zipper_button:before{
+	content:"";
+	position: absolute;
+	display: block;
+	height:8px;
+	width:10px;
+	border-radius:5px/4px;
+	background:#000;
+	margin-left:-3px;
+	margin-top:30px;
+}
+#eric #zipper_button:after{
+	content:"";
+	position: absolute;
+	display: block;
+	height:8px;
+	width:10px;
+	border-radius:5px/4px;
+	background:#000;
+	margin-left:-5px;
+	margin-top:60px;
+}
+
+
+#eric #arm{
+	position: absolute;
+	display: block;
+	width: 60px;
+	height: 100px;
+	background:#d7203f;
+	border-top-left-radius: 20px 50px;
+	border-bottom-left-radius: 20px 50px;
+
+	
+	-ms-transform:rotate(-35deg); /* IE 9 */
+	-moz-transform:rotate(-35deg); /* Firefox */
+	-webkit-transform:rotate(-35deg); /* Safari and Chrome */
+	transform:rotate(-35deg);
+	margin-top:165px;
+	margin-left:10px;
+}
+#eric #arm2{
+	position: absolute;
+	display: block;
+	width: 60px;
+	height: 100px;
+	background:#d7203f;
+	border-radius: 20px /50px;
+	
+	-ms-transform:rotate(-35deg); /* IE 9 */
+	-moz-transform:rotate(-35deg); /* Firefox */
+	-webkit-transform:rotate(-35deg); /* Safari and Chrome */
+	transform:rotate(-35deg);
+	margin-left:290px;
+	margin-top:180px;
+	z-index:6;
+}
+#eric #hand{
+	position: absolute;
+	display: block;
+	width: 28px;
+	height: 38px;
+	background:#fbe201;
+	border-radius: 14px /18px;
+	margin-left:0px;
+	margin-top:140px;
+	-ms-transform:rotate(-35deg); /* IE 9 */
+	-moz-transform:rotate(-35deg); /* Firefox */
+	-webkit-transform:rotate(-35deg); /* Safari and Chrome */
+	transform:rotate(-35deg);
+}
+#eric #hand:before{
+	content:"";
+	position: absolute;
+	display: block;
+	width: 32px;
+	height: 34px;
+	background:#fbe201;
+	border-radius: 16px /17px;
+	margin-left:-15px;
+	margin-top:2px;
+
+}
+#eric #hand:after{
+	content:"";
+	position: absolute;
+	display: block;
+	width: 20px;
+	height: 56px;
+	background:#fbe201;
+	border-radius: 10px /28px;
+	margin-left:20px;
+	margin-top:-20px;
+	-ms-transform:rotate(-5deg); /* IE 9 */
+	-moz-transform:rotate(-5deg); /* Firefox */
+	-webkit-transform:rotate(-5deg); /* Safari and Chrome */
+	transform:rotate(-5deg);
+}
+#eric #hand1{
+	position: absolute;
+	display: block;
+	width: 28px;
+	height: 38px;
+	background:#fbe201;
+	border-radius: 14px /18px;
+	margin-left:270px;
+	margin-top:155px;
+	-ms-transform:rotate(-38deg); /* IE 9 */
+	-moz-transform:rotate(-38deg); /* Firefox */
+	-webkit-transform:rotate(-38deg); /* Safari and Chrome */
+	transform:rotate(-38deg);
+	z-index:5;
+}
+#eric #hand1:before{
+	content:"";
+	position: absolute;
+	display: block;
+	width: 20px;
+	height: 56px;
+	background:#fbe201;
+	border-radius: 10px /28px;
+	margin-left:-15px;
+	margin-top:-15px;
+
+}
+#eric #hand1:after{
+	content:"";
+	position: absolute;
+	display: block;
+	width: 32px;
+	height: 34px;
+	background:#fbe201;
+	border-radius: 16px /17px;
+	margin-left:10px;
+	margin-top:10px;
+	
+	-ms-transform:rotate(-5deg); /* IE 9 */
+	-moz-transform:rotate(-5deg); /* Firefox */
+	-webkit-transform:rotate(-5deg); /* Safari and Chrome */
+	transform:rotate(-5deg);
+}
+
+#eric #legs{
+	position: absolute;
+	display: block;
+	width: 250px;
+	border-right:  40px solid transparent;
+    border-top: 70px  solid #6d4836;
+    border-left:   40px solid transparent;
+	border-bottom-left-radius:20px;
+	border-bottom-right-radius:80px;
+	
+	margin-top:312px;
+	margin-left:33px;
+	z-index:-1;
+}
+#legs #feets{
+	position: absolute;
+	display: block;
+	width: 120px;
+	height: 15px;
+	background:#000;
+	border-top-left-radius: 80px 15px;
+	border-top-right-radius: 50px 15px;
+	margin-top:-16px;
+	z-index:2;
+}
+#legs #feets:after{
+	content:"";
+	position: absolute;
+	display: block;
+	width: 120px;
+	height: 15px;
+	background:#000;
+	border-top-left-radius: 50px 15px;
+	border-top-right-radius: 80px 15px;
+	margin-left:115px;
+	z-index:2;
+}

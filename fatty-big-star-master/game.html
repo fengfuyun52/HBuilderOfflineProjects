@@ -1,0 +1,48 @@
+<!doctype html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="UTF-8" />
+    <title>Fatty Big Star</title>
+    <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style_1.css">
+  </head>
+  <body>
+    <br>
+    <div class="row header-row">
+      <a href="/highscores.html" role="button"
+            class="btn btn-default" aria-label="Left Align">
+        <span class="glyphicon glyphicon glyphicon-signal" aria-hidden="true"></span>
+        &nbsp;Highscores
+      </a>
+      <a href="/docs/user_guide.pdf" role="button"
+          class="btn btn-default" aria-label="Left Align">
+        <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+        &nbsp;User Guide
+      </a>
+    </div>
+    <br>
+
+    <!-- The game canvas is appended to the DOM, right here -->
+    <script type="text/javascript" src="static/js/phaser.min.js"></script>
+
+    <!-- jQUery for client -> ajax -> server communication for highscores -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <script src="static/js/jquery.cookie.js"></script>
+
+    <!-- TODO: Minify our main.js -->
+    <script type="text/javascript" src="static/js/main_2.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-37131973-6', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>

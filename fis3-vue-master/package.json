@@ -1,0 +1,59 @@
+{
+  "name": "fis3-vue",
+  "version": "0.0.1",
+  "author": "Koala Huang <dapixp@gmail.com>",
+  "license": "MIT",
+  "description": "Very Strong Node CMS",
+  "keywords": [
+    "mvvm",
+    "browser",
+    "cms"
+  ],
+  "main": "server/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/okoala/fis3-vue.git"
+  },
+  "bugs": "https://github.com/okoala/fis3-vue/issues",
+  "scripts": {
+    "pre": "gulp --gulpfile build/gulp/tasks/preinstall.js preinstall",
+    "dev": "gulp --gulpfile build/gulp/tasks/dev.js dev",
+    "debug": "gulp --gulpfile build/gulp/tasks/dev.js debug",
+    "webpack": "gulp --gulpfile build/gulp/tasks/dev.js webpack",
+    "fis3-debug": "gulp --gulpfile build/gulp/tasks/dev.js fis3-debug",
+    "profiler": "gulp --gulpfile build/gulp/tasks/profiler.js server-profiler",
+    "start": "npm install && pm2 startOrReload ./config/config.json --env production",
+    "setup": "pm2 deploy ./config/config.json production setup",
+    "deploy": "pm2 deploy ./config/config.json production update",
+    "revert": "pm2 deploy ./config/config.json production revert",
+    "list": "pm2 deploy ./config/config.json production list"
+  },
+  "dependencies": {
+    "compression": "^1.4.4",
+    "errorhandler": "^1.3.6",
+    "express": "^4.12.4",
+    "express-session": "^1.11.3",
+    "fastcgi-parser": "^0.1.5",
+    "http-proxy": "^1.11.1",
+    "lodash": "^3.9.3",
+    "lusca": "^1.1.1",
+    "snabbt.js": "^0.5.4",
+    "swig": "^1.4.2",
+    "vue": "^0.12.7",
+    "vue-resource": "git://github.com/okoala/vue-resource.git",
+    "vue-view": "git://github.com/okoala/vue-view.git",
+    "webpack": "^1.9.12"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-clean": "^0.3.1",
+    "gulp-csscomb": "^3.0.3",
+    "gulp-shell": "^0.4.2",
+    "node-libs-browser": "^0.5.2"
+  },
+  "components": [
+    "vue",
+    "vue-resource",
+    "vue-view"
+  ]
+}

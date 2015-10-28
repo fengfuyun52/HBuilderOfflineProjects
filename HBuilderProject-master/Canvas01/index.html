@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<!--<meta name="viewport"
+content="
+height = [pixel_value | device-height] ,
+width = [pixel_value | device-width ] ,
+initial-scale = float_value ,
+minimum-scale = float_value ,
+maximum-scale = float_value ,
+user-scalable = [yes | no] ,
+target-densitydpi = [dpi_value | device-dpi |
+high-dpi | medium-dpi | low-dpi]
+" />-->
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+
+		<title>hello world</title>
+		<script type="text/javascript">
+			function helloworld(){
+					alert("hello world!")
+				}
+		    	
+	   		document.addEventListener('plusready', function(){
+	   			alert("welcome to Html5plus!");
+	   		});
+	   		
+	   		function audio_page(){
+	   			location.href='media.html';
+	   		}
+	   		
+	   		function nice_audio(){
+	   			location.href="nice_audio.html"
+	   		}
+		   		
+		</script>
+	</head>
+
+	<body>
+
+		<header>
+			<h3 style="accelerator: inherit;">标题</h3>
+		</header>
+
+		<button style="animation: alternate;" onclick="helloworld()">点我</button>
+        <button onclick="audio_page()">音频播放</button>
+        <button onclick="nice_audio()">非常好的音频播放</button>
+        
+		<article>
+			<header>
+				<title>小学生作文之中秋感想</title>
+				<p>作者：小猪同学
+					<time pubdate="2012-03-15">March 15<sup>th</sup> 2012</time>
+				</p>
+
+			</header>
+
+			<body>
+				<p>又是一个中秋节到了，又可以吃到月饼了。我还记得上一次中秋节的时候，老师就让我们写过一片“中秋感想”。好无聊的话题啊，好蛋疼的作文啊！</p>
+			</body>
+			<footer>
+				<p>小学生经典之作<sup>@</sup></p>
+			</footer>
+
+			<footer>
+			<address>
+			<p>
+			Written by
+			<a rel="author" href="mailto:daniel.carpenter@somewhere.com">
+			Daniel Carpenter
+			</a>
+			<br />
+			Follow him on
+			<a rel="author" href="http://www.twitter.com/mrdanc">Twitter</a>
+			
+			<br />
+			搜索<a rel="author" href="http://www.baidu.com">百度</a>
+			
+			</p>
+			</address>
+			</footer>
+
+		</article>
+		
+			<aside>
+			<nav>
+			<h2>Places To Go</h2>
+			<ul>
+			<li><a href="somewhere">Somewhere</a></li>
+			<li><a href="somewhere-else">Somewhere Else</a></li>
+			</ul>
+			</nav>
+			</aside>
+			<section class="content">
+			<!-- Your Content Goes Here -->
+			</section>
+
+	</body>
+
+</html>

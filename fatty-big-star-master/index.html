@@ -1,0 +1,53 @@
+<!doctype html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="UTF-8" />
+    <title>Intro -- Fatty Big Star</title>
+    <link rel="stylesheet" type="text/css" href="static/css/style_1.css">
+  </head>
+  <body>
+    <div class="row header-row" id="video-box">
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <script src="static/js/jquery.cookie.js"></script> 
+
+    <script type="text/javascript">
+        var video_name = 'intro';
+        var video_type = 'ogg';
+        var v = document.createElement('video');
+
+        if (v.canPlayType &&
+                v.canPlayType('video/mp4').replace(/no/, '')) {
+            video_type = 'mp4';
+        }
+        
+        var extension = (video_type === 'mp4') ? '.mp4' : '.ogv';
+        var video_file = video_name + extension;
+
+        console.log('playing video file: ' + video_file);
+        $('#video-box').append(
+            '<video autoplay id="intro_video">' + 
+            '<source src="static/videos/' + video_file +
+                '" type="video/' + video_type + '" />' + 
+            '</video>'
+        );
+        var video_tag = document.getElementById('intro_video');
+        video_tag.addEventListener('ended', function() {
+        window.location = '/game.html';
+      });
+    </script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-37131973-6', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>

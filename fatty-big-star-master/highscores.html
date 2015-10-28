@@ -1,0 +1,80 @@
+<!doctype html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="UTF-8" />
+    <title>Highscores -- Fatty Big Star</title>
+    <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style_1.css">
+  </head>
+  <body>
+    <br>
+    <div class="row header-row">
+      <a href="/game.html" role="button"
+            class="btn btn-default" aria-label="Left Align">
+        <span class="glyphicon glyphicon glyphicon glyphicon-play"
+            aria-hidden="true"></span>
+        &nbsp;Return to game
+      </a>
+    </div>
+    <br>
+
+    <div class="row">
+    <div class="well col-md-4 col-md-offset-4">
+    <table id="highscore_list" class="table table-striped">
+      <thead>
+        <tr>
+          <th>Rank #</th>
+          <th>Username</th>
+          <th>Highest altitude</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- jQuery inserts here -->
+      </tbody>
+    </table>
+    </div>
+    </div>
+
+    <!-- jQUery for client -> ajax -> server communication for highscores -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <!-- TODO: Minify our main.js -->
+    <script type="text/javascript">
+        function numberWithCommas(n) { 
+            var parts=n.toString().split("."); 
+            return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + 
+                (parts[1] ? "." + parts[1] : "");
+        }
+
+        var get_from = '/api/highscore_get';
+        $.get(get_from, function(response) {
+            var scores_list = response.scores;
+            var wrapper = $('#highscore_list').find('tbody');
+            for (var i = 0; i < scores_list.length; i++) {
+                wrapper.append(
+                    '<tr><td>' +
+                    (i + 1).toString() + 
+                    '</td>' +
+                    '<td>' +
+                    numberWithCommas(scores_list[i][0]) +
+                    '</td>' + 
+                    '<td>' +
+                    numberWithCommas(scores_list[i][1]) +
+                    '</td></tr>');
+            }
+        });
+    </script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-37131973-6', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
